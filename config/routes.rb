@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  scope module: :public do
-    root to: "public/homes#top"
-    get '/about' => 'public/homes#about', as: 'about'
+  root to: "public/homes#top"
+  get '/about' => 'public/homes#about', as: 'about'
 
+  scope module: :public do
     get 'users/mypage' => 'users#show', as: 'user'
     get 'users/information/edit' => 'users#edit', as: 'user_edit'
     patch 'users/information' => 'users#update', as: 'user_update'
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get '/' => 'admin/homes#top'
+    root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
     get 'users/:id/review' => 'admin/users#review', as: 'user_review'
     get 'users/:id/want' => 'admin/users#want', as: 'user_want'
