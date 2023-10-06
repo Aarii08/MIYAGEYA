@@ -1,2 +1,39 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag "logo.png", :style => "width: 100%" %>
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <div class="row card">
+        <%= image_tag "top.jpg", class: "card-img" %>
+        <div class="card-img-overlay", style="color: white;">
+          <div class="text-center", style="background-color: rgba(0,0,0,0.45);">
+            <h1>ミヤゲ屋へようこそ！</h1>
+            <p>おみやげのレビューをチェックしておみやげを買いに行こう！</p>
+            <p>おみやげを買ったら、レビューしてね！</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="new_arrival">
+
+          新着レビュー表示
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="search">
+
+          目的別
+          レビューから探す
+            ＜相手＞
+            ＜目的＞
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
