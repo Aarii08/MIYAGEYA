@@ -10,6 +10,13 @@
     <script src="https://kit.fontawesome.com/5c54eb09f0.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--Google font用記述（topページ-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=RocknRoll+One&display=swap" rel="stylesheet">
+    <!--ここまで-->
+
   </head>
 
   <body>
@@ -26,19 +33,19 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
-                <li><%= link_to "県名", about_path, class: "nav-link text-light btn btn-outline-dark" %></li>
-                <li><%=  link_to "ミヤゲ一覧", users_path, class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
-                <li><%=  link_to "ユーザー一覧", root_path ,class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
+                <li><%= link_to "県名", admin_prefectures_path, class: "nav-link text-light btn btn-outline-dark" %></li>
+                <li><%=  link_to "ミヤゲ一覧", admin_souvenirs_path, class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
+                <li><%=  link_to "ユーザー一覧", admin_user_path ,class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
+                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
               <% elsif user_signed_in? %>
                 <li><%= link_to "アバウト", about_path, class: "nav-link text-dark btn btn-outline-success" %></li>
-                <li><%=  link_to "ミヤゲ一覧", users_path, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
-                <li><%=  link_to "マイページ", root_path ,class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
+                <li><%=  link_to "ミヤゲ一覧", souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
+                <li><%=  link_to "マイページ", user_path ,class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
               <% else %>
                 <li><%= link_to "アバウト", about_path, class: "nav-link text-dark btn btn-outline-info" %></li>
-                <li><%= link_to "ミヤゲ一覧", about_path, class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
-                <li><%= link_to "新規登録", root_path, class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
+                <li><%= link_to "ミヤゲ一覧", souvenirs_path, class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
                 <li><%= link_to "ログイン", new_user_session_path , class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
               <% end %>
               </ul>
