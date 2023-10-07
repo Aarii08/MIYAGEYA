@@ -9,5 +9,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :nickname, presence: true, uniqueness: true
+  validates :residence_prefecture, presence: true
 
 end
