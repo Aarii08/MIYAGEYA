@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "ユーザー情報更新しました。"
       redirect_to user_path
     else
-      flash[:notice] = "ユーザー情報の更新に失敗しました。"
+      flash[:alert] = "ユーザー情報の更新に失敗しました。"
       render :edit
     end
   end

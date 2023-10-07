@@ -9,11 +9,6 @@
       <div class="text-right">
         <%= link_to "戻る", user_path, class: "btn btn-outline-secondary" %>
       </div>
-      <div class="m-3">
-        <% flash.each do |message_type, message| %>
-            <%= content_tag :div, message, class: message_type %>
-        <% end %>
-      </div>
       <%= form_with model: @user, url: user_update_path do |f| %>
       <table class="table">
         <tbody>

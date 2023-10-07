@@ -10,12 +10,7 @@
     <div class="col-5 offset-2 pt-3">
       <h2 class="mb-4 text-center font-weight-bold border-bottom">新規登録</h2>
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <div class="m-5">
-          <% flash.each do |message_type, message| %>
-            <%= content_tag :div, message, class: message_type %>
-          <% end %>
-          <%= render "public/shared/error_messages", resource: resource %>
-        </div>
+      <%= render "public/shared/error_messages", resource: resource %>
         <div class="mb-2">
           <%= f.label :名前 %><br />
           <%= f.text_field :name, autofocus: true, placeholder: "群馬太郎", class: "form-control" %>
