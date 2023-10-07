@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+
+
+    </div>
+
+    <div class="col-6 offset-1 pt-5">
+      <div class="m-3">
+        <% flash.each do |message_type, message| %>
+            <%= content_tag :div, message, class: message_type %>
+        <% end %>
+      </div>
+      <h1>マイページ</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="text-center">名前</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th class="text-center">表示名（ユーザー名）</th>
+            <td><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th class="text-center">在住県名</th>
+            <td><%= @user.residence_prefecture %></td>
+          </tr>
+          <tr>
+            <th class="text-center">メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-3 pt-5">
+      <%= link_to "編集する", user_edit_path, class: "btn btn-outline-success mt-4 mb-5" %>
+      <%= link_to "自分のレビュー一覧", user_review_path, class: "btn btn-outline-primary mb-5" %>
+      <%= link_to "自分のほしい！一覧", user_want_path, class: "btn btn-outline-warning mb-5" %>
+    </div>
+  </div>
+</div>

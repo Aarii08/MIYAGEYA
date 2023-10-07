@@ -5,6 +5,11 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
+      <div class="m-3">
+        <% flash.each do |message_type, message| %>
+            <%= content_tag :div, message, class: message_type %>
+        <% end %>
+      </div>
       <div class="row card">
         <%= image_tag "top.jpg", class: "card-img" %>
         <div class="card-img-overlay d-flex align-center", style="color: white;">

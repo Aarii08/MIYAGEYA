@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <h2 class="m-3">ユーザー情報編集</h2>
+      <div class="text-right">
+        <%= link_to "戻る", user_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="m-3">
+        <% flash.each do |message_type, message| %>
+            <%= content_tag :div, message, class: message_type %>
+        <% end %>
+      </div>
+      <%= form_with model: @user, url: user_update_path do |f| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="text-center align-middle">名前</th>
+            <td><%= f.text_field :name, autofocus: true, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">表示名（ユーザー名）</th>
+            <td><%= f.text_field :nickname, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">在住県名</th>
+            <td><%= f.text_field :residence_prefecture, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">メールアドレス</th>
+            <td><%= f.email_field :email, class: "form-control" %></td>
+          </tr>
+          <tr>
+					  <td class="text-center"><%= link_to "退会する", user_confirm_path, class: "btn btn-danger" %></td>
+					  <td class="text-center"><%= f.submit "編集内容を保存する", class: "btn btn-success" %></td>
+				  </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
