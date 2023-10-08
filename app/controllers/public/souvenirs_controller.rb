@@ -1,5 +1,6 @@
 class Public::SouvenirsController < ApplicationController
   def index
+    @souvenirs = Souvenir.all
   end
 
   def show

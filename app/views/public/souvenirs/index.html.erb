@@ -1,2 +1,46 @@
-<h1>Public::Souvenirs#index</h1>
-<p>Find me in app/views/public/souvenirs/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <h2 class="text-center mb-5">ミヤゲ一覧</h2>
+
+      <div class="row">
+        <% @souvenirs.each do |souvenir| %>
+		    <div class="card-deck col-4 mx-auto mb-3 text-center">
+        <%= link_to souvenirs_path do %>
+			    <div class="card h-100 border-secondary", style="width:16rem">
+			      <%= image_tag souvenir.get_image, class: "card-img-top width='50%' height='100'" %>
+			      <div class="card-body">
+				      <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
+				      <p class="card-subtitle"><%= souvenir.prefecture.prefecture_name %></p>
+				      <p class="card-subtitle"> ほしい！　レビュー </p>
+				      <p class="card-text"><%= souvenir.introduction %></p>
+            </div>
+			    </div>
+			  <% end %>
+		    </div>
+		    <% end %>
+	    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
