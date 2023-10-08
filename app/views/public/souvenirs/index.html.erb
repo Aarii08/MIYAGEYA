@@ -9,10 +9,10 @@
 
       <div class="row">
         <% @souvenirs.each do |souvenir| %>
-		    <div class="card-deck col-4 mx-auto mb-3 text-center">
-        <%= link_to souvenirs_path do %>
-			    <div class="card h-100 border-secondary", style="width:16rem">
-			      <%= image_tag souvenir.get_image, class: "card-img-top width='50%' height='100'" %>
+		    <div class="card-deck col-4 mx-auto mb-3 text-cente">
+        <%= link_to souvenir_path(souvenir) do %>
+			    <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
+			      <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
 			      <div class="card-body">
 				      <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
 				      <p class="card-subtitle"><%= souvenir.prefecture.prefecture_name %></p>
@@ -25,21 +25,11 @@
 		    <% end %>
 	    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	    <div class="text-right">
+      <%= link_to new_souvenir_path, class: "btn btn-outline-dark" do %>
+	      <i class="fa-solid fa-plus fa-2xl"></i>
+      <% end %>
+      </div>
 
     </div>
   </div>

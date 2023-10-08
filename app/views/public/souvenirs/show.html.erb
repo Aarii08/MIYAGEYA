@@ -1,2 +1,76 @@
-<h1>Public::Souvenirs#show</h1>
-<p>Find me in app/views/public/souvenirs/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <h2 class="text-center"><%= @souvenir.souvenir_name %>の詳細</h2>
+      <div class="text-center m-3">
+        <%= link_to "レビューする",  new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5" %>
+        <%= link_to "ほしい！", souvenir_wants_path(@souvenir), class: "btn btn-outline-info mr-5" %>
+        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="row mt-5">
+        <div class="col-4">
+          <%= image_tag @souvenir.get_image.variant( resize: "250x250")  %>
+        </div>
+        <div class="col-8">
+          <table class="table table-border">
+            <tbody>
+              <tr>
+                <td class="col-3 text-center">ミヤゲ名</td>
+                <td><%= @souvenir.souvenir_name %></td>
+              </tr>
+              <tr>
+                <td class="col-3 text-center">県名</td>
+                <td><%= @souvenir.prefecture.prefecture_name %></td>
+              </tr>
+              <tr>
+                <td class="col-3 text-center">紹介文</td>
+                <td><%= @souvenir.introduction %></td>
+              </tr>
+              <tr>
+                <td class="col-3 text-center">カテゴリー</td>
+                <td><%= @souvenir.category %></td>
+              </tr>
+              <tr>
+                <td class="col-3 text-center">ほしい！</td>
+                <td><%= @souvenir.wants.count %>件</td>
+              </tr>
+              <tr>
+                <td class="col-3 text-center">平均評価</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="row m-3">
+
+        <div class="col-12">
+          <div class="card border-secondary" style="max-width: 50rem;">
+            <div class="card-header">表示名・在住県名</div>
+            <div class="card-body text-secondary">
+            <div class="card-subtitle">贈った</div>
+            <div class="card-subtitle">家族から</div>
+            <div class="card-subtitle">観光みやげ</div>
+            <p class="card-text">レビューレビューレビューレビューレビューレビューレビュー</p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>

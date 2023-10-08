@@ -116,3 +116,19 @@ Souvenir.create!(
   ]
 )
 
+# ＝＝＝＝＝＝＝＝＝＝＝初期Reviewの追加＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+Review.create!(
+  [
+    {
+      user_id: 1,
+      souvenir_id: 1,
+      review: "とてもおいしい！リピートします！",
+      price: 650,
+      purchase_place: "東京駅",
+      receive_send: "貰う",
+      person: "家族",
+      purpose: "観光ミヤゲ"
+    }
+  ]
+)
