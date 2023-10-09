@@ -60,7 +60,7 @@
         </div>
       </nav>
     </header>
-    <!--フラッシュメッセージ用記述-->
+    <!--フラッシュメッセージ用-->
     <div class="text-center">
       <% flash.each do |key, value| %>
       <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
@@ -69,7 +69,6 @@
       <% end %>
     </div>
     <!--ここまで-->
-
     <%= yield %>
 
     <footer class="text-center border-top border-dark m-5">
