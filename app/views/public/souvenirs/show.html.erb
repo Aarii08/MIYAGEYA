@@ -32,7 +32,7 @@
               </tr>
               <tr>
                 <td class="col-3 text-center">カテゴリー</td>
-                <td><%= @souvenir.category %></td>
+                <td><%= @souvenir.category_i18n %></td>
               </tr>
               <tr>
                 <td class="col-3 text-center">ほしい！</td>
@@ -47,27 +47,25 @@
         </div>
       </div>
 
+      <div class="col-11 mx-auto m-3">
 
-      <div class="row m-3">
+        <% @souvenir.reviews.each do |review| %>
 
-        <div class="col-12">
-          <div class="card border-secondary" style="max-width: 50rem;">
-            <div class="card-header">表示名・在住県名</div>
-            <div class="card-body text-secondary">
-            <div class="card-subtitle">贈った</div>
-            <div class="card-subtitle">家族から</div>
-            <div class="card-subtitle">観光みやげ</div>
-            <p class="card-text">レビューレビューレビューレビューレビューレビューレビュー</p>
+        <%= link_to souvenir_review_path(review) do %>
+
+        <div class="card mt-3 border-secondary btn btn-outline-secondary">
+          <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
+          <div class="card-body">
+            <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
+            <p class="card-subtitle">誰に？　：　相手タグ</p>
+            <p class="card-subtitle">用途は？　：　目的タグ</p>
+            <p class="card-text"><%= review.review %></p>
           </div>
         </div>
-
-
+        <% end %>
+        <% end %>
 
       </div>
-
-
-
-
 
 
 

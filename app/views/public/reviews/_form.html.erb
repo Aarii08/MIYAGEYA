@@ -1,16 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-
-    </div>
-
-    <div class="col-8 offset-1 pt-5">
-      <h2 class="m-3"><%= @souvenir.souvenir_name %>のレビュー新規登録</h2>
-      <div class="text-right">
-        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary" %>
-      </div>
-      <%= form_with model: @review, url: souvenir_reviews_path do |f| %>
-      <table class="table m-3">
+ <table class="table m-3">
         <tbody>
           <tr>
             <th class="text-center align-middle">レビュー</th>
@@ -55,11 +43,3 @@
           </tr>
         </tbody>
       </table>
-      <div class="my-3 text-center">
-        <%= f.submit "投稿する", class: "btn btn-success" %>
-      </div>
-      <% end %>
-
-    </div>
-  </div>
-</div>
