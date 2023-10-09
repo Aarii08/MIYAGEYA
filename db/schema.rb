@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2023_10_05_091747) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
-    t.string "souvenir_id"
+    t.integer "souvenir_id"
     t.string "review"
     t.integer "price"
     t.string "purchase_place"

@@ -51,7 +51,7 @@
 
         <% @souvenir.reviews.each do |review| %>
 
-        <%= link_to souvenir_review_path(review) do %>
+        <%= link_to souvenir_review_path(review.id) do %>
 
         <div class="card mt-3 border-secondary btn btn-outline-secondary">
           <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>

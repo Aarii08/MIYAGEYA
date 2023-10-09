@@ -20,6 +20,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
+    @souvenir = Souvenir.find(params[:souvenir_id])
+    @review = Review.find(params[:id])
   end
 
   def edit

@@ -5,7 +5,6 @@ class Public::SouvenirsController < ApplicationController
 
   def show
     @souvenir = Souvenir.find(params[:id])
-    @reviews
   end
 
   def new

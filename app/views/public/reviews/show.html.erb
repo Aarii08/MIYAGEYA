@@ -5,23 +5,75 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
-       <h2 class="text-center">の詳細</h2>
-      <div class="text-center m-3">
+       <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
+      <div class="m-3 text-center">
         <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5" %>
-        
-        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
+
+        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary ml-5" %>
       </div>
-      <div class="row mt-5">
-        <div class="col-4">
-          
-        </div>
-        <div class="col-8">
-          <table class="table table-border">
+
+       <table class="table table-border">
             <tbody>
               <tr>
+                <td class="text-center">表示名（ユーザー名）</td>
+                <td><%= @review.user.nickname %></td>
+              </tr>
+              <tr>
+                <td class="text-center">在住県名</td>
+                <td><%= @review.user.residence_prefecture %></td>
+              </tr>
+              <tr>
+                <td class="text-center">レビュー</td>
+                <td><%= @review.review %></td>
+              </tr>
+              <tr>
+                <td class="text-center">購入時価格</td>
+                <td><%= @review.price.to_s(:delimited) %>円</td>
+              </tr>
+              <tr>
+                <td class="text-center">購入場所</td>
+                <td><%= @review.purchase_place %></td>
+              </tr>
+              <tr>
+                <td class="text-center">貰った？贈った？自分用？</td>
+                <td><%= @review.receive_send %></td>
+              </tr>
+              <tr>
+                <td class="text-center">誰に？</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+              <tr>
+                <td class="text-center">用途は？</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+              <tr>
+                <td class="text-center">星評価</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
+      <div class="col-11 mx-auto m-3">
 
+        <% @souvenir.reviews.each do |review| %>
 
+        <%= link_to souvenir_review_path(review) do %>
+
+        <div class="card mt-3 border-secondary btn btn-outline-secondary">
+          <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
+          <div class="card-body">
+            <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
+            <p class="card-subtitle">誰に？　：　相手タグ</p>
+            <p class="card-subtitle">用途は？　：　目的タグ</p>
+            <p class="card-text"><%= review.review %></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
 
 
 
