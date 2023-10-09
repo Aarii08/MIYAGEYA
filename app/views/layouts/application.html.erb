@@ -33,10 +33,10 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
-                <li><%= link_to "県名", admin_prefectures_path, class: "nav-link text-light btn btn-outline-dark" %></li>
-                <li><%=  link_to "ミヤゲ一覧", admin_souvenirs_path, class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
-                <li><%=  link_to "ユーザー一覧", admin_user_path ,class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
-                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-outline-dark ml-2" %></li>
+                <li><%= link_to "県名", admin_prefectures_path, class: "nav-link text-light btn btn-dark" %></li>
+                <li><%=  link_to "ミヤゲ一覧", admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" %></li>
+                <li><%=  link_to "ユーザー一覧", admin_users_path ,class: "nav-link text-light btn btn-dark ml-2" %></li>
+                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-dark ml-2" %></li>
               <% elsif user_signed_in? %>
                 <li><%= link_to "アバウト", about_path, class: "nav-link text-dark btn btn-outline-success" %></li>
                 <li><%=  link_to "ミヤゲ一覧", souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
@@ -73,6 +73,9 @@
 
     <footer class="text-center border-top border-dark m-5">
       Copyright ©ミヤゲ屋  All Rights Reserved.
+      <%= link_to new_admin_session_path do %>
+        <i class="fa-solid fa-gear"></i>
+      <% end %>
     </footer>
   </body>
 </html>
