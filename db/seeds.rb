@@ -17,7 +17,7 @@ Admin.create!(
 
 12.times do |n|
   User.create!(
-    name: "令和太郎",
+    name: "令和#{n + 1}太郎",
     nickname: "#{n + 1}太郎",
     email: "test#{n + 1}@test.com",
     residence_prefecture: "東京都",
@@ -124,6 +124,16 @@ Review.create!(
       user_id: 1,
       souvenir_id: 1,
       review: "とてもおいしい！リピートします！",
+      price: 650,
+      purchase_place: "東京駅",
+      receive_send: "貰う",
+      person: "家族",
+      purpose: "観光ミヤゲ"
+    },
+     {
+      user_id: 2,
+      souvenir_id: 1,
+      review: "うまーーい！",
       price: 650,
       purchase_place: "東京駅",
       receive_send: "貰う",

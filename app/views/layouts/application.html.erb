@@ -52,8 +52,8 @@
             </div>
             <div class="form-group mt-2 ml-auto">
               <%= form_with url:root_path, method: :get, local: :true do |f| %>
-                <%= f.text_field :word, placeholder: "ミヤゲ名を入力" %>
-                <%= f.submit "検索", class: "btn btn-light" %>
+                <%= f.text_field :word, placeholder: "ミヤゲ名を入力"  %>
+                <%= f.submit "検索", class: "btn btn-outline-dark" %>
               <% end %>
             </div>
           </div>

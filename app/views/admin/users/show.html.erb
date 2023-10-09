@@ -1,2 +1,50 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2 class="text-center m-3"><%= @user.nickname %> さんの詳細</h2>
+      <div class="text-right">
+         <%= link_to "戻る", admin_users_path, class: "btn btn-outline-secondary" %>
+      </div>
+
+      <table class="table table-border text-center m-3">
+        <tbody>
+          <tr>
+            <th>ユーザーID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th>表示名</th>
+            <td><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <th>在住県名</th>
+            <td><%= @user.residence_prefecture %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td><% if @user.is_deleted? %>
+						      <span class="text-active">退会済み</span>
+				        <% else %>
+						      <span class="text-invalid">有効</span>
+					      <% end %>
+					  </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="m-3 text-center">
+        <%= link_to "レビュー一覧", admin_user_review_path, class: "btn btn-outline-info m-3" %>
+        <%= link_to "ほしい！一覧", admin_user_want_path, class: "btn btn-outline-warning m-3" %>
+        <%= link_to "編集", edit_admin_user_path, class: "btn btn-outline-success m-3" %>
+      </div>
+    </div>
+  </div>
+</div>
