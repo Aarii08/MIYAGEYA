@@ -25,9 +25,20 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+    @souvenir = Souvenir.find(params[:souvenir_id])
+    @review = Review.find(params[:id])
   end
 
   def update
+    @souvenir = Souvenir.find(params[:souvenir_id])
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = "レビューを更新しました。"
+      redirect_to souvenir_review_path(@souvenir, @review)
+    else
+      flash[:alert] = "レビュー更新できませんでした。"
+      render :edit
+    end
   end
 
   def destroy

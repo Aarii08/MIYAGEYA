@@ -28,7 +28,8 @@
               </tr>
               <tr>
                 <td class="col-3 text-center">紹介文</td>
-                <td><%= @souvenir.introduction %></td>
+                <td><%= safe_join(@souvenir.introduction.split("\n"),tag(:br)) %></td>
+                <!--↑ viewに表示する際に、改行を反映させる記述　-->
               </tr>
               <tr>
                 <td class="col-3 text-center">カテゴリー</td>
@@ -48,26 +49,20 @@
       </div>
 
       <div class="col-11 mx-auto m-3">
-
         <% @souvenir.reviews.each do |review| %>
-
-        <%= link_to souvenir_review_path(review.id) do %>
-
+        <%= link_to souvenir_review_path(@souvenir, review) do %>
         <div class="card mt-3 border-secondary btn btn-outline-secondary">
           <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
           <div class="card-body">
             <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
             <p class="card-subtitle">誰に？　：　相手タグ</p>
             <p class="card-subtitle">用途は？　：　目的タグ</p>
-            <p class="card-text"><%= review.review %></p>
+            <p class="card-text"><%= safe_join(review.review.split("\n"),tag(:br)) %></p>
           </div>
         </div>
         <% end %>
         <% end %>
-
       </div>
-
-
 
     </div>
   </div>

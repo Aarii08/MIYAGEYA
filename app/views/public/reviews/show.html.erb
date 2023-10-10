@@ -5,11 +5,13 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
-       <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
+      <h3 class="mb-3"><%= @review.user.nickname %>さんの</h3>
+      <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
       <div class="m-3 text-center">
-        <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5" %>
-
-        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary ml-5" %>
+        <% if @review.user == current_user %>
+          <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5" %>
+        <% end %>
+        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5" %>
       </div>
 
        <table class="table table-border">
@@ -24,7 +26,8 @@
               </tr>
               <tr>
                 <td class="text-center">レビュー</td>
-                <td><%= @review.review %></td>
+                <td><%= safe_join(@review.review.split("\n"),tag(:br)) %></td>
+                <!--↑ viewに表示する際に、改行を反映させる記述　-->
               </tr>
               <tr>
                 <td class="text-center">購入時価格</td>
@@ -52,30 +55,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-
-      <div class="col-11 mx-auto m-3">
-
-        <% @souvenir.reviews.each do |review| %>
-
-        <%= link_to souvenir_review_path(review) do %>
-
-        <div class="card mt-3 border-secondary btn btn-outline-secondary">
-          <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
-          <div class="card-body">
-            <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
-            <p class="card-subtitle">誰に？　：　相手タグ</p>
-            <p class="card-subtitle">用途は？　：　目的タグ</p>
-            <p class="card-text"><%= review.review %></p>
-          </div>
-        </div>
-        <% end %>
-        <% end %>
-
-      </div>
-
-
 
 
     </div>
