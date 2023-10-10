@@ -1,4 +1,5 @@
 class Public::SouvenirsController < ApplicationController
+  
   def index
     @souvenirs = Souvenir.all
   end
@@ -13,10 +14,10 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def create
-    @souvenir = Souvenir.new(souvenir_params)
-    if @souvenir.save
+    souvenir = Souvenir.new(souvenir_params)
+    if souvenir.save
       flash[:notice] = "新規登録完了しました。"
-      redirect_to souvenir_path(@souvenir)
+      redirect_to souvenir_path(souvenir)
     else
       flash[:alert] = "新規登録できませんでした。"
       render :new

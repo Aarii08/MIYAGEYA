@@ -6,13 +6,13 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    @souvenir = Souvenir.find(params[:souvenir_id])
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    @review.souvenir_id = @souvenir.id
-    if @review.save
+    souvenir = Souvenir.find(params[:souvenir_id])
+    review = Review.new(review_params)
+    review.user_id = current_user.id
+    review.souvenir_id = souvenir.id
+    if review.save
       flash[:notice] = "投稿完了しました。"
-      redirect_to souvenir_path(@souvenir)
+      redirect_to souvenir_path(souvenir)
     else
       flash[:alert] = "投稿に失敗しました。"
       render :new
@@ -30,11 +30,11 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
-    @souvenir = Souvenir.find(params[:souvenir_id])
-    @review = Review.find(params[:id])
-    if @review.update(review_params)
+    souvenir = Souvenir.find(params[:souvenir_id])
+    review = Review.find(params[:id])
+    if review.update(review_params)
       flash[:notice] = "レビューを更新しました。"
-      redirect_to souvenir_review_path(@souvenir, @review)
+      redirect_to souvenir_review_path(souvenir, review)
     else
       flash[:alert] = "レビュー更新できませんでした。"
       render :edit
@@ -42,6 +42,9 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to souvenir_path(params[:souvenir_id])
   end
 
   private
