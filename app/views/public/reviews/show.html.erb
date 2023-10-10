@@ -1,2 +1,61 @@
-<h1>Public::Reviews#show</h1>
-<p>Find me in app/views/public/reviews/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <h3 class="mb-3"><%= @review.user.nickname %>さんの</h3>
+      <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
+      <div class="m-3 text-center">
+        <% if @review.user == current_user %>
+          <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5" %>
+        <% end %>
+        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5" %>
+      </div>
+
+       <table class="table table-border">
+            <tbody>
+              <tr>
+                <td class="text-center">表示名（ユーザー名）</td>
+                <td><%= @review.user.nickname %></td>
+              </tr>
+              <tr>
+                <td class="text-center">在住県名</td>
+                <td><%= @review.user.residence_prefecture %></td>
+              </tr>
+              <tr>
+                <td class="text-center">レビュー</td>
+                <td><%= safe_join(@review.review.split("\n"),tag(:br)) %></td>
+                <!--↑ viewに表示する際に、改行を反映させる記述　-->
+              </tr>
+              <tr>
+                <td class="text-center">購入時価格</td>
+                <td><%= @review.price.to_s(:delimited) %>円</td>
+              </tr>
+              <tr>
+                <td class="text-center">購入場所</td>
+                <td><%= @review.purchase_place %></td>
+              </tr>
+              <tr>
+                <td class="text-center">貰った？贈った？自分用？</td>
+                <td><%= @review.receive_send %></td>
+              </tr>
+              <tr>
+                <td class="text-center">誰に？</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+              <tr>
+                <td class="text-center">用途は？</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+              <tr>
+                <td class="text-center">星評価</td>
+                <td>⭐️⭐️⭐️☆☆</td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+  </div>
+</div>

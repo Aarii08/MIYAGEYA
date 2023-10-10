@@ -1,2 +1,65 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <h2 class="m-3"><%= @souvenir.souvenir_name %>のレビュー新規登録</h2>
+      <div class="text-right">
+        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary" %>
+      </div>
+      <%= form_with model: @review, url: souvenir_reviews_path do |f| %>
+      <table class="table m-3">
+        <tbody>
+          <tr>
+            <th class="text-center align-middle">レビュー</th>
+            <td><%= f.text_area :review, autofocus: true, class: "form-control", rows: "4" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">購入時価格</th>
+            <td><%= f.text_field :price, placeholder: "1500", class: "form-control" %></td>
+            <td class="align-middle">円</td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">購入場所</th>
+            <td><%= f.text_field :purchase_place, placeholder: "東京駅", class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">貰った？贈った？</th>
+            <td class="align-middle"><%= f.radio_button :receive_send, "貰う" %>
+                <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
+                <%= f.radio_button :receive_send, "贈る" %>
+                <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
+                <%= f.radio_button :receive_send, "自分用" %>
+                <%= f.label :receive_send_myself, "自分用" %>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">相手は？</th>
+            <td>タグ使用予定</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">目的は？</th>
+            <td>タグ？？？</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">星評価</th>
+            <td>⭐️⭐️⭐️⭐️⭐️</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="my-3 text-center">
+        <%= f.submit "投稿する", class: "btn btn-success" %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
