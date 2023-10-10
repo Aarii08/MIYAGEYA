@@ -28,6 +28,7 @@ class Public::UsersController < ApplicationController
   end
 
   def review
+    @review = Review.all
   end
 
   def want
