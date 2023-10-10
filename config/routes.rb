@@ -36,8 +36,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
-    get 'users/:id/review' => 'admin/users#review', as: 'user_review'
-    get 'users/:id/want' => 'admin/users#want', as: 'user_want'
+    get 'users/:id/review' => 'users#review', as: 'user_review'
+    get 'users/:id/want' => 'users#want', as: 'user_want'
 
     resources :prefectures, only: [:index, :create, :edit, :update]
     resources :souvenirs do

@@ -23,6 +23,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def review
+    @user = User.find(params[:id])
+    @review = Review.all
+    @souvenir = Souvenir.all
   end
 
   def want
