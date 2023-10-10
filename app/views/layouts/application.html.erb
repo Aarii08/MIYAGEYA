@@ -39,7 +39,7 @@
                 <li><%=  link_to "ユーザー一覧", admin_users_path ,class: "nav-link text-light btn btn-dark ml-2" %></li>
                 <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-dark ml-2" %></li>
               <% elsif user_signed_in? %>
-                <h5 class="text-center m-3 mr-5">ようこそ、<%= current_user.nickname %></h5>
+                <h5 class="text-center m-3 mr-5">ようこそ、<%= current_user.nickname %>さん</h5>
                 <li><%= link_to "アバウト", about_path, class: "nav-link text-dark btn btn-outline-success" %></li>
                 <li><%=  link_to "ミヤゲ一覧", souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
                 <li><%=  link_to "マイページ", user_path ,class: "nav-link text-dark btn btn-outline-success ml-2" %></li>

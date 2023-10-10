@@ -9,7 +9,7 @@
 
       <div class="row">
         <% @souvenirs.each do |souvenir| %>
-		    <div class="card-deck col-4 mx-auto mb-3 text-cente">
+		    <div class="card-deck col-4 mx-auto mb-3 text-center">
         <%= link_to souvenir_path(souvenir) do %>
 			    <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
 			      <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
