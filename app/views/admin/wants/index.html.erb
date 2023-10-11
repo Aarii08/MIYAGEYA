@@ -21,7 +21,7 @@
             <td class="align-middle"><%= want.created_at.to_s(:datetime_jp) %></td>
             <td class="align-middle"><%= want.souvenir.souvenir_name %></td>
             <td class="align-middle"><%= want.user.nickname %></td>
-            <td class="align-middle"><%= link_to "削除", admin_souvenir_wants_path(want.souvenir), method: :delete, class: "btn btn-outline-danger" %></td>
+            <td class="align-middle"><%= link_to "削除", admin_souvenir_wants_path(want.souvenir), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger" %></td>
           </tr>
         </tbody>
         <% end %>

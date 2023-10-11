@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <td class="align-middle"><%= want.souvenir.souvenir_name %></td>
-            <td class="align-middle"><%= link_to "削除", admin_souvenir_wants_path(@souvenir), method: :delete, class: "btn btn-outline-danger" %></td>
+            <td class="align-middle"><%= link_to "削除", admin_souvenir_wants_path(@souvenir), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger" %></td>
           </tr>
         </tbody>
         <% end %>
