@@ -54,6 +54,9 @@
         </div>
       </div>
 
+      <div class="text-right m-3">
+        レビュー：全 <%= @souvenir.reviews.count %>件
+      </div>
       <div class="col-11 mx-auto m-3">
         <% @souvenir.reviews.each do |review| %>
         <%= link_to souvenir_review_path(@souvenir, review) do %>

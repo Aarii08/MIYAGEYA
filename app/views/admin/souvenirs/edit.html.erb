@@ -6,7 +6,7 @@
         <%= link_to "戻る", admin_souvenir_path, class: "btn btn-outline-secondary" %>
       </div>
 
-      <%= form_with model: @souvenir, url: souvenirs_path do |f| %>
+      <%= form_with model: @souvenir, url: admin_souvenir_path do |f| %>
       <div class="col-12 m-3">
           <table class="table table-border">
             <tbody>
@@ -36,8 +36,9 @@
             </tbody>
           </table>
         </div>
-        <div class="text-center">
-        <%= f.submit "登録", class: "btn btn-success px-5" %>
+        <div class="d-flex justify-content-around ml-5">
+        <%= f.submit "更新", class: "btn btn-success px-5" %>
+        <%= link_to "削除する", admin_souvenir_path, method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-outline-danger" %>
         </div>
         <% end %>
     </div>

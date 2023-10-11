@@ -5,9 +5,18 @@ class Admin::SouvenirsController < ApplicationController
   end
 
   def new
+    @souvenir = Souvenir.new
   end
 
   def create
+    souvenir = Souvenir.new(souvenir_params)
+    if souvenir.save
+      flash[:notice] = "ミヤゲ登録しました。"
+      redirect_to admin_souvenir_path(souvenir)
+    else
+      flash[:alert] = "ミヤゲ登録できませんでした。"
+      render :new
+    end
   end
 
   def show
@@ -19,8 +28,27 @@ class Admin::SouvenirsController < ApplicationController
   end
 
   def update
+    @souvenir = Souvenir.find(params[:id])
+    if @souvenir.update(souvenir_params)
+      flash[:notice] = "ミヤゲ情報更新しました。"
+      redirect_to admin_souvenir_path
+    else
+      flash[:alert] = "ミヤゲ情報更新できませんでした。"
+      render :edit
+    end
   end
 
   def destroy
+    @souvenir = Souvenir.find(params[:id])
+    @souvenir.destroy
+    redirect_to admin_souvenirs_path
   end
+
+
+  private
+
+  def souvenir_params
+    params.require(:souvenir).permit(:souvenir_name, :introduction, :category, :average_star, :image, :prefecture_id)
+  end
+
 end
