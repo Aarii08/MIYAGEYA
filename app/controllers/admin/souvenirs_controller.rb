@@ -1,5 +1,7 @@
 class Admin::SouvenirsController < ApplicationController
+
   def index
+    @souvenirs = Souvenir.all
   end
 
   def new
@@ -9,9 +11,11 @@ class Admin::SouvenirsController < ApplicationController
   end
 
   def show
+    @souvenir = Souvenir.find(params[:id])
   end
 
   def edit
+    @souvenir = Souvenir.find(params[:id])
   end
 
   def update

@@ -1,2 +1,34 @@
-<h1>Admin::Souvenirs#index</h1>
-<p>Find me in app/views/admin/souvenirs/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h2 class="text-center m-3">ミヤゲ 一覧</h2>
+      <div class="d-flex justify-content-around m-3">
+        <%= link_to "追加", new_admin_souvenir_path, class: "btn btn-success ml-5" %>
+        <%= link_to "戻る", admin_root_path, class: "btn btn-outline-secondary" %>
+      </div>
+
+      <table class="table table-border text-center m-3">
+        <thead>
+          <tr>
+            <th>ミヤゲID</th>
+            <th>ミヤゲ名</th>
+            <th>県名</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @souvenirs.each do |souvenir| %>
+        <tbody>
+          <tr>
+            <td class="align-middle"><%= souvenir.id %></td>
+            <td class="align-middle"><%= souvenir.souvenir_name %></td>
+            <td class="align-middle"><%= souvenir.prefecture.prefecture_name %></td>
+            <td></td>
+            <td class="text-center"><%= link_to "詳細", admin_souvenir_path(souvenir), class: "btn btn-outline-info" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
