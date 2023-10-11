@@ -4,8 +4,8 @@
     <div class="col-10 mx-auto mt-5">
       <h2 class="text-center"><%= @review.user.nickname %>さんの&ensp;"<%= @souvenir.souvenir_name %>"&ensp;のレビュー詳細</h2>
       <div class="m-3 text-center">
-        <%= link_to "削除", admin_souvenir_review_path(@review.souvenir, @review), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger mr-5" %>
-        <%= link_to "戻る", request.referer, class: "btn btn-outline-secondary ml-5" %>
+        
+        <%= link_to "戻る", reviews_admin_souvenirs_path, class: "btn btn-outline-secondary ml-5" %>
       </div>
 
       <%= form_with model: @review, url: admin_souvenir_review_path, method: :patch do |f| %>
