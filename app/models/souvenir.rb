@@ -22,5 +22,10 @@ class Souvenir < ApplicationRecord
     image
   end
 
+  # -------ほしい！機能用メソッド-------
+  def wanted_by?(user)
+    wants.exists?(user_id: user)
+  end
+  # ------------------------------------
 
 end

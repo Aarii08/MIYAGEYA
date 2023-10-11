@@ -33,6 +33,7 @@ class Public::UsersController < ApplicationController
   end
 
   def want
+    @want = Want.all
   end
 
   private
