@@ -48,8 +48,9 @@ Rails.application.routes.draw do
       resource :wants, only: [:destroy]
       collection do
       get 'wants' => 'wants#index'
+      get 'reviews' => 'reviews#index'
       end
-      resources :reviews, only: [:index, :show, :update, :destroy]
+      resources :reviews, only: [:show, :update, :destroy]
     end
   end
 

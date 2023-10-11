@@ -3,7 +3,7 @@
     <div class="col-10 mx-auto">
       <h2 class="text-center m-3"><%= @user.nickname %> さんのほしい！一覧</h2>
       <div class="text-right">
-         <%= link_to "戻る", admin_user_path, class: "btn btn-outline-secondary" %>
+         <%= link_to "戻る", request.referer, class: "btn btn-outline-secondary" %>
       </div>
 
       <table class="table table-border text-center m-3">
@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <td class="align-middle"><%= want.souvenir.souvenir_name %></td>
-            <td class="align-middle"><%= link_to "削除", admin_souvenir_wants_path(@souvenir), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger" %></td>
+            <td class="align-middle"><%= link_to "削除", admin_souvenir_wants_path(want.souvenir), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger" %></td>
           </tr>
         </tbody>
         <% end %>
