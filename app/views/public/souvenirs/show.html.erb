@@ -7,8 +7,14 @@
     <div class="col-8 offset-1 pt-5">
       <h2 class="text-center"><%= @souvenir.souvenir_name %>の詳細</h2>
       <div class="text-center m-3">
-        <%= link_to "レビューする",  new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5" %>
-        <%= link_to "ほしい！", souvenir_wants_path(@souvenir), class: "btn btn-outline-info mr-5" %>
+        <% if user_signed_in? %>
+          <%= link_to "レビューする",  new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5" %>
+          <% if @souvenir.wanted_by?(current_user) %>
+            <%= link_to "ほしい！をやめる", souvenir_wants_path(@souvenir), method: :delete, class: "btn btn-outline-info mr-5" %>
+          <% else %>
+            <%= link_to "ほしい！", souvenir_wants_path(@souvenir), method: :post, class: "btn btn-outline-warning mr-5" %>
+          <% end %>
+        <% end %>
         <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
       </div>
       <div class="row mt-5">
