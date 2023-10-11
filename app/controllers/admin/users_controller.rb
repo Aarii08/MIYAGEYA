@@ -29,6 +29,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def want
+    @user = User.find(params[:id])
+    @want = Want.all
+    @souvenir = Souvenir.all
   end
 
 

@@ -1,2 +1,84 @@
-<h1>Admin::Reviews#show</h1>
-<p>Find me in app/views/admin/reviews/show.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-10 mx-auto mt-5">
+      <h2 class="text-center"><%= @review.user.nickname %>さんの&ensp;"<%= @souvenir.souvenir_name %>"&ensp;のレビュー詳細</h2>
+      <div class="m-3 text-center">
+        
+        <%= link_to "戻る", reviews_admin_souvenirs_path, class: "btn btn-outline-secondary ml-5" %>
+      </div>
+
+      <%= form_with model: @review, url: admin_souvenir_review_path, method: :patch do |f| %>
+      <table class="table m-3">
+        <tbody>
+          <tr>
+            <th class="text-center">表示名（ユーザー名）</th>
+            <td><%= @review.user.nickname %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center">在住県名</th>
+            <td><%= @review.user.residence_prefecture %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">レビュー</th>
+            <td><%= f.text_area :review, autofocus: true, class: "form-control", rows: "4" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">購入時価格</th>
+            <td><%= f.text_field :price, placeholder: "1500", class: "form-control" %></td>
+            <td class="align-middle">円</td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">購入場所</th>
+            <td><%= f.text_field :purchase_place, placeholder: "東京駅", class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">貰った？贈った？</th>
+            <td class="align-middle"><%= f.radio_button :receive_send, "貰う" %>
+                <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
+                <%= f.radio_button :receive_send, "贈る" %>
+                <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
+                <%= f.radio_button :receive_send, "自分用" %>
+                <%= f.label :receive_send_myself, "自分用" %>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">相手は？</th>
+            <td>タグ使用予定</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">目的は？</th>
+            <td>タグ？？？</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th class="text-center align-middle">星評価</th>
+            <td>⭐️⭐️⭐️⭐️⭐️</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "更新する", class: "btn btn-success" %></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+</div>

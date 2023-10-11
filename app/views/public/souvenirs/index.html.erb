@@ -15,9 +15,11 @@
 			      <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
 			      <div class="card-body">
 				      <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
-				      <p class="card-subtitle"><%= souvenir.prefecture.prefecture_name %></p>
-				      <p class="card-subtitle"> ほしい！　レビュー </p>
-				      <p class="card-text"><%= souvenir.introduction %></p>
+				      <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>
+				      <p class="card-subtitle m-2">ほしい！：<%= souvenir.wants.count %> 件<br>
+				                               レビュー：<%= souvenir.reviews.count %> 件</p>
+				      <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
+				      <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
             </div>
 			    </div>
 			  <% end %>

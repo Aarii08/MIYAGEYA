@@ -45,8 +45,12 @@ Rails.application.routes.draw do
 
     resources :prefectures, only: [:index, :create, :edit, :update]
     resources :souvenirs do
-      resource :wants, only: [:index, :destroy]
-      resources :reviews, only: [:index, :show, :update, :destroy]
+      resource :wants, only: [:destroy]
+      collection do
+      get 'wants' => 'wants#index'
+      get 'reviews' => 'reviews#index'
+      end
+      resources :reviews, only: [:show, :update, :destroy]
     end
   end
 
