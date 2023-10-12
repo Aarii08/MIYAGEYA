@@ -57,7 +57,7 @@
             <!-----------------------検索窓--------------------------->
             <div class="form-group mt-2 ml-auto">
               <%= search_form_for @q, url: search_souvenirs_path do |f| %>
-                <%= f.search_field :souvenir_name_cont, placeholder: "ミヤゲ名を検索" %>
+                <%= f.search_field :souvenir_name_cont, placeholder: "ミヤゲ名を検索", required: true %>
                 <button class="btn btn-outline-success" type="submit">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
