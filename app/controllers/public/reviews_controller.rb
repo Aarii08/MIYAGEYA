@@ -3,6 +3,7 @@ class Public::ReviewsController < ApplicationController
   def new
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.new
+    @prefectures = Prefecture.all
   end
 
   def create
@@ -22,11 +23,13 @@ class Public::ReviewsController < ApplicationController
   def show
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
+    @prefectures = Prefecture.all
   end
 
   def edit
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
+    @prefectures = Prefecture.all
   end
 
   def update

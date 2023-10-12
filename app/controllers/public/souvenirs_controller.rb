@@ -2,14 +2,17 @@ class Public::SouvenirsController < ApplicationController
 
   def index
     @souvenirs = Souvenir.all
+    @prefectures = Prefecture.all
   end
 
   def show
     @souvenir = Souvenir.find(params[:id])
+    @prefectures = Prefecture.all
   end
 
   def new
     @souvenir = Souvenir.new
+    @prefectures = Prefecture.all
   end
 
   def create
@@ -24,6 +27,9 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_prefecture
+    @prefectures = Prefecture.all
+    @prefecture = Prefecture.find(params[:id])
+    @souvenirs = @prefecture.souvenirs
   end
 
   def search_category
