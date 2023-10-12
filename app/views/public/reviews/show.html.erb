@@ -17,8 +17,8 @@
        <table class="table table-border">
             <tbody>
               <tr>
-                <td class="text-center col-6">表示名（ユーザー名）</td>
-                <td class="col-6"><%= @review.user.nickname %></td>
+                <td class="text-center">表示名（ユーザー名）</td>
+                <td><%= @review.user.nickname %></td>
               </tr>
               <tr>
                 <td class="text-center">在住県名</td>
@@ -31,10 +31,7 @@
               </tr>
               <tr>
                 <td class="text-center">購入時価格</td>
-                <td><% if @review.price.present? %>
-                      <%= @review.price.to_s(:delimited) %>円
-                    <% end %>
-                </td>
+                <td><%= @review.price.to_s(:delimited) %>円</td>
               </tr>
               <tr>
                 <td class="text-center">購入場所</td>

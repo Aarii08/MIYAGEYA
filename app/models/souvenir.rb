@@ -28,10 +28,4 @@ class Souvenir < ApplicationRecord
   end
   # ------------------------------------
 
-  # ==========検索窓用(ransack)記述==================
-  def self.ransackable_attributes(auth_object = nil)
-    ["souvenir_name"]
-  end
-  # =================================================
-
 end

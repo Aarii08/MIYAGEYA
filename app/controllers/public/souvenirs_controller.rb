@@ -36,9 +36,6 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_souvenir
-    @prefectures = Prefecture.all
-    @q = Souvenir.ransack(params[:q])
-    @souvenirs = @q.result
   end
 
 
