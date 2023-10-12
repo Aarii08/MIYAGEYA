@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get 'users/:id/review' => 'users#review', as: 'user_review'
     get 'users/:id/want' => 'users#want', as: 'user_want'
 
-    resources :prefectures, only: [:index, :create, :edit, :update]
+    resources :prefectures, only: [:index, :create, :edit, :update, :destroy]
     resources :souvenirs do
       resource :wants, only: [:destroy]
       collection do

@@ -1,2 +1,33 @@
-<h1>Admin::Prefectures#edit</h1>
-<p>Find me in app/views/admin/prefectures/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h2 class="text-center m-3"><%= @prefecture.prefecture_name %>  編集</h2>
+      <div class="text-right">
+        <%= link_to "戻る", admin_prefectures_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <%= form_with model: @prefecture,  url: admin_prefecture_path do |f| %>
+      <table class="table table-border text-center m-3">
+        <thead>
+          <tr>
+            <th>県ID</th>
+            <th>県名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="align-middle"><%= @prefecture.id %></td>
+            <td class="align-middle"><%= f.text_field :prefecture_name, autofocus: true, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="align-middle"><%= f.submit "更新する", class: "btn btn-outline-success" %></td>
+            <td class="align-middle"><%= link_to "削除する", admin_prefecture_path, method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %></td>
+          </tr>
+        </tbody>
+      </table>
+       <% end %>
+    </div>
+  </div>
+</div>
