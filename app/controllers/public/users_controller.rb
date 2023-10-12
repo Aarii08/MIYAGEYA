@@ -3,9 +3,11 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def show
+    @prefectures = Prefecture.all
   end
 
   def edit
+    @prefectures = Prefecture.all
   end
 
   def update
@@ -30,10 +32,12 @@ class Public::UsersController < ApplicationController
 
   def review
     @review = Review.all
+    @prefectures = Prefecture.all
   end
 
   def want
     @want = Want.all
+    @prefectures = Prefecture.all
   end
 
   private

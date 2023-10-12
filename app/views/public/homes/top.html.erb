@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <%= image_tag "logo.png", :style => "width: 100%" %>
+      <%= render "layouts/prefecture", prefectures: @prefectures %>
       <div class="row  m-5">
         <%= link_to "ゲストログイン", user_guest_sign_in_path, class: "btn btn-outline-dark sign_in", method: :post %>
       </div>
