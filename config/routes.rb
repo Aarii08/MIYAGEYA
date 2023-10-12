@@ -21,20 +21,13 @@ Rails.application.routes.draw do
     get 'users/review' => 'users#review', as: 'user_review'
     get 'users/want' => 'users#want', as: 'user_want'
 
-
     get 'search/souvenirs' => 'souvenirs#search_souvenir', as: 'search_souvenirs'
-
     get 'search/prefectures/:id' => 'souvenirs#search_prefecture', as: 'search_prefecture'
     get 'search/categorys' => 'souvenirs#search_category', as: 'search_category'
-
-
-
     resources :souvenirs do
       resource :wants, only: [:create, :destroy]
       resources :reviews, except: [:index]
     end
-
-
   end
 
 
