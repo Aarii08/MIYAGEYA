@@ -28,8 +28,7 @@ Rails.application.routes.draw do
       resource :wants, only: [:create, :destroy]
       resources :reviews, except: [:index]
     end
-  end
-
+    
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
