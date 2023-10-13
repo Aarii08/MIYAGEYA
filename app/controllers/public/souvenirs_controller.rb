@@ -3,11 +3,14 @@ class Public::SouvenirsController < ApplicationController
   def index
     @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
+    @review = Review.all
+    @tags = @review.tag_counts_on(:tags)
   end
 
   def show
     @souvenir = Souvenir.find(params[:id])
     @prefectures = Prefecture.all
+    @tags = Review.tag_counts_on(:tags)
   end
 
   def new
@@ -39,6 +42,9 @@ class Public::SouvenirsController < ApplicationController
     @prefectures = Prefecture.all
     @q = Souvenir.ransack(params[:q])
     @souvenirs = @q.result
+  end
+
+  def search_tag
   end
 
 

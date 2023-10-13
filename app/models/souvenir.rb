@@ -8,7 +8,6 @@ class Souvenir < ApplicationRecord
 
   enum category: { food: 0, goods: 1 }
 
-
   validates :souvenir_name, presence: true
   validates :introduction, presence: true
   validates :category, presence: true

@@ -24,6 +24,8 @@ class Public::ReviewsController < ApplicationController
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
     @prefectures = Prefecture.all
+    # タグ用
+    @tags = @review.tag_counts_on(:tags)
   end
 
   def edit
@@ -53,7 +55,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit( :review, :price, :purchase_place, :receive_send, :person, :porpose, :star)
+    params.require(:review).permit( :review, :price, :purchase_place, :receive_send, :person, :porpose, :star, :tag_list)
   end
-
+  
 end

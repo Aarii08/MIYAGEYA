@@ -40,7 +40,14 @@
           </tr>
           <tr>
             <th class="text-center align-middle">相手は？</th>
-            <td>タグ使用予定</td>
+            <td><%= f.label :tag_list, "半角の「,」を入力することで複数のタグをつけられます。", class: "form-label" %>
+                <%= f.text_field :tag_list, value: @review.tag_list.join("、"), class: "form-control" %></td>
+
+
+                
+
+
+
             <td></td>
           </tr>
           <tr>

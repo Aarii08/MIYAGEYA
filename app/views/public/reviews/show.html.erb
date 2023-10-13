@@ -46,7 +46,12 @@
               </tr>
               <tr>
                 <td class="text-center">誰に？</td>
-                <td>⭐️⭐️⭐️☆☆</td>
+                <td><% @tags.each do |tag| %>
+                      <span class="badge badge-info mr-2">
+                        <%= link_to "#{tag}(#{tag.taggings_count})", search_tags_path(tag_name: tag), class: "text-white" %>
+                      </span>
+                    <% end %>
+                </td>
               </tr>
               <tr>
                 <td class="text-center">用途は？</td>

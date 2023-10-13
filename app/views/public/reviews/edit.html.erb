@@ -41,7 +41,9 @@
           </tr>
           <tr>
             <th class="text-center align-middle">相手は？</th>
-            <td>タグ使用予定</td>
+            <td><%= f.label :tag_list, "半角の「,」を入力することで複数のタグをつけられます。", class: "form-label" %>
+                <%= f.text_field :tag_list, value: @review.tag_list.join("、"), class: "form-control" %></td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
@@ -56,10 +58,10 @@
           </tr>
           <tr>
             <th></th>
-            <td class="text-center"><%= f.submit "更新する", class: "btn btn-success" %></td>
+            <td class="text-center"><%= f.submit "更新する", class: "btn btn-success p-3" %></td>
             <td class="text-right">
               <% if @review.user == current_user %>
-                <%= link_to "削除する", souvenir_review_path, class: "btn btn-outline-danger", method: :delete, "data-confirm" => "このレビューを削除しますか？" %>
+                <%= link_to "削除", souvenir_review_path, class: "btn btn-outline-danger p-2", method: :delete, "data-confirm" => "このレビューを削除しますか？" %>
               <% end %>
             </td>
           </tr>
