@@ -48,17 +48,16 @@
 
               <tr>
                 <td class="col-3 text-center">タグ</td>
+                
+
+                
+
+                <td>
 
 
 
-                  <td><% @tags.each do |tag| %>
-                      <span class="badge badge-info mr-2">
-                        <%= link_to "#{tag}(#{tag.taggings_count})",  search_tags_path, class: "text-white" %>
-                      </span>
-                    <% end %>
 
                 </td>
-
 
 
 
@@ -82,7 +81,7 @@
           <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
           <div class="card-body">
             <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
-            <p class="card-subtitle">誰に？ :  <%= review.tag_list %></p>
+            <p class="card-subtitle">誰に？ :  <%= review.tag_maps %></p>
             <p class="card-subtitle">用途は？　：　目的タグ</p>
             <p class="card-text"><%= safe_join(review.review.split("\n"),tag(:br)) %></p>
           </div>

@@ -1,8 +1,6 @@
+<h2><%= @tag.tag_name %>の一覧</h2>
 
-
-<% @tags.each do |tag| %>
-    <%= tag %>
-
-  <% end %>
-
-<br>
+<% @review.each do |review| %>
+<%= review.user.nickname %>
+<%= review.review %>
+<% end %>

@@ -4,13 +4,11 @@ class Public::SouvenirsController < ApplicationController
     @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
     @review = Review.all
-    @tags = @review.tag_counts_on(:tags)
   end
 
   def show
     @souvenir = Souvenir.find(params[:id])
     @prefectures = Prefecture.all
-    @tags = Review.tag_counts_on(:tags)
   end
 
   def new
@@ -45,6 +43,9 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @review = @tag.reviews.all
   end
 
 
