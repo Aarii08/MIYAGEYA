@@ -9,7 +9,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string  :receive_send
       t.string  :person
       t.string  :purpose
-      t.integer :star
+      t.float :star
       t.timestamps
     end
   end

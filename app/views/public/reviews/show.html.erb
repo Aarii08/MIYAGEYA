@@ -9,9 +9,9 @@
       <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
       <div class="m-3 text-center">
         <% if @review.user == current_user %>
-          <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5" %>
+          <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5", data: {"turbolinks" => false} %>
         <% end %>
-        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5" %>
+        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5", data: {"turbolinks" => false} %>
       </div>
 
        <table class="table table-border">
@@ -59,7 +59,24 @@
               </tr>
               <tr>
                 <td class="text-center">星評価</td>
-                <td>⭐️⭐️⭐️☆☆</td>
+                <td>
+                  <div id="show-star"></div>
+                    <script>
+                      $(document).on('turbolinks:load', function() {
+                        let showRateElement = document.querySelector('#show-star');
+                        let showOpt = {
+                          starOn: "<%= asset_path('star-on.png') %>",
+                          starOff: "<%= asset_path('star-off.png') %>",
+                          starHalf: "<%= asset_path('star-half.png') %>",
+                          half: true,
+                          scoreName: 'review[star]',
+                          score: "<%= @review.star %>",
+                          readOnly: true
+                        };
+                        window.raty(showRateElement, showOpt);
+                        });
+                    </script>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2023_10_13_023109) do
     t.string "receive_send"
     t.string "person"
     t.string "purpose"
-    t.integer "star"
+    t.float "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2023_10_13_023109) do
     t.string "souvenir_name"
     t.text "introduction"
     t.integer "category"
-    t.integer "average_star"
+    t.float "average_star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

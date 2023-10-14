@@ -5,7 +5,7 @@ class CreateSouvenirs < ActiveRecord::Migration[6.1]
       t.string  :souvenir_name
       t.text    :introduction
       t.integer :category
-      t.integer :average_star
+      t.float :average_star
       t.timestamps
     end
   end

@@ -128,7 +128,8 @@ Review.create!(
       purchase_place: "東京駅",
       receive_send: "貰う",
       person: "家族",
-      purpose: "観光ミヤゲ"
+      purpose: "観光ミヤゲ",
+      star: 4.0
     },
      {
       user_id: 2,
@@ -138,7 +139,8 @@ Review.create!(
       purchase_place: "東京駅",
       receive_send: "貰う",
       person: "家族",
-      purpose: "観光ミヤゲ"
+      purpose: "観光ミヤゲ",
+      star: 3.0
     }
   ]
 )
