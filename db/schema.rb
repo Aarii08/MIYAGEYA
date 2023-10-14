@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2023_10_14_061549) do
     t.integer "price"
     t.string "purchase_place"
     t.string "receive_send"
-    t.string "person"
-    t.string "purpose"
+    t.integer "people"
+    t.integer "usefulness"
     t.float "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

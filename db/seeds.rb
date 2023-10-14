@@ -127,8 +127,8 @@ Review.create!(
       price: 650,
       purchase_place: "東京駅",
       receive_send: "貰う",
-      person: "家族",
-      purpose: "観光ミヤゲ",
+      people: 0,
+      usefulness: 0,
       star: 4.0
     },
      {
@@ -138,9 +138,9 @@ Review.create!(
       price: 650,
       purchase_place: "東京駅",
       receive_send: "貰う",
-      person: "家族",
-      purpose: "観光ミヤゲ",
-      star: 3.0
+      people: 0,
+      usefulness: 0,
+      star: 3.5
     }
   ]
 )

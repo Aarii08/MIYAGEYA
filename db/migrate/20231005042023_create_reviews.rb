@@ -7,8 +7,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.integer :price
       t.string  :purchase_place
       t.string  :receive_send
-      t.string  :person
-      t.string  :purpose
+      t.integer  :people
+      t.integer  :usefulness
       t.float :star
       t.timestamps
     end

@@ -46,25 +46,11 @@
               </tr>
               <tr>
                 <td class="text-center">誰に？</td>
-                <td>
-
-                    <% @review.tags.each do |tag| %>
-                    <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id), class: "btn btn-outline-info" %>
-                    </span>
-                    <% end %>
-
-
-
-
-
-
-
-
-                </td>
+                <td><%= @review.people_i18n %></td>
               </tr>
               <tr>
                 <td class="text-center">用途は？</td>
-                <td>⭐️⭐️⭐️☆☆</td>
+                <td><%= @review.usefulness_i18n %></td>
               </tr>
               <tr>
                 <td class="text-center">星評価</td>

@@ -40,17 +40,7 @@
           </tr>
           <tr>
             <th class="text-center align-middle">相手は？</th>
-            <td>
-              <%= f.label :tag_name, "スペースを入力することで複数のタグをつけることができます。" %>
-              <%= f.text_field :tag_name, class: "form-control" %>
-
-
-
-            </td>
-
-
-
-
+            <td><%= f.select :people, Review.people.keys.map {|k| [I18n.t("enums.review.people.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
 
 
 
@@ -58,7 +48,7 @@
           </tr>
           <tr>
             <th class="text-center align-middle">目的は？</th>
-            <td>???</td>
+            <td><%= f.select :usefulness, Review.usefulnesses.keys.map {|k| [I18n.t("enums.review.usefulness.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
             <td></td>
           </tr>
           <tr>
