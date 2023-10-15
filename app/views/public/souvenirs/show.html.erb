@@ -81,8 +81,8 @@
           <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
           <div class="card-body">
             <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
-            <p class="card-subtitle">誰に？ :  <%= review.people_i18n %></p>
-            <p class="card-subtitle">用途は？　： <%= review.usefulness_i18n %></p>
+            <p class="card-subtitle">誰に？　：  <%= review.people_i18n %></p>
+            <p class="card-subtitle">用途は？　：　<%= review.usefulness_i18n %></p>
             <p class="card-text"><%= safe_join(review.review.split("\n"),tag(:br)) %></p>
           </div>
         </div>
