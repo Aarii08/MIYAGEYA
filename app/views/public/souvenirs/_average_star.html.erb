@@ -10,7 +10,7 @@
       starOff: "<%= asset_path('star-off.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
       half: true,
-      score: <%= souvenir.reviews.average(:star) %>,
+      score: <%= souvenir.reviews.average(:star).to_f.round(1) %>,
       readOnly: true,
     };
     raty(elem, opt);

@@ -12,7 +12,6 @@ class Souvenir < ApplicationRecord
   validates :introduction, presence: true
   validates :category, presence: true
 
-
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no-image.png')
@@ -32,5 +31,19 @@ class Souvenir < ApplicationRecord
     ["souvenir_name"]
   end
   # =================================================
+
+  # ===================ソート機能===========================
+  def self.sort(selection)
+    case selection
+    when 'average_star'
+      return all.order(average_star: :DESC)
+    when 'wants'
+      return find(Want.group(:souvenir_id).order(('count(souvenir_id) DESC')).pluck(:souvenir_id))
+      # return find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    when 'reviews'
+      return find(Review.group(:souvenir_id).order(('count(souvenir_id) DESC')).pluck(:souvenir_id))
+    end
+  end
+# =============================================================-
 
 end
