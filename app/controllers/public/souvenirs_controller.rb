@@ -7,7 +7,7 @@ class Public::SouvenirsController < ApplicationController
     selection = params[:keyword]
     @souvenir = Souvenir.sort(selection)
 
-     
+
 
   end
 
@@ -55,14 +55,12 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_sort
-    selection = params[:keyword]
-    @souvenir = Souvenir.sort(selection)
-
-    @souvenirs = Souvenir.all
+    # @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
     @review = Review.all
 
-
+    selection = params[:keyword]
+    @souvenirs = Souvenir.sort(selection)
   end
 
 
