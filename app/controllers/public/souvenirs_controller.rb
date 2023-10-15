@@ -4,9 +4,10 @@ class Public::SouvenirsController < ApplicationController
     @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
     @review = Review.all
-
     selection = params[:keyword]
     @souvenir = Souvenir.sort(selection)
+
+     
 
   end
 
@@ -38,6 +39,7 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_category
+
   end
 
   def search_souvenir
