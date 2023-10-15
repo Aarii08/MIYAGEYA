@@ -6,16 +6,15 @@
 
     <div class="col-8 offset-1 pt-5">
       <h2 class="text-center"><%= @souvenir.souvenir_name %>の詳細</h2>
-      <div class="text-center m-3">
-        <% if user_signed_in? %>
-          <%= link_to "レビューする",  new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5" %>
-          <% if @souvenir.wanted_by?(current_user) %>
-            <%= link_to "ほしい！をやめる", souvenir_wants_path(@souvenir), method: :delete, class: "btn btn-outline-info mr-5" %>
-          <% else %>
-            <%= link_to "ほしい！", souvenir_wants_path(@souvenir), method: :post, class: "btn btn-outline-warning mr-5" %>
+      <div class="m-3">
+        <div class="d-flex justify-content-center">
+          <% if user_signed_in? %>
+            <%= link_to "レビューする",  new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5" %>
+            <div id="want_btn_<%= @souvenir.id %>">
+              <%= render "want", souvenir: @souvenir %></div>
+            </div>
           <% end %>
-        <% end %>
-        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
+          <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary float-right" %>
       </div>
       <div class="row mt-5">
         <div class="col-4">
@@ -45,9 +44,27 @@
                 <td class="col-3 text-center">ほしい！</td>
                 <td><%= @souvenir.wants.count %>件</td>
               </tr>
+
+
+              <tr>
+                <td class="col-3 text-center">タグ</td>
+
+
+
+
+                <td>
+
+
+
+
+                </td>
+
+
+
+              </tr>
               <tr>
                 <td class="col-3 text-center">平均評価</td>
-                <td>⭐️⭐️⭐️☆☆</td>
+                <td><%= render "average_star", souvenir: @souvenir %></td>
               </tr>
             </tbody>
           </table>
@@ -64,8 +81,8 @@
           <h5 class="card-header"><%= review.user.nickname %>　　在住県名：<%= review.user.residence_prefecture %></h5>
           <div class="card-body">
             <p class="card-subtitle">貰った？贈った？自分用？　：　<%= review.receive_send %></p>
-            <p class="card-subtitle">誰に？　：　相手タグ</p>
-            <p class="card-subtitle">用途は？　：　目的タグ</p>
+            <p class="card-subtitle">誰に？　：  <%= review.people_i18n %></p>
+            <p class="card-subtitle">用途は？　：　<%= review.usefulness_i18n %></p>
             <p class="card-text"><%= safe_join(review.review.split("\n"),tag(:br)) %></p>
           </div>
         </div>

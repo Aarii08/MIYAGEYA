@@ -4,6 +4,25 @@ ja:
       category:
         food: "食品"
         goods: "グッズ"
+    review:
+      people:
+        family: "家族"
+        relative: "親族"
+        friend: "友達"
+        company: "会社"
+        client: "取引先"
+        acquaintance: "知り合い"
+        neighborhood: "近所"
+        colleague: "同僚"
+        boss: "上司"
+        lover: "恋人"
+        other: "その他"
+      usefulness:
+        travel: "旅行"
+        business: "出張"
+        homecoming: "帰省"
+        souvenir: "手土産"
+        others: "その他"
   activerecord:
     errors:
       messages:

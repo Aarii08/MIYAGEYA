@@ -3,6 +3,11 @@ class Public::SouvenirsController < ApplicationController
   def index
     @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
+    @review = Review.all
+
+    selection = params[:keyword]
+    @souvenir = Souvenir.sort(selection)
+
   end
 
   def show
@@ -39,6 +44,23 @@ class Public::SouvenirsController < ApplicationController
     @prefectures = Prefecture.all
     @q = Souvenir.ransack(params[:q])
     @souvenirs = @q.result
+  end
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @review = @tag.reviews.all
+  end
+
+  def search_sort
+    selection = params[:keyword]
+    @souvenir = Souvenir.sort(selection)
+
+    @souvenirs = Souvenir.all
+    @prefectures = Prefecture.all
+    @review = Review.all
+
+
   end
 
 

@@ -8,11 +8,9 @@ class Souvenir < ApplicationRecord
 
   enum category: { food: 0, goods: 1 }
 
-
   validates :souvenir_name, presence: true
   validates :introduction, presence: true
   validates :category, presence: true
-
 
   def get_image
     unless image.attached?
@@ -33,5 +31,19 @@ class Souvenir < ApplicationRecord
     ["souvenir_name"]
   end
   # =================================================
+
+  # ===================ソート機能===========================
+  def self.sort(selection)
+    case selection
+    when 'average_star'
+      return all.order(average_star: :DESC)
+    when 'wants'
+      return find(Want.group(:souvenir_id).order(('count(souvenir_id) DESC')).pluck(:souvenir_id))
+      # return find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    when 'reviews'
+      return find(Review.group(:souvenir_id).order(('count(souvenir_id) DESC')).pluck(:souvenir_id))
+    end
+  end
+# =============================================================-
 
 end

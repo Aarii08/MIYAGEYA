@@ -1,0 +1,21 @@
+<h2><%= @tag.tag_name %>の一覧</h2>
+
+<% @review.each do |review| %>
+<%= review.user.nickname %>
+<%= review.review %>
+<% end %>
+
+
+
+タグ入力フォーム　
+
+ <%= f.label :tag_name, "スペースを入力することで複数のタグをつけることができます。" %>
+              <%= f.text_field :tag_name, class: "form-control" %>
+              
+              
+タグ表示
+
+<% @review.tags.each do |tag| %>
+                    <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id), class: "btn btn-outline-info" %>
+                    </span>
+                    <% end %>

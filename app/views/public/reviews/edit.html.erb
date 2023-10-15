@@ -7,7 +7,7 @@
     <div class="col-8 offset-1 pt-5">
       <h2 class="m-3"><%= @souvenir.souvenir_name %> のレビュー編集画面</h2>
       <div class="text-right">
-        <%= link_to "戻る", souvenir_review_path(@souvenir, @review), class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", souvenir_review_path(@souvenir, @review), class: "btn btn-outline-secondary", data: {"turbolinks" => false} %>
       </div>
 
       <%= form_with model: @review, url: souvenir_review_path, method: :patch do |f| %>
@@ -41,25 +41,43 @@
           </tr>
           <tr>
             <th class="text-center align-middle">相手は？</th>
-            <td>タグ使用予定</td>
+            <td><%= f.select :people, Review.people_i18n.keys.map {|k| [I18n.t("enums.review.people.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
+            <td></td>
             <td></td>
           </tr>
           <tr>
             <th class="text-center align-middle">目的は？</th>
-            <td>タグ？？？</td>
+            <td><%= f.select :usefulness, Review.usefulnesses_i18n.keys.map {|k| [I18n.t("enums.review.usefulness.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
             <td></td>
           </tr>
           <tr>
             <th class="text-center align-middle">星評価</th>
-            <td>⭐️⭐️⭐️⭐️⭐️</td>
+            <td>
+              <div id="edit-star"></div>
+                <script>
+                  $(document).on('turbolinks:load', function() {
+                    let elem = document.querySelector('#edit-star');
+                    elem.innerHTML = "";
+                    let opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      starHalf: "<%= asset_path('star-half.png') %>",
+                      half: true,
+                      scoreName: 'review[star]',
+                      score: "<%= @review.star %>",
+                    };
+                    window.raty(elem, opt);
+                    });
+                </script>
+            </td>
             <td></td>
           </tr>
           <tr>
             <th></th>
-            <td class="text-center"><%= f.submit "更新する", class: "btn btn-success" %></td>
+            <td class="text-center"><%= f.submit "更新する", class: "btn btn-success p-3", data: {"turbolinks" => false} %></td>
             <td class="text-right">
               <% if @review.user == current_user %>
-                <%= link_to "削除する", souvenir_review_path, class: "btn btn-outline-danger", method: :delete, "data-confirm" => "このレビューを削除しますか？" %>
+                <%= link_to "削除", souvenir_review_path, class: "btn btn-outline-danger p-2", method: :delete, "data-confirm" => "このレビューを削除しますか？", data: {"turbolinks" => false} %>
               <% end %>
             </td>
           </tr>

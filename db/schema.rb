@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_05_091747) do
+ActiveRecord::Schema.define(version: 2023_10_14_061549) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 2023_10_05_091747) do
     t.integer "price"
     t.string "purchase_place"
     t.string "receive_send"
-    t.string "person"
-    t.string "purpose"
-    t.integer "star"
+    t.integer "people"
+    t.integer "usefulness"
+    t.float "star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -77,7 +77,22 @@ ActiveRecord::Schema.define(version: 2023_10_05_091747) do
     t.string "souvenir_name"
     t.text "introduction"
     t.integer "category"
-    t.integer "average_star"
+    t.float "average_star"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "review_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_tag_maps_on_review_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -107,4 +122,6 @@ ActiveRecord::Schema.define(version: 2023_10_05_091747) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tag_maps", "reviews"
+  add_foreign_key "tag_maps", "tags"
 end
