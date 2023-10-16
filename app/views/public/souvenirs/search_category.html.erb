@@ -1,2 +1,10 @@
-<h1>Public::Souvenirs#search_category</h1>
-<p>Find me in app/views/public/souvenirs/search_category.html.erb</p>
+<div class="container">
+  <div class="row">
+     <% @souvenirs.each do |souvenir| %>
+         <div>
+             <%= souvenir.souvenir_name %>
+         </div>
+     <% end %>
+
+  </div>
+</div>

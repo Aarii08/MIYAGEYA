@@ -38,6 +38,15 @@
             </td>
             <td></td>
           </tr>
+
+
+          <tr>
+            <th class="text-center align-middle">ジャンル</th>
+            <td><%= f.label :tag_name, "スペースを入力することで複数のタグをつけることが可能です。" %>
+                <%= f.text_field :tag_name, placeholder: "お菓子", class: "form-control" %></td>
+          </tr>
+
+
           <tr>
             <th class="text-center align-middle">相手は？</th>
             <td><%= f.select :people, Review.people.keys.map {|k| [I18n.t("enums.review.people.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>

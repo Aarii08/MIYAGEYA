@@ -16,8 +16,9 @@
       <div class="m-3">
         <%= form_with model: @souvenir, url: search_sort_path, method: :get, local: true do |f| %>
           <%= f.select :keyword, [ ['ほしい！多い順', 'wants'],
-                           ['レビュー多い順', 'reviews'],
-                           ['星評価高い順', 'average_star'] ], class: "form-control" %>
+                                   ['レビュー多い順', 'reviews'],
+                                   ['星評価高い順', 'average_star']
+                                   ], class: "form-control" %>
           <%= f.submit "並び替える", class: "btn btn-outline-primary" %>
         <% end %>
       </div>

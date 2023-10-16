@@ -1,0 +1,27 @@
+<h1>楽天市場の商品を検索</h1>
+
+
+<% if @items.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>価格</th>
+        <th>画像</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.params["itemName"] %></td>
+          <td><%= item.params["price"] %>円</td>
+          <td>
+            <%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>商品が見つかりません。</p>
+<% end %>

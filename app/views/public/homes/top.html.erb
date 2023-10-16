@@ -32,6 +32,7 @@
 			        <div class="card-body">
 				        <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
 				        <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %></h6>
+				         <p class="card-subtitle m-2"><%= review.user.nickname %> </p>
 				        <p class="card-subtitle m-2"><%= review.review.truncate(20) %> </p>
               </div>
 			      </div>
@@ -39,13 +40,60 @@
 		      </div>
 		      <% end %>
         </div>
-        
+
       <h3 class="m-3">目的別に探す</h3>
       <div class="row">
         <div class="search">
 
+        <% @review_all.each do |review| %>
+          <% review.tags.each do |tag| %>
+            <% if tag.tag_name.present?%>
+            <span><%= link_to search_sort_path(tag_name: tag.tag_name) do %></span>
+                  <%= tag.tag_name %>
+            <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
 
         </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      <h3 class="m-3">項目別に探す</h3>
+      <div class="row">
+        <div class="search">
+
+        <% @review_all.each do |review| %>
+
+            <div class="d-flex">
+              <%= link_to search_category_path(people: review.people, usefulness: nil) do %>
+              <div>
+                <%= review.people_i18n %>
+              </div>
+              <% end %>
+              <%= link_to search_category_path(people: nil, usefulness: review.usefulness) do %>
+              <div>
+                <%= review.usefulness_i18n %>
+              </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+
+
+
+
       </div>
     </div>
   </div>

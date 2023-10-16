@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get '/about' => 'public/homes#about', as: 'about'
+  get '/sort' => 'public/homes#sort', as: 'sort'
+  get 'rakuten' => 'rakuten#index', as: 'rakuten_index'
 
   scope module: :public do
     get 'users/mypage' => 'users#show', as: 'user'

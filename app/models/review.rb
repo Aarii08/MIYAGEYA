@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
+
   enum people: { family: 0, relative: 1, friend: 2, company: 3, client: 4, acquaintance: 5, neighborhood: 6,
                  colleague: 7, boss: 8, lover: 9, other: 10
                 }
