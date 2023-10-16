@@ -20,7 +20,7 @@ class Review < ApplicationRecord
     new_tags = sent_tags - current_tags
 
     old_tags.each do |old|
-      self.review_tags.delete ReviewTag.find_by(tag_name: old)
+      self.tags.delete Tag.find_by(tag_name: old)
     end
 
     new_tags.each do |new|

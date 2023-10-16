@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2023_10_14_061549) do
     t.text "introduction"
     t.integer "category"
     t.float "average_star"
+    t.string "tag_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

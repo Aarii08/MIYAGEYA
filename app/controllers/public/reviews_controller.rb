@@ -35,13 +35,13 @@ class Public::ReviewsController < ApplicationController
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
     @prefectures = Prefecture.all
-    @tag_list = @review.tags.pluck(:tag_name).split(",")
+    @tag_list = @review.tags.pluck(:tag_name).split(nil)
   end
 
   def update
     souvenir = Souvenir.find(params[:souvenir_id])
     review = Review.find(params[:id])
-    tag_list = params[:review][:tag_name].split(",")
+    tag_list = params[:review][:tag_name].split(nil)
     if review.update(review_params)
       review.save_tag(tag_list)
       flash[:notice] = "レビューを更新しました。"
