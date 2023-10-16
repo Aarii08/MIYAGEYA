@@ -47,6 +47,8 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_category
+    @prefectures = Prefecture.all
+    @@souvenir = Souvenir.where(category: "ward")
 
   end
 
