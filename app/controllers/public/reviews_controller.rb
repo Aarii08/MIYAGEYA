@@ -61,7 +61,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit( :review, :price, :purchase_place, :receive_send, :people, :usefulness, :star, :tag_list)
+    params.require(:review).permit( :review, :price, :purchase_place, :receive_send, :people, :usefulness, :star, tag_ids: [])
   end
 
 end

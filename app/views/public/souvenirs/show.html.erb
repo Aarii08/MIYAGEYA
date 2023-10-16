@@ -44,11 +44,18 @@
                 <td class="col-3 text-center">ほしい！</td>
                 <td><%= @souvenir.wants.count %>件</td>
               </tr>
-
-
-              
-
-
+              <tr>
+                <td class="col-3 text-center">タグ</td>
+                <td class="d-flex">
+                  <% @souvenir.reviews.each do |review| %>
+                    <% review.tags.each do |tag| %>
+                      <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id) %>
+                            <%= "(#{ tag.reviews.count })" %>
+                      </span>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
               </tr>
               <tr>
                 <td class="col-3 text-center">平均評価</td>

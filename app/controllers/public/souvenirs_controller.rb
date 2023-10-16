@@ -6,22 +6,12 @@ class Public::SouvenirsController < ApplicationController
     @review = Review.all
     selection = params[:keyword]
     @souvenir = Souvenir.sort(selection)
-
-
-
   end
 
   def show
     @souvenir = Souvenir.find(params[:id])
+    @souvenir = Souvenir
     @prefectures = Prefecture.all
-
-    # @tag = @review.tag_maps.select(:tag_id)
-    # tag_id = tag_map[:tag_id]
-    # @review = Tag.find(tag_id).reviews
-    # # @review = @souvenir.reviews
-    # # @review_tags = @review.tags(:tag_id)
-
-
   end
 
   def new
@@ -47,9 +37,15 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_category
-    @prefectures = Prefecture.all
-    @@souvenir = Souvenir.where(category: "ward")
-
+    people = params[:people]
+    usefulness = params[:usefulness]
+    if people != nil
+      @souvenirs = Souvenir.joins(:reviews).where(reviews: { people: people }).distinct
+      # souvenirとreviewを結合し、peopleカラムから重複がないように　@souvenirs　に代入
+    end
+    if usefulness != nil
+      @souvenirs = Souvenir.joins(:reviews).where(reviews: { usefulness: usefulness }).distinct
+    end
   end
 
   def search_souvenir
@@ -68,10 +64,9 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_sort
-    @prefectures = Prefecture.all
-    @review = Review.all
-    selection = params[:keyword]
-    @souvenirs = Souvenir.sort(selection)
+    tag_name = params[:tag_name]
+    @souvenirs = Souvenir.joins(reviews: :tags).where(tags: { tag_name: tag_name }).distinct
+    # souvenirとreview, tagを結合し、tag_nameに上のtag_nameを重複がないように　@souvenirs　に代入
   end
 
 
