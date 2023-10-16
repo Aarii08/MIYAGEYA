@@ -11,9 +11,9 @@ class Public::ReviewsController < ApplicationController
     review = Review.new(review_params)
     review.user_id = current_user.id
     review.souvenir_id = souvenir.id
-    # tag_list = params[:review][:tag_name].split(nil)  #タグ用記述
+    tag_list = params[:review][:tag_name].split(nil)  #タグ用記述
     if review.save
-      # review.save_tag(tag_list)   #タグ保存
+      review.save_tag(tag_list)   #タグ保存
       flash[:notice] = "投稿完了しました。"
       redirect_to souvenir_path(souvenir)
     else
@@ -27,9 +27,8 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @prefectures = Prefecture.all
     # タグ用
-    @tag_list = Tag.all
-    @reviews = Review.all
     @review_tags = @review.tags
+
   end
 
   def edit

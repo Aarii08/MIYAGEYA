@@ -14,6 +14,14 @@ class Public::SouvenirsController < ApplicationController
   def show
     @souvenir = Souvenir.find(params[:id])
     @prefectures = Prefecture.all
+
+    # @tag = @review.tag_maps.select(:tag_id)
+    # tag_id = tag_map[:tag_id]
+    # @review = Tag.find(tag_id).reviews
+    # # @review = @souvenir.reviews
+    # # @review_tags = @review.tags(:tag_id)
+
+
   end
 
   def new
@@ -52,13 +60,14 @@ class Public::SouvenirsController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @review = @tag.reviews.all
+    @prefectures = Prefecture.all
+    selection = params[:keyword]
+    @souvenir = Souvenir.sort(selection)
   end
 
   def search_sort
-    # @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
     @review = Review.all
-
     selection = params[:keyword]
     @souvenirs = Souvenir.sort(selection)
   end

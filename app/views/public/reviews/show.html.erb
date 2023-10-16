@@ -40,6 +40,22 @@
                 <td class="text-center">購入場所</td>
                 <td><%= @review.purchase_place %></td>
               </tr>
+
+              <!--================================================-->
+              <tr>
+                <td class="text-center">ジャンル</td>
+                <td><% @review_tags.each do |tag| %>
+                      <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id) %>
+                            <%= "(#{ tag.reviews.count })" %>
+                      </span>
+                    <% end %>
+                </td>
+              </tr>
+              <!--======================================================-->
+
+
+
+
               <tr>
                 <td class="text-center">貰った？贈った？自分用？</td>
                 <td><%= @review.receive_send %></td>

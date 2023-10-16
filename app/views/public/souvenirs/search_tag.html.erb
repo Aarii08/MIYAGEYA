@@ -3,19 +3,59 @@
 <% @review.each do |review| %>
 <%= review.user.nickname %>
 <%= review.review %>
+<%= review.souvenir.souvenir_name %>
+
+
 <% end %>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+			<%= render "layouts/prefecture", prefectures: @prefectures %>
+    </div>
 
-タグ入力フォーム　
+    <div class="col-8 offset-1 pt-5">
+    	<div class="mb-3">
+        <h2 class="text-center"><%= @tag.tag_name %>のミヤゲ一覧</h2>
+        <p class="text-right mr-5">全 <%= @review.souvenir.count %> 件</p>
+      </div>
 
- <%= f.label :tag_name, "スペースを入力することで複数のタグをつけることができます。" %>
-              <%= f.text_field :tag_name, class: "form-control" %>
-              
-              
-タグ表示
+      <div class ="m-2 text-right">
+        <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="m-3">
+        <%= form_with model: @souvenir, url: search_sort_path, method: :get, local: true do |f| %>
+          <%= f.select :keyword, [ ['ほしい！多い順', 'wants'],
+                                   ['レビュー多い順', 'reviews'],
+                                   ['星評価高い順', 'average_star']
+                                   ], class: "form-control" %>
+          <%= f.submit "並び替える", class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
 
-<% @review.tags.each do |tag| %>
-                    <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id), class: "btn btn-outline-info" %>
-                    </span>
-                    <% end %>
+
+
+      <div class="row">
+        <% @review.each do |review| %>
+		    <div class="card-deck col-4 mx-auto mb-3 text-center">
+        <%= link_to souvenir_path(review.souvenir) do %>
+			    <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
+			      <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+			      <div class="card-body">
+				      <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
+				      <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %></h6>
+				      <p class="card-subtitle m-2">ほしい！：<%= review.souvenir.wants.count %> 件<br>
+				                               		 レビュー：<%= review.souvenir.reviews.count %> 件</p>
+              <p class="card-subtitle m-2"><%= render "average_star", souvenir: review.souvenir %></p>
+				      <p class="card-text mt-3"><%= review.souvenir.introduction.truncate(30) %></p>
+				      <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
+            </div>
+			    </div>
+			  <% end %>
+		    </div>
+		    <% end %>
+	    </div>
+    </div>
+  </div>
+</div>
