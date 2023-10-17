@@ -49,7 +49,7 @@
                 <td class="d-flex">
                   <% @souvenir.reviews.each do |review| %>
                     <% review.tags.each do |tag| %>
-                      <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id) %>
+                      <span class="badge badge-primary mr-2"><%= link_to tag.tag_name, search_tags_path(tag_name: tag.tag_name), class: "text-light" %>
                             <%= "(#{ tag.reviews.count })" %>
                       </span>
                     <% end %>

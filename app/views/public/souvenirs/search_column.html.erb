@@ -1,17 +1,28 @@
 <div class="container">
   <div class="row">
+     <% @souvenirs.each do |souvenir| %>
+         <div>
+             <%= souvenir.souvenir_name %>
+         </div>
+     <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
     <div class="col-3">
 			<%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
     <div class="col-8 offset-1 pt-5">
     	<div class="mb-3">
-        <h2 class="text-center"><%= @tag_name %>のミヤゲ一覧</h2>
+        <h2 class="text-center">項目別  一覧</h2>
         <p class="text-right mr-5">全 <%= @souvenirs.count %> 件</p>
       </div>
 
       <div class ="m-2 text-right">
-        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
       </div>
       <div class="m-3">
         <%= form_with model: @souvenir, url: search_sort_path, method: :get, local: true do |f| %>
@@ -34,7 +45,7 @@
 				      <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>
 				      <p class="card-subtitle m-2">ほしい！：<%= souvenir.wants.count %> 件<br>
 				                               		 レビュー：<%= souvenir.reviews.count %> 件</p>
-              <p class="card-subtitle m-2"><%= render "average_star", souvenir: souvenir %></p>
+				      <p class="card-subtitle m-2"><%= render "average_star", souvenir: souvenir %></p>
 				      <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
 				      <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
             </div>

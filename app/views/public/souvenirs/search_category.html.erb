@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
-     <% @souvenirs.each do |souvenir| %>
+     <% @souvenirs_food.each do |souvenir| %>
+         <div>
+             <%= souvenir.souvenir_name %>
+         </div>
+     <% end %>
+
+     <% @souvenirs_goods.each do |souvenir| %>
          <div>
              <%= souvenir.souvenir_name %>
          </div>

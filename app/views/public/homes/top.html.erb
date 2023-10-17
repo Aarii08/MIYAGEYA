@@ -19,82 +19,78 @@
         </div>
       </div>
 
-
-        <div class="m-3">
-          <h3 class="m-3">新着レビュー</h3>
-        </div>
-        <div class="row mt-3">
-          <% @reviews.each do |review| %>
+      <div class="m-3">
+        <h3 class="m-3">新着レビュー</h3>
+      </div>
+      <div class="row mt-3">
+        <% @reviews.each do |review| %>
 		      <div class="card-deck col-4 mx-auto mb-3 text-center">
-            <%= link_to souvenir_review_path(review.souvenir, review) do %>
-			      <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
-			        <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
-			        <div class="card-body">
-				        <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
-				        <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %></h6>
-				         <p class="card-subtitle m-2"><%= review.user.nickname %> </p>
-				        <p class="card-subtitle m-2"><%= review.review.truncate(20) %> </p>
+          <%= link_to souvenir_review_path(review.souvenir, review) do %>
+            <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
+              <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+              <div class="card-body">
+                <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
+                <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %></h6>
+                <p class="card-subtitle m-2"><%= review.user.nickname %> </p>
+	              <p class="card-subtitle m-2"><%= review.review.truncate(20) %> </p>
               </div>
-			      </div>
-			      <% end %>
-		      </div>
-		      <% end %>
-        </div>
-
-      <h3 class="m-3">目的別に探す</h3>
-      <div class="row">
-        <div class="search">
-
-        <% @review_all.each do |review| %>
-          <% review.tags.each do |tag| %>
-            <% if tag.tag_name.present?%>
-            <span><%= link_to search_sort_path(tag_name: tag.tag_name) do %></span>
-                  <%= tag.tag_name %>
-            <% end %>
-            <% end %>
+	          </div>
           <% end %>
-        <% end %>
-
-        </div>
+		      </div>
+		    <% end %>
       </div>
 
-
-
-
-
-
-
-
-
-
-
+      <h3 class="m-3">タグで探す</h3>
+      <div class="row">
+        <div class="m-3">
+          <% @review_all.each do |review| %>
+            <% review.tags.each do |tag| %>
+              <% if tag.tag_name.present?%>
+                <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-primary mr-2 text-light" do %></span>
+                  <%= tag.tag_name %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
 
       <h3 class="m-3">項目別に探す</h3>
       <div class="row">
         <div class="search">
-
-        <% @review_all.each do |review| %>
-
-            <div class="d-flex">
-              <%= link_to search_category_path(people: review.people, usefulness: nil) do %>
-              <div>
-                <%= review.people_i18n %>
-              </div>
-              <% end %>
-              <%= link_to search_category_path(people: nil, usefulness: review.usefulness) do %>
-              <div>
-                <%= review.usefulness_i18n %>
-              </div>
-              <% end %>
-            </div>
+          <% @review_all.each do |review| %>
+            <%= link_to search_column_path(people: review.people, usefulness: nil) do %>
+              <%= review.people_i18n %>
+            <% end %>
+            <%= link_to search_column_path(people: nil, usefulness: review.usefulness) do %>
+              <%= review.usefulness_i18n %>
+            <% end %>
           <% end %>
         </div>
-
-
-
-
-
       </div>
+
+      <h3 class="m-3">カテゴリー</h3>
+        <div class="row">
+          <% @souvenirs.each do |souvenir| %>
+            <%= souvenir.category_i18n %>
+          <% end %>
+          <% @souvenirs.each do |souvenir| %>
+            <%= link_to search_category_path(Souvenir.where( {"food" =>  0}, {"goods" => 1 } ).distinct) do %>
+              <%= souvenir.category_i18n %>
+            <% end %>
+          <% end %>
+        </div>
+<!---==========================================================================-->
+          <%= link_to "食品", search_category_path %>
+          <%= link_to "グッズ", search_category_path(:category => 1) %>
+
+          <!--search_tests_path(:id=> @test.id, :name=> @test.name) %>-->
+
+          <!--search_category_path(category: @souvenirs.goods-->
+          <!--(:category => 1)-->
+<!--===============================================================================-->
+
+
     </div>
   </div>
 </div>
