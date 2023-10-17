@@ -4,7 +4,6 @@ class Public::HomesController < ApplicationController
     @reviews = Review.order(created_at: :DESC).limit(3)
     @souvenirs = Souvenir.all
     @review_all = Review.all
-
   end
 
   def about

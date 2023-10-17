@@ -35,12 +35,25 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_category
-      # category = params[:category]
-      # food = params[:"food"]
+    
+    
+    
+    # ===========================================================
+    food = params[:food]
+    goods = params[:goods]
 
-      @souvenirs_goods = Souvenir.where( category: 1 ).distinct
 
-      @souvenirs_food = Souvenir.where( category: 0 ).distinct
+    if food.present?
+      @souvenirs = Souvenir.where( category: "food" ).distinct
+    else goods.present?
+      @souvennirs = Souvenir.where( caregory: "goods").distinct
+    end
+    # ===========================================================
+
+
+
+    @prefectures = Prefecture.all
+    @review = Review.all
 
 
   end

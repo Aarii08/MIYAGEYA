@@ -71,24 +71,25 @@
 
       <h3 class="m-3">カテゴリー</h3>
         <div class="row">
-          <% @souvenirs.each do |souvenir| %>
-            <%= souvenir.category_i18n %>
-          <% end %>
-          <% @souvenirs.each do |souvenir| %>
-            <%= link_to search_category_path(Souvenir.where( {"food" =>  0}, {"goods" => 1 } ).distinct) do %>
-              <%= souvenir.category_i18n %>
-            <% end %>
-          <% end %>
-        </div>
-<!---==========================================================================-->
-          <%= link_to "食品", search_category_path %>
-          <%= link_to "グッズ", search_category_path(:category => 1) %>
 
-          <!--search_tests_path(:id=> @test.id, :name=> @test.name) %>-->
+          
+          
+          
+          
+          <!--===========================================================-->
+          
+          <%= link_to "食品", search_category_path( food: "food" )  %>
+          <%= link_to "グッズ", search_category_path( goods: "goods" ) %>
+          
+          
+          
+        <!--===============================================================-->
 
-          <!--search_category_path(category: @souvenirs.goods-->
-          <!--(:category => 1)-->
-<!--===============================================================================-->
+
+
+
+
+
 
 
     </div>
