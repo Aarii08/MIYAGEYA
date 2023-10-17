@@ -40,22 +40,17 @@
                 <td class="text-center">購入場所</td>
                 <td><%= @review.purchase_place %></td>
               </tr>
-
-              <!--================================================-->
+              <!--===================タグ機能=============================-->
               <tr>
-                <td class="text-center">ジャンル</td>
+                <td class="text-center">タグ</td>
                 <td><% @review_tags.each do |tag| %>
-                      <span><%= link_to tag.tag_name, search_tags_path(tag_id: tag.id) %>
+                      <span class="badge badge-primary mr-2"><%= link_to tag.tag_name, search_tags_path(tag_name: tag.tag_name), class: "text-light" %>
                             <%= "(#{ tag.reviews.count })" %>
                       </span>
                     <% end %>
                 </td>
               </tr>
               <!--======================================================-->
-
-
-
-
               <tr>
                 <td class="text-center">貰った？贈った？自分用？</td>
                 <td><%= @review.receive_send %></td>

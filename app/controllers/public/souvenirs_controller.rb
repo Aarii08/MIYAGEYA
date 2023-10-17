@@ -4,13 +4,11 @@ class Public::SouvenirsController < ApplicationController
     @souvenirs = Souvenir.all
     @prefectures = Prefecture.all
     @review = Review.all
-    selection = params[:keyword]
-    @souvenir = Souvenir.sort(selection)
   end
 
   def show
     @souvenir = Souvenir.find(params[:id])
-    @souvenir = Souvenir
+    # @souvenir_find = @souvenir.select(:tag_name).distinct
     @prefectures = Prefecture.all
   end
 
@@ -37,15 +35,27 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_category
-    people = params[:people]
-    usefulness = params[:usefulness]
-    if people != nil
-      @souvenirs = Souvenir.joins(:reviews).where(reviews: { people: people }).distinct
-      # souvenirとreviewを結合し、peopleカラムから重複がないように　@souvenirs　に代入
+    
+    
+    
+    # ===========================================================
+    food = params[:food]
+    goods = params[:goods]
+
+
+    if food.present?
+      @souvenirs = Souvenir.where( category: "food" ).distinct
+    else goods.present?
+      @souvennirs = Souvenir.where( caregory: "goods").distinct
     end
-    if usefulness != nil
-      @souvenirs = Souvenir.joins(:reviews).where(reviews: { usefulness: usefulness }).distinct
-    end
+    # ===========================================================
+
+
+
+    @prefectures = Prefecture.all
+    @review = Review.all
+
+
   end
 
   def search_souvenir
@@ -55,18 +65,33 @@ class Public::SouvenirsController < ApplicationController
   end
 
   def search_tag
-    @tag_list = Tag.all
-    @tag = Tag.find(params[:tag_id])
-    @review = @tag.reviews.all
+    @tag_name = params[:tag_name]
+    @souvenirs = Souvenir.joins(reviews: :tags).where(tags: { tag_name: @tag_name }).distinct
+    # souvenirとreview, tagを結合し、tag_nameに上のtag_nameを重複がないように　@souvenirs　に代入
     @prefectures = Prefecture.all
-    selection = params[:keyword]
-    @souvenir = Souvenir.sort(selection)
   end
 
   def search_sort
-    tag_name = params[:tag_name]
-    @souvenirs = Souvenir.joins(reviews: :tags).where(tags: { tag_name: tag_name }).distinct
-    # souvenirとreview, tagを結合し、tag_nameに上のtag_nameを重複がないように　@souvenirs　に代入
+    @prefectures = Prefecture.all
+    @review = Review.all
+    # ==== ソート機能 ================
+    selection = params[:keyword]
+    @souvenirs = Souvenir.sort(selection)
+    # ================================
+  end
+
+  def search_column
+    people = params[:people]
+    usefulness = params[:usefulness]
+    if people != nil
+      @souvenirs = Souvenir.joins(:reviews).where(reviews: { people: people }).distinct
+      # souvenirとreviewを結合し、peopleカラムから重複がないように　@souvenirs　に代入
+    end
+    if usefulness != nil
+      @souvenirs = Souvenir.joins(:reviews).where(reviews: { usefulness: usefulness }).distinct
+    end
+    @prefectures = Prefecture.all
+    @review = Review.all
   end
 
 
