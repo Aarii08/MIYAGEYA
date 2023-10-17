@@ -46,7 +46,7 @@
           <% @review_all.each do |review| %>
             <% review.tags.each do |tag| %>
               <% if tag.tag_name.present?%>
-                <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-primary mr-2 text-light" do %></span>
+                <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light" do %></span>
                   <%= tag.tag_name %>
                 <% end %>
               <% end %>
@@ -59,10 +59,12 @@
       <div class="row">
         <div class="search">
           <% @review_all.each do |review| %>
-            <%= link_to search_column_path(people: review.people, usefulness: nil) do %>
+            <%= link_to search_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light" do %>
               <%= review.people_i18n %>
             <% end %>
-            <%= link_to search_column_path(people: nil, usefulness: review.usefulness) do %>
+          <% end %>
+           <% @review_all.each do |review| %>
+            <%= link_to search_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-success mr-2 text-light" do %>
               <%= review.usefulness_i18n %>
             <% end %>
           <% end %>
@@ -72,17 +74,17 @@
       <h3 class="m-3">カテゴリー</h3>
         <div class="row">
 
-          
-          
-          
-          
+
+
+
+
           <!--===========================================================-->
-          
+
           <%= link_to "食品", search_category_path( food: "food" )  %>
           <%= link_to "グッズ", search_category_path( goods: "goods" ) %>
-          
-          
-          
+
+
+
         <!--===============================================================-->
 
 
