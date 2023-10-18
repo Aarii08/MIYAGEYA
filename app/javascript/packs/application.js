@@ -12,6 +12,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "script.js";
 
 // ========== 星評価用 ==============
 import Raty from "raty.js"

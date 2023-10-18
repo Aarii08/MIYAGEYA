@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/5c54eb09f0.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
 
 
     <!--Google font用記述（topページ-->
@@ -80,6 +81,12 @@
     </div>
     <!--ここまで-->
     <%= yield %>
+
+
+    <a href="#top" class="scroll-top-btn">
+      <i class="fa-regular fa-circle-up fa-3x" data-toggle=tooltip data-placement="bottom" title="最上部へ移動"></i>
+　  </a>
+
 
     <footer class="text-center border-top border-dark m-5">
       Copyright ©ミヤゲ屋  All Rights Reserved.
