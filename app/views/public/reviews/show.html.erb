@@ -21,28 +21,28 @@
                 <td class="col-6"><%= @review.user.nickname %></td>
               </tr>
               <tr>
-                <td class="text-center">在住県名</td>
+                <td class="text-center align-middle">在住県名</td>
                 <td><%= @review.user.residence_prefecture %></td>
               </tr>
               <tr>
-                <td class="text-center">レビュー</td>
+                <td class="text-center align-middle">レビュー</td>
                 <td><%= safe_join(@review.review.split("\n"),tag(:br)) %></td>
                 <!--↑ viewに表示する際に、改行を反映させる記述　-->
               </tr>
               <tr>
-                <td class="text-center">購入時価格</td>
+                <td class="text-center align-middle">購入時価格</td>
                 <td><% if @review.price.present? %>
                       <%= @review.price.to_s(:delimited) %>円
                     <% end %>
                 </td>
               </tr>
               <tr>
-                <td class="text-center">購入場所</td>
+                <td class="text-center align-middle">購入場所</td>
                 <td><%= @review.purchase_place %></td>
               </tr>
               <!--===================タグ機能=============================-->
               <tr>
-                <td class="text-center">タグ</td>
+                <td class="text-center align-middle">タグ</td>
                 <td><% @review_tags.each do |tag| %>
                       <span class="badge badge-primary mr-2"><%= link_to tag.tag_name, search_tags_path(tag_name: tag.tag_name), class: "text-light" %>
                             <%= "(#{ tag.reviews.count })" %>
@@ -52,19 +52,19 @@
               </tr>
               <!--======================================================-->
               <tr>
-                <td class="text-center">貰った？贈った？自分用？</td>
+                <td class="text-center align-middle">貰った？贈った？</td>
                 <td><%= @review.receive_send %></td>
               </tr>
               <tr>
-                <td class="text-center">誰に？</td>
+                <td class="text-center align-middle">誰に？</td>
                 <td><%= @review.people_i18n %></td>
               </tr>
               <tr>
-                <td class="text-center">用途は？</td>
+                <td class="text-center align-middle">用途は？</td>
                 <td><%= @review.usefulness_i18n %></td>
               </tr>
               <tr>
-                <td class="text-center">星評価</td>
+                <td class="text-center align-middle">星評価</td>
                 <td>
                   <div id="show-star"></div>
                     <script>

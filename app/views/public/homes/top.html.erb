@@ -39,8 +39,8 @@
 		      </div>
 		    <% end %>
       </div>
-
-      <h3 class="m-3">タグで探す</h3>
+      <h3 class="m-2">おみやげを探す</h3>
+      <h3 class="m-3">タグ</h3>
       <div class="row">
         <% Tag.all.each do |tag| %>
           <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light" do %></span>
@@ -49,7 +49,7 @@
         <% end %>
       </div>
 
-      <h3 class="m-3">項目別に探す</h3>
+      <h3 class="m-3">項目別</h3>
       <div class="row">
         <% @review_people.each do |review| %>
           <%= link_to search_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light" do %>
@@ -62,14 +62,16 @@
           <% end %>
         <% end %>
       </div>
-
-
       <h3 class="m-3">カテゴリー</h3>
         <div class="row">
           <% @category_names.each do |category| %>
-            <%= link_to category, search_category_path( name: category ), class: "badge badge-warning mr-2"  %>
+            <%= link_to search_category_path( name: category ), class: "badge badge-warning mr-2" do  %>
+              <%= category %>
+            <% end %>
           <% end %>
         </div>
+
+
 
     </div>
   </div>

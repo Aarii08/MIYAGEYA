@@ -34,9 +34,31 @@
                 <td class="col-3 text-center">ほしい！</td>
                 <td><%= @souvenir.wants.count %>件</td>
               </tr>
+
+
+              <tr>
+                <td class="col-3 text-center align-middle">タグ</td>
+                <td class="d-flex flex-wrap">
+                  <% @souvenir.reviews.each do |review| %>
+                    <% review.tags.each.uniq do |tag| %>
+                      <%= link_to search_tags_path(tag_name: tag.tag_name) do %>
+                      <span class="badge badge-primary text-light mr-2 mb-2">
+                        <%= tag.tag_name %>  (<%= tag.reviews.count %>)
+                      </span>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+
+
+
+
+
+
               <tr>
                 <td class="col-3 text-center">平均評価</td>
-                <td>⭐️⭐️⭐️☆☆</td>
+                <td><%= render "/public/souvenirs/average_star", souvenir: @souvenir %></td>
               </tr>
             </tbody>
           </table>

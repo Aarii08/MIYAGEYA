@@ -29,24 +29,18 @@
           </tr>
           <tr>
             <th class="text-center align-middle">貰った？贈った？</th>
-            <td class="align-middle"><%= f.radio_button :receive_send, "貰う" %>
+            <td class="align-middle"><%= f.radio_button :receive_send, "貰った" %>
                 <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
-                <%= f.radio_button :receive_send, "贈る" %>
+                <%= f.radio_button :receive_send, "送った" %>
                 <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
-                <%= f.radio_button :receive_send, "自分用" %>
-                <%= f.label :receive_send_myself, "自分用" %>
             </td>
             <td></td>
           </tr>
-
-
           <tr>
-            <th class="text-center align-middle">ジャンル</th>
+            <th class="text-center align-middle">タグ</th>
             <td><%= f.label :tag_name, "スペースを入力することで複数のタグをつけることが可能です。" %>
                 <%= f.text_field :tag_name, placeholder: "お菓子", class: "form-control" %></td>
           </tr>
-
-
           <tr>
             <th class="text-center align-middle">相手は？</th>
             <td><%= f.select :people, Review.people.keys.map {|k| [I18n.t("enums.review.people.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
