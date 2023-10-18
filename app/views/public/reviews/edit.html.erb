@@ -15,7 +15,7 @@
         <tbody>
           <tr>
             <th class="text-center align-middle">レビュー</th>
-            <td><%= f.text_area :review, autofocus: true, class: "form-control", rows: "4" %></td>
+            <td class="col-7"><%= f.text_area :review, autofocus: true, class: "form-control", rows: "4" %></td>
             <td></td>
           </tr>
           <tr>
@@ -30,7 +30,7 @@
           </tr>
           <tr>
             <th class="text-center align-middle">ジャンル</th>
-            <td><%= f.label :tag_name, "スペースを入力することで複数のタグをつけることが可能です。" %>
+            <td><%= f.label :tag_name, "半角スペースを入力することで複数のタグ付けができます。" %>
                 <%= f.text_field :tag_name, value: @tag_list, class: "form-control" %></td>
           </tr>
           <tr>
@@ -39,8 +39,6 @@
                 <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
                 <%= f.radio_button :receive_send, "贈る" %>
                 <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
-                <%= f.radio_button :receive_send, "自分用" %>
-                <%= f.label :receive_send_myself, "自分用" %>
             </td>
             <td></td>
           </tr>
