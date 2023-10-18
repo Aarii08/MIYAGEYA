@@ -7,8 +7,8 @@ class Review < ApplicationRecord
   has_many :tags, through: :tag_maps
 
 
-  enum people: { family: 0, relative: 1, friend: 2, company: 3, client: 4, acquaintance: 5, neighborhood: 6,
-                 colleague: 7, boss: 8, lover: 9, other: 10
+  enum people: { myself: 0, family: 1, relative: 2, friend: 3, company: 4, client: 5, acquaintance: 6,
+                 neighborhood: 7, colleague: 8, boss: 9, lover: 10, other: 11
                 }
 
   enum usefulness: { travel: 0, business: 1, homecoming: 2, souvenir: 3, others: 4 }

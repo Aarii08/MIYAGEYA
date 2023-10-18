@@ -3,7 +3,9 @@ class Public::HomesController < ApplicationController
     @prefectures = Prefecture.all
     @reviews = Review.order(created_at: :DESC).limit(3)
     @souvenirs = Souvenir.all
-    @review_all = Review.all
+    @review_people = Review.select("people").distinct
+    @review_usefulness = Review.select("usefulness").distinct
+    @category_names = Souvenir.pluck(:category).uniq
   end
 
   def about

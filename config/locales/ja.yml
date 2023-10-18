@@ -6,6 +6,7 @@ ja:
         goods: "グッズ"
     review:
       people:
+        myself: "自分用"
         family: "家族"
         relative: "親族"
         friend: "友達"

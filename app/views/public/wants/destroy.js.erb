@@ -1,1 +1,2 @@
 $('#want_btn_<%= @souvenir.id %>').html("<%= j( render "public/souvenirs/want", souvenir: @souvenir) %>");
+$('#want_btn_count<%= @souvenir.id %>').html("<%= j( render "public/souvenirs/wants_count", souvenir: @souvenir) %>");
