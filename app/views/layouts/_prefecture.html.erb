@@ -1,0 +1,10 @@
+<div class="mt-5 text-center border border-dark">
+  <h3 class="m-5">都道府県別<br>ミヤゲ</h3>
+  <% prefectures.each do |prefecture| %>
+     <div class="m-3 text-center">
+      <%= link_to search_prefecture_path(prefecture), class: "btn btn-outline-dark" do %>
+        <h5 class="m-3"><%= prefecture.prefecture_name %></h5>
+      <% end %>
+    </div>
+  <% end %>
+</div>

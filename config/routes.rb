@@ -5,8 +5,14 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  devise_scope :user do
+    post "user/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   root to: "public/homes#top"
   get '/about' => 'public/homes#about', as: 'about'
+  get '/sort' => 'public/homes#sort', as: 'sort'
+  get 'rakuten' => 'rakuten#index', as: 'rakuten_index'
 
   scope module: :public do
     get 'users/mypage' => 'users#show', as: 'user'
@@ -17,32 +23,37 @@ Rails.application.routes.draw do
     get 'users/review' => 'users#review', as: 'user_review'
     get 'users/want' => 'users#want', as: 'user_want'
 
+    get 'search/columns' => 'souvenirs#search_column', as: 'search_column'
+    get 'search/sort' => 'souvenirs#search_sort', as: 'search_sort'
+    get 'search/tags' => 'souvenirs#search_tag', as: 'search_tags'
+    get 'search/souvenirs' => 'souvenirs#search_souvenir', as: 'search_souvenirs'
     get 'search/prefectures/:id' => 'souvenirs#search_prefecture', as: 'search_prefecture'
-    get 'search/category' => 'souvenirs#search_category', as: 'search_category'
-    get 'search/souvenir' => 'souvnirs#search_souvenir', as: 'search_souvenirs'
-
-    resources :souvenirs, only: [:index, :show, :new, :create] do
+    get 'search/categorys' => 'souvenirs#search_category', as: 'search_category'
+    resources :souvenirs do
       resource :wants, only: [:create, :destroy]
       resources :reviews, except: [:index]
     end
-
   end
 
 
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
   }
 
   namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
-    get 'users/:id/review' => 'admin/users#review', as: 'user_review'
-    get 'users/:id/want' => 'admin/users#want', as: 'user_want'
+    get 'users/:id/review' => 'users#review', as: 'user_review'
+    get 'users/:id/want' => 'users#want', as: 'user_want'
 
-    resources :prefectures, only: [:index, :create, :edit, :update]
+    resources :prefectures, only: [:index, :create, :edit, :update, :destroy]
     resources :souvenirs do
-      resource :wants, only: [:index, :destroy]
-      resources :reviews, only: [:index, :show, :update, :destroy]
+      resource :wants, only: [:destroy]
+      collection do
+      get 'wants' => 'wants#index'
+      get 'reviews' => 'reviews#index'
+      end
+      resources :reviews, only: [:show, :update, :destroy]
     end
   end
 

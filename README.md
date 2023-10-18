@@ -26,8 +26,8 @@
 
 ## 設計書
 - UI fiow図
-<img src = "https://github.com/Aarii08/MIYAGEYA/assets/140925809/08a35b68-1537-48ff-acfd-ff64bf7b7e77" width = "800">
-<img src = "https://github.com/Aarii08/MIYAGEYA/assets/140925809/0d8b6750-f264-4b49-a66f-2c2b718421ba" width = "800">
+<img src = "https://github.com/Aarii08/MIYAGEYA/assets/140925809/38754d6d-3e9a-495d-94dd-dffbe1919388" width = "800">
+<img src = "https://github.com/Aarii08/MIYAGEYA/assets/140925809/fb2dff2b-e7b9-4662-b405-e7f54d26b9c8" width = "800">
 
 - ER図
 <img src = "https://github.com/Aarii08/MIYAGEYA/assets/140925809/eb0a626d-8684-43de-8b27-1d33dac77385" width = "500">

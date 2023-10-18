@@ -1,2 +1,95 @@
-<h1>Public::Reviews#show</h1>
-<p>Find me in app/views/public/reviews/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render "layouts/prefecture", prefectures: @prefectures %>
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+      <h3 class="mb-3"><%= @review.user.nickname %>さんの</h3>
+      <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
+      <div class="m-3 text-center">
+        <% if @review.user == current_user %>
+          <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5", data: {"turbolinks" => false} %>
+        <% end %>
+        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5", data: {"turbolinks" => false} %>
+      </div>
+
+       <table class="table table-border">
+            <tbody>
+              <tr>
+                <td class="text-center col-6">表示名（ユーザー名）</td>
+                <td class="col-6"><%= @review.user.nickname %></td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle">在住県名</td>
+                <td><%= @review.user.residence_prefecture %></td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle">レビュー</td>
+                <td><%= safe_join(@review.review.split("\n"),tag(:br)) %></td>
+                <!--↑ viewに表示する際に、改行を反映させる記述　-->
+              </tr>
+              <tr>
+                <td class="text-center align-middle">購入時価格</td>
+                <td><% if @review.price.present? %>
+                      <%= @review.price.to_s(:delimited) %>円
+                    <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle">購入場所</td>
+                <td><%= @review.purchase_place %></td>
+              </tr>
+              <!--===================タグ機能=============================-->
+              <tr>
+                <td class="text-center align-middle">タグ</td>
+                <td class="d-flex flex-wrap">
+                  <% @review_tags.each do |tag| %>
+                    <%= link_to search_tags_path(tag_name: tag.tag_name) do %>
+                      <span class="badge badge-primary text-light mr-2">
+                        <%= tag.tag_name %>  <%= "(#{ tag.reviews.count })" %>
+                      </span>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <!--======================================================-->
+              <tr>
+                <td class="text-center align-middle">貰った？贈った？</td>
+                <td><%= @review.receive_send %></td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle">誰に？</td>
+                <td><%= @review.people_i18n %></td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle">用途は？</td>
+                <td><%= @review.usefulness_i18n %></td>
+              </tr>
+              <tr>
+                <td class="text-center align-middle">星評価</td>
+                <td>
+                  <div id="show-star"></div>
+                    <script>
+                      $(document).on('turbolinks:load', function() {
+                        let showRateElement = document.querySelector('#show-star');
+                        let showOpt = {
+                          starOn: "<%= asset_path('star-on.png') %>",
+                          starOff: "<%= asset_path('star-off.png') %>",
+                          starHalf: "<%= asset_path('star-half.png') %>",
+                          half: true,
+                          scoreName: 'review[star]',
+                          score: "<%= @review.star %>",
+                          readOnly: true
+                        };
+                        window.raty(showRateElement, showOpt);
+                        });
+                    </script>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+  </div>
+</div>

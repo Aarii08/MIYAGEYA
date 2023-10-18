@@ -1,2 +1,33 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render "layouts/prefecture", prefectures: @prefectures %>
+    </div>
+
+    <div class="col-8 offset-1 mt-5">
+      <%= image_tag "草津.png", :style => "width: 100%"%>
+      <div class="row">
+      <div class="col-8 offset-2", style="font-family: 'RocknRoll One', sans-serif;">
+        <h1 class="m-5">ミヤゲ屋の使い方</h1>
+        <h3 class="m-3">①ミヤゲ（おみやげ）を探す！</h3>
+        <p class="ml-5">県別・一覧より調べたいミヤゲを検索
+        <i class="fa-solid fa-magnifying-glass"></i></br>
+                        ヘッダーの検索窓からも検索できるよ！<br>
+                        目的別でも調べられるよ！</p>
+        <h3 class="m-3">②レビューを書こう！</h3>
+        <p class="ml-5">該当のミヤゲが見つかったら、レビューを書こう
+        <i class="fa-regular fa-pen-to-square"></i></p>
+        <h3 class="m-3">③気になるミヤゲをチェック！</h3>
+        <p class="ml-5">気になるミヤゲがあったら、ほしい！に追加しよう！
+        <i class="fa-solid fa-heart-circle-plus"></i></p>
+
+        <p class="mt-5 ml-4">※サイト内の閲覧は会員登録せず自由にご覧になれます。<br>
+          &emsp;レビューの投稿・ほしい！の追加は、<br>
+          &emsp;会員登録していただかないとご利用になれません。</p>
+        <p class="mt-2 ml-4">※不適切な投稿があった場合には、<br>
+          &emsp;管理者側で投稿を削除させていただく場合がございます。</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

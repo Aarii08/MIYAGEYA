@@ -1,2 +1,40 @@
-<h1>Admin::Prefectures#index</h1>
-<p>Find me in app/views/admin/prefectures/index.html.erb</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-8 mx-auto">
+      <h2 class="text-center m-3">県名一覧・追加</h2>
+      <div class="text-right">
+        <%= link_to "戻る", admin_root_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <table class="table table-borderless text-center m-3">
+        <%= form_with model: @prefecture,  url: admin_prefectures_path do |f| %>
+        <tbody>
+          <tr>
+            <td class="align-middle">追加する都道府県名</td>
+            <td class="align-middle"><%= f.text_field :prefecture_name, class: "form-control" %></td>
+            <td class="text-center"> <%= f.submit "追加", class: "btn btn-outline-warning ml-5" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+      <table class="table table-border text-center m-3">
+        <thead>
+          <tr>
+            <th>県ID</th>
+            <th>県名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @prefectures.each do |prefecture| %>
+        <tbody>
+          <tr>
+            <td class="align-middle"><%= prefecture.id %></td>
+            <td class="align-middle"><%= prefecture.prefecture_name %></td>
+            <td class="text-center"><%= link_to "編集", edit_admin_prefecture_path(prefecture), class: "btn btn-outline-success" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

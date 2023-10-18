@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+			<%= render "layouts/prefecture", prefectures: @prefectures %>
+    </div>
+
+    <div class="col-8 offset-1 pt-5">
+    	<div class="mb-3">
+        <h2 class="text-center">並び替え</h2>
+        <p class="text-right mr-5">全 <%= @souvenirs.count %> 件</p>
+      </div>
+
+      <div class ="m-2 text-right">
+        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
+      </div>
+
+      <div class="m-3">
+        <%= form_with url: search_sort_path, method: :get do |f| %>
+          <%= f.select :keyword, [ ['ほしい！多い順', 'wants'],
+                                 ['レビュー多い順', 'reviews'],
+                                 ['星評価高い順', 'average_star'] ], class: "select-form-control" %>
+          <%= f.submit "並び替える", class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <% @souvenirs.each do |souvenir| %>
+		    <div class="card-deck col-4 mx-auto mb-3 text-center">
+        <%= link_to souvenir_path(souvenir) do %>
+			    <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
+			      <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+			      <div class="card-body">
+				      <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
+				      <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>
+				      <p class="card-subtitle m-2">ほしい！：<%= souvenir.wants.count %> 件<br>
+				                               		 レビュー：<%= souvenir.reviews.count %> 件</p>
+				      <p class="card-subtitle m-2"><%= render "average_star", souvenir: souvenir %></p>
+				      <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
+				      <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
+            </div>
+			    </div>
+			  <% end %>
+		    </div>
+		    <% end %>
+	    </div>
+    </div>
+  </div>
+</div>

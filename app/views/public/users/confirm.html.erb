@@ -1,2 +1,13 @@
-<h1>Public::Users#confirm</h1>
-<p>Find me in app/views/public/users/confirm.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto text-center">
+      <h2 class="m-5">本当に退会しますか？</h2>
+      <h6 class="m-3">退会するとこれまでのレビューやほしい！の情報が消えてしまいます。</h6>
+      <h6 class="m-4">それでも退会しますか？</h6>
+      <h6 class="m-3">退会する方は、退会をクリックしてください。</h6>
+      <h6 class="m-3">退会しない方は、退会しないをクリックしてください。</h6>
+      <%= link_to "退会しない", user_path, class: "btn btn-primary m-5" %>
+      <%= link_to "退会する", user_withdrawal_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger m-5" %>
+    </div>
+  </div>
+</div>
