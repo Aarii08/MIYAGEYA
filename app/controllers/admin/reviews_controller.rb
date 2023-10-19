@@ -6,6 +6,7 @@ class Admin::ReviewsController < ApplicationController
   def show
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
+    @review_tags = @review.tags
   end
 
   def update

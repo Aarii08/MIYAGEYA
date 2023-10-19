@@ -34,8 +34,6 @@
                 <td class="col-3 text-center">ほしい！</td>
                 <td><%= @souvenir.wants.count %>件</td>
               </tr>
-
-
               <tr>
                 <td class="col-3 text-center align-middle">タグ</td>
                 <td class="d-flex flex-wrap">
@@ -50,15 +48,9 @@
                   <% end %>
                 </td>
               </tr>
-
-
-
-
-
-
               <tr>
-                <td class="col-3 text-center">平均評価</td>
-                <td><%= render "/public/souvenirs/average_star", souvenir: @souvenir %></td>
+                <td class="col-3 text-center align-middle">平均評価</td>
+                <td><%= render "public/souvenirs/average_star", souvenir: @souvenir %></td>
               </tr>
             </tbody>
           </table>
