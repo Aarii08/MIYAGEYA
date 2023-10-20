@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     get 'users/review' => 'users#review', as: 'user_review'
     get 'users/want' => 'users#want', as: 'user_want'
 
+    get 'search/review_column' => 'souvenirs#search_review_column', as: 'search_review_column'
+    get 'search/review_tag' => 'souvenirs#search_review_tag', as: 'search_review_tag'
     get 'search/columns' => 'souvenirs#search_column', as: 'search_column'
     get 'search/sort' => 'souvenirs#search_sort', as: 'search_sort'
     get 'search/tags' => 'souvenirs#search_tag', as: 'search_tags'

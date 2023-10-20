@@ -1,24 +1,21 @@
 <div class="container">
   <div class="row">
-     <% @souvenirs.each do |souvenir| %>
-         <div>
-             <%= souvenir.souvenir_name %>
-         </div>
-     <% end %>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
     <div class="col-3">
 			<%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
     <div class="col-8 offset-1 pt-5">
     	<div class="mb-3">
-        <h2 class="text-center"><%= params[:people] %> 一覧</h2>
-        <p class="text-right mr-5">全 <%= @souvenirs.count %> 件</p>
+        <% if @review_people.present? %>
+          <% @review_people.first(1).each do |review| %>
+            <h2 class="text-center"><%= review.people_i18n %>　のレビューがついたミヤゲ一覧</h2>
+          <% end %>
+        <% else @review_usefulness.present? %>
+          <% @review_usefulness.first(1).each do |review| %>
+            <h2 class="text-center"><%= review.usefulness_i18n %>　のレビューがついたミヤゲ一覧</h2>
+          <% end %>
+        <% end %>
+       <p class="text-right mr-5">全 <%= @souvenirs.count %> 件</p>
       </div>
 
       <div class ="m-2 text-right">
@@ -39,7 +36,11 @@
 		    <div class="card-deck col-4 mx-auto mb-3 text-center">
         <%= link_to souvenir_path(souvenir) do %>
 			    <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
-			      <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+			      <% if souvenir.rakuten_image_url.present? %>
+              <img src="<%= souvenir.rakuten_image_url %>">
+            <% else %>
+              <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+            <% end %>
 			      <div class="card-body">
 				      <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
 				      <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>

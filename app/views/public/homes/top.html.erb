@@ -27,7 +27,11 @@
 		      <div class="card-deck col-4 mx-auto mb-3 text-center">
           <%= link_to souvenir_review_path(review.souvenir, review) do %>
             <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
-              <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+              <% if review.souvenir.rakuten_image_url.present? %>
+                <img src="<%= review.souvenir.rakuten_image_url %>">
+              <% else %>
+                <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+              <% end %>
               <div class="card-body">
                 <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
                 <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %></h6>
@@ -65,12 +69,37 @@
       <h3 class="m-3">カテゴリー</h3>
         <div class="row">
           <% @category_names.each do |category| %>
-            <%= link_to search_category_path( name: category ), class: "badge badge-warning mr-2" do  %>
+            <%= link_to search_category_path(name: category), class: "badge badge-warning mr-2" do  %>
               <%= category %>
             <% end %>
           <% end %>
         </div>
 
+        =======================================================================
+
+        <h3 class="m-3">レビューから探す</h3>
+        <h3 class="m-3">タグ</h3>
+        <div class="row">
+          <% Tag.all.each do |tag| %>
+            <span><%= link_to search_review_tag_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light" do %></span>
+              <%= tag.tag_name %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <h3 class="m-3">項目別</h3>
+        <div class="row">
+          <% @review_people.each do |review| %>
+            <%= link_to search_review_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light" do %>
+              <%= review.people_i18n %>
+            <% end %>
+          <% end %>
+          <% @review_usefulness.each do |review| %>
+            <%= link_to search_review_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light" do %>
+              <%= review.usefulness_i18n %>
+            <% end %>
+          <% end %>
+        </div>
 
 
     </div>

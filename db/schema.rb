@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_14_055320) do
+ActiveRecord::Schema.define(version: 2023_10_19_105706) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 2023_10_14_055320) do
     t.float "average_star"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "rakuten_image_url"
+    t.string "rakuten_url"
   end
 
   create_table "tag_maps", force: :cascade do |t|

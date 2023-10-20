@@ -1,27 +1,59 @@
-<h1>楽天市場の商品を検索</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render "layouts/prefecture", prefectures: @prefectures %>
+    </div>
 
+    <div class="col-9 pt-5">
+      <h2 class="text-center">楽天市場の商品を検索</h2>
+      <div class="col-10 m-3 text-right">
+          <%= link_to "戻る", new_souvenir_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <div class="col-12 mt-4">
+        <div class="mb-5">
+          <%= form_with model: @souvenir, url: rakuten_index_path, method: :get do |f| %>
+            <%= f.text_field :keyword, class: "form-control" %>
+            <%= f.submit "商品を検索", class: "form-control btn btn-success" %>
+          <% end %>
+        </div>
 
-<% if @items.present? %>
-  <table>
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>価格</th>
-        <th>画像</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-        <tr>
-          <td><%= item.params["itemName"] %></td>
-          <td><%= item.params["price"] %>円</td>
-          <td>
-            <%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>商品が見つかりません。</p>
-<% end %>
+        <div class="col-12">
+          <% if @items.present? %>
+
+            <table class="table", style="table-layout:fixed;">
+              <thead>
+                <tr>
+                  <th style="width: 10%", class="text-center"></th>
+                  <th style="width: 40%", class="text-center">商品名</th>
+                  <th style="width: 15%", class="text-center">価格</th>
+                  <th style="width: 15%", class="text-center">画像</th>
+                  <th style="width: 25%", class="text-center">URL</th>
+                </tr>
+              </thead>
+              <% @items.each do |item| %>
+              <tbody>
+                <tr>
+                  <td class="align-middle"><%= link_to "投稿", new_souvenir_path(rakuten_image_url: item.params["mediumImageUrls"][0], rakuten_url: item.params["itemUrl"]),
+                                                    data: {confirm: "画像を取得しました。新規投稿ページに遷移します。"}, class: "btn btn-outline-success" %>
+                  </td>
+                  <td class="align-middle"><%= item.params["itemName"] %></td>
+                  <td class="align-middle text-center"><%= item.params["itemPrice"] %>円</td>
+                  <td class="align-middle"><% if item.params["mediumImageUrls"].present? %>
+                        <%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
+                      <% end %>
+                  </td>
+                  <td class="align-middle"><a href="<%= item.params['itemUrl'] %>"><%= item.params['itemUrl'] %></a></td>
+                </tr>
+              </tbody>
+              <% end %>
+            </table>
+
+          <% else %>
+            <p>商品が見つかりません。</p>
+          <% end %>
+        </div>
+
+    </div>
+  </div>
+</div>
+

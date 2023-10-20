@@ -28,7 +28,11 @@
 		    <div class="card-deck col-4 mx-auto mb-3 text-center">
         <%= link_to souvenir_path(souvenir) do %>
 			    <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
-			      <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+			      <% if souvenir.rakuten_image_url.present? %>
+              <img src="<%= souvenir.rakuten_image_url %>">
+            <% else %>
+              <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+            <% end %>
 			      <div class="card-body">
 				      <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
 				      <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>

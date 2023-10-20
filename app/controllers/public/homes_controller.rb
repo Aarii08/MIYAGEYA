@@ -5,6 +5,7 @@ class Public::HomesController < ApplicationController
     @souvenirs = Souvenir.all
     @review_people = Review.select("people").distinct
     @review_usefulness = Review.select("usefulness").distinct
+    # @category_names = Souvenir.pluck(:category).uniq
     @category_names = Souvenir.pluck(:category).uniq
   end
 
