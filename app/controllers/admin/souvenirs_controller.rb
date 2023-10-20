@@ -6,10 +6,14 @@ class Admin::SouvenirsController < ApplicationController
 
   def new
     @souvenir = Souvenir.new
+    @rakuten_image_url = params[:rakuten_image_url]
+    @rakuten_url = params[:rakuten_url]
   end
 
   def create
     souvenir = Souvenir.new(souvenir_params)
+    souvenir.rakuten_image_url = params[:souvenir][:rakuten_image_url]
+    souvenir.rakuten_url = params[:souvenir][:rakuten_url]
     if souvenir.save
       flash[:notice] = "ミヤゲ登録しました。"
       redirect_to admin_souvenir_path(souvenir)
@@ -48,7 +52,7 @@ class Admin::SouvenirsController < ApplicationController
   private
 
   def souvenir_params
-    params.require(:souvenir).permit(:souvenir_name, :introduction, :category, :average_star, :image, :prefecture_id)
+    params.require(:souvenir).permit(:souvenir_name, :introduction, :category, :average_star, :image, :prefecture_id, :rakuten_image_url, :rakuten_url)
   end
 
 end
