@@ -11,7 +11,14 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get '/about' => 'public/homes#about', as: 'about'
-  get '/sort' => 'public/homes#sort', as: 'sort'
+  get 'search/prefectures/:id' => 'public/homes#search_prefecture', as: 'search_prefecture'
+  get 'search/souvenirs' => 'public/homes#search_souvenir', as: 'search_souvenirs'
+  get 'search/tags' => 'public/homes#search_tag', as: 'search_tags'
+  get 'search/columns' => 'public/homes#search_column', as: 'search_column'
+  get 'search/categorys' => 'public/homes#search_category', as: 'search_category'
+  get 'search/review_tag' => 'public/homes#search_review_tag', as: 'search_review_tag'
+  get 'search/review_column' => 'public/homes#search_review_column', as: 'search_review_column'
+
   get 'rakuten' => 'rakuten#index', as: 'rakuten_index'
 
   scope module: :public do
@@ -23,14 +30,6 @@ Rails.application.routes.draw do
     get 'users/review' => 'users#review', as: 'user_review'
     get 'users/want' => 'users#want', as: 'user_want'
 
-    get 'search/review_column' => 'souvenirs#search_review_column', as: 'search_review_column'
-    get 'search/review_tag' => 'souvenirs#search_review_tag', as: 'search_review_tag'
-    get 'search/columns' => 'souvenirs#search_column', as: 'search_column'
-    get 'search/sort' => 'souvenirs#search_sort', as: 'search_sort'
-    get 'search/tags' => 'souvenirs#search_tag', as: 'search_tags'
-    get 'search/souvenirs' => 'souvenirs#search_souvenir', as: 'search_souvenirs'
-    get 'search/prefectures/:id' => 'souvenirs#search_prefecture', as: 'search_prefecture'
-    get 'search/categorys' => 'souvenirs#search_category', as: 'search_category'
     resources :souvenirs do
       resource :wants, only: [:create, :destroy]
       resources :reviews, except: [:index]

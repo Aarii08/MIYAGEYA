@@ -5,23 +5,22 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
-      <div class="mb-5">
-        <h2 class="text-center"><%= @prefecture.prefecture_name %> のミヤゲ一覧</h2>
+    	<div class="mb-3">
+    	  <% if params[:name] == "food" %>
+    	    <h2 class="text-center">食品 のミヤゲ一覧</h2>
+    	  <% else params[:name] == "goods" %>
+    	    <h2 class="text-center">グッズ のミヤゲ一覧</h2>
+    	  <% end %>
         <p class="text-right mr-5">全 <%= @souvenirs.count %> 件</p>
       </div>
-      <div class ="m-3 text-right">
+
+      <div class ="m-2 text-right">
         <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
       </div>
 
       <div class="row">
-       <%= render "index", souvenirs: @souvenirs %>
+        <%= render "public/souvenirs/index", souvenirs: @souvenirs %>
 	    </div>
-
-	    <div class="text-right">
-      <%= link_to new_souvenir_path, class: "btn btn-outline-dark" do %>
-	      <i class="fa-solid fa-plus fa-2xl"></i>
-      <% end %>
-      </div>
 
     </div>
   </div>

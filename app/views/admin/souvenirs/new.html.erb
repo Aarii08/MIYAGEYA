@@ -7,7 +7,7 @@
       </div>
 
       <%= form_with model: @souvenir, url: admin_souvenirs_path do |f| %>
-      <div class="col-12 m-3">
+        <div class="col-12 m-3">
           <table class="table table-border">
             <tbody>
               <tr>
@@ -49,10 +49,10 @@
         </div>
         <%= f.hidden_field :rakuten_image_url, value: @rakuten_image_url %>
         <%= f.hidden_field :rakuten_url, value: @rakuten_url %>
-        <div class="d-flex justify-content-around ml-5">
-        <%= f.submit "登録", class: "btn btn-success px-5" %>
+        <div class="text-center">
+          <%= f.submit "登録", class: "btn btn-success px-5" %>
         </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

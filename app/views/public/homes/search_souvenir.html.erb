@@ -14,7 +14,7 @@
           <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
         </div>
         <div class="row">
-          <%= render "index", souvenirs: @souvenirs %>
+          <%= render "public/souvenirs/index", souvenirs: @souvenirs %>
 	      </div>
 	    <% else %>
 	      <h2 class="text-center"><%= @q.souvenir_name_cont %> の検索結果</h2>
