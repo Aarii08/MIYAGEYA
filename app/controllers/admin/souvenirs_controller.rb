@@ -29,11 +29,15 @@ class Admin::SouvenirsController < ApplicationController
 
   def edit
     @souvenir = Souvenir.find(params[:id])
+    @rakuten_image_url = params[:rakuten_image_url]
+    @rakuten_url = params[:rakuten_url]
   end
 
   def update
-    @souvenir = Souvenir.find(params[:id])
-    if @souvenir.update(souvenir_params)
+    souvenir = Souvenir.find(params[:id])
+    souvenir.rakuten_image_url = params[:souvenir][:rakuten_image_url]
+    souvenir.rakuten_url = params[:souvenir][:rakuten_url]
+    if souvenir.update(souvenir_params)
       flash[:notice] = "ミヤゲ情報更新しました。"
       redirect_to admin_souvenir_path
     else

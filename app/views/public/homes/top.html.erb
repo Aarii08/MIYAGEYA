@@ -68,11 +68,8 @@
       </div>
       <h3 class="m-3">カテゴリー</h3>
         <div class="row">
-          <% @category_names.each do |category| %>
-            <%= link_to search_category_path(name: category), class: "badge badge-warning mr-2" do  %>
-              <%= category %>
-            <% end %>
-          <% end %>
+          <%= link_to "食品", search_category_path(name: "food"), class: "badge badge-pill badge-warning mr-2" %>
+          <%= link_to "グッズ", search_category_path(name: "goods"), class: "badge badge-pill badge-warning mr-2" %>
         </div>
 
         =======================================================================

@@ -1,7 +1,12 @@
 class Public::SouvenirsController < ApplicationController
 
   def index
-    @souvenirs = Souvenir.all
+    if params[:keyword]   #================= ソート機能 ==========
+      selection = params[:keyword]
+      @souvenirs = Souvenir.sort(selection)   #===================
+    else
+      @souvenirs = Souvenir.all
+    end
     @prefectures = Prefecture.all
     @review = Review.all
   end
@@ -14,14 +19,14 @@ class Public::SouvenirsController < ApplicationController
   def new
     @souvenir = Souvenir.new
     @prefectures = Prefecture.all
-    @rakuten_image_url = params[:rakuten_image_url]
-    @rakuten_url = params[:rakuten_url]
+    @rakuten_image_url = params[:rakuten_image_url] #====== 楽天画像取得
+    @rakuten_url = params[:rakuten_url]   #================ 楽天URL取得
   end
 
   def create
     souvenir = Souvenir.new(souvenir_params)
-    souvenir.rakuten_image_url = params[:souvenir][:rakuten_image_url]
-    souvenir.rakuten_url = params[:souvenir][:rakuten_url]
+    souvenir.rakuten_image_url = params[:souvenir][:rakuten_image_url]  #==== 楽天画像
+    souvenir.rakuten_url = params[:souvenir][:rakuten_url]  #================ 楽天URL
     if souvenir.save
       flash[:notice] = "新規登録完了しました。"
       redirect_to souvenir_path(souvenir)
@@ -57,7 +62,6 @@ class Public::SouvenirsController < ApplicationController
     else
        @souvenirs = Souvenir.all
     end
-
     @prefectures = Prefecture.all
     @review = Review.all
   end

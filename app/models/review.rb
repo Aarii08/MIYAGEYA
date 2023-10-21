@@ -13,7 +13,7 @@ class Review < ApplicationRecord
 
   enum usefulness: { travel: 0, business: 1, homecoming: 2, souvenir: 3, others: 4 }
 
-
+  # =========================== タグ機能 ===================================
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
@@ -28,7 +28,7 @@ class Review < ApplicationRecord
       self.tags << new_review_tag
     end
   end
-
+  # ======================================================================
 
   # validates :review, presence: true
   # validates :receive_send, presence: true

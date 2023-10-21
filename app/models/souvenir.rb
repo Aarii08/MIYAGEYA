@@ -39,13 +39,10 @@ class Souvenir < ApplicationRecord
       return find(Review.group(:souvenir_id).order(('avg(star) DESC')).pluck(:souvenir_id))
     when 'wants'
       return find(Want.group(:souvenir_id).order(('count(souvenir_id) DESC')).pluck(:souvenir_id))
-      # return find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     when 'reviews'
       return find(Review.group(:souvenir_id).order(('count(souvenir_id) DESC')).pluck(:souvenir_id))
     end
   end
 # =============================================================-
-
-
 
 end

@@ -5,40 +5,24 @@
     </div>
 
     <div class="col-8 offset-1 mb-3">
-      <h2 class="text-center my-5"><%= @reviews %> の項目のレビュー一覧</h2>
-      <p class="text-right mr-5">全 <%= @reviews.count %> 件</p>
-      <div class="col-12 mx-auto">
-        <% @reviews.each do |review| %>
-          <%= link_to souvenir_review_path(review.souvenir, review) do %>
-            <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
-              <table class="table-borderless">
-                <tr>
-                  <th class="col-3 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"><%= review.souvenir.souvenir_name %></h5></th>
-                  <td class="col-2 text-center align-middle mb-2"><h5 class="font-weight-bolder"><%= review.user.nickname %>さん</h5></td>
-                  <td class="col-2 text-center align-middle mb-2"><h6>在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
-                </tr>
-                <tr>
-                  <th class="card-subtitle text-center">貰った？贈った？</th>
-                  <td colspan="2", class="align-middle"><%= review.receive_send %></td>
-                </tr>
-                <tr>
-                  <th class="card-subtitle text-center">誰に？</th>
-                  <td colspan="2",class="align-middle"> <%= review.people_i18n %></td>
-                </tr>
-                <tr>
-                  <th class="card-subtitle text-center">用途は？</th>
-                  <td colspan="2",class="align-middle"><%= review.usefulness_i18n %></td>
-                </tr>
-                <tr>
-                  <th class="card-subtitle text-center">レビュー</th>
-                  <td colspan="2",class="align-middle"><%= safe_join(review.review.split("\n"),tag(:br)) %></p></td>
-                </tr>
-              </table>
-            </div>
-          <% end %>
+      <% if params[:people].present? %>
+        <% @reviews.first(1).each do |review| %>
+          <h2 class="text-center m-4"><%= review.people_i18n %>　のレビューがついたミヤゲ一覧</h2>
         <% end %>
+      <% else params[:usefulness].present? %>
+        <% @reviews.first(1).each do |review| %>
+          <h2 class="text-center m-4"><%= review.usefulness_i18n %>　のレビューがついたミヤゲ一覧</h2>
+        <% end %>
+      <% end %>
+      <p class="text-right mr-5">全 <%= @reviews.count %> 件</p>
+      <div class ="m-2 text-right">
+        <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
       </div>
-    </div>
 
+      <div class="col-12 mx-auto">
+        <%= render "search_review", reviews: @reviews %>
+      </div>
+
+    </div>
   </div>
 </div>
