@@ -92,7 +92,7 @@
         <% @souvenir.reviews.each do |review| %>
           <%= link_to souvenir_review_path(@souvenir, review) do %>
             <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
-              <table class="table-borderless">
+              <table class="table">
                 <tr>
                   <th class="col-5 text-center align-middle mb-2">
                     <% if review.user.is_deleted == false %>
@@ -101,7 +101,11 @@
                       <h5 class="card-header">退会済みユーザー</h5>
                     <% end %>
                   </th>
-                  <td class="col-7 text-center align-middle mb-2"><h6 class="card-header">在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
+                  <td class="col-6 align-middle mb-2">
+                    <h6 class="card-header">在住県：&ensp;<%= review.user.residence_prefecture %>
+                                   &emsp;&emsp;<%= review.created_at.strftime('%Y年%m月%d日') %>
+                    </h6>
+                  </td>
                 </tr>
                 <tr>
                   <td class="card-subtitle text-center">貰った？贈った？</td>

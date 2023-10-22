@@ -1,5 +1,4 @@
 class RakutenController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
 
   def index
     # ======================= 楽天商品検索 ======================================

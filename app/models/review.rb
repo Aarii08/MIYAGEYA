@@ -30,9 +30,7 @@ class Review < ApplicationRecord
   end
   # ======================================================================
 
-  # validates :review, presence: true
-  # validates :receive_send, presence: true
-  # validates :person, presence: true
-  # validates :star, presence: true
+  validates :review, presence: true
+
 
 end
