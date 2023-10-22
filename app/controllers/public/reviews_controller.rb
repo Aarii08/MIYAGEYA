@@ -1,4 +1,5 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
 
   def new
     @souvenir = Souvenir.find(params[:souvenir_id])

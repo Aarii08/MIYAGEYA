@@ -19,7 +19,7 @@
       <div class="row mt-5">
         <div class="col-4">
           <% if @souvenir.rakuten_image_url.present? %>
-            <img src="<%= @souvenir.rakuten_image_url %>">
+            <img src="<%= @souvenir.rakuten_image_url %>", class="card-img-top width='30%' height='50%'">
           <% else %>
             <%= image_tag @souvenir.get_image.variant( resize: "250x250")  %>
           <% end %>
@@ -94,7 +94,13 @@
             <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
               <table class="table-borderless">
                 <tr>
-                  <th class="col-5 text-center align-middle mb-2"><h5 class="card-header"><%= review.user.nickname %>さん</h5></th>
+                  <th class="col-5 text-center align-middle mb-2">
+                    <% if review.user.is_deleted == false %>
+                      <h5 class="card-header"><%= review.user.nickname %> さん</h5>
+                    <% else review.user.is_deleted == true %>
+                      <h5 class="card-header">退会済みユーザー</h5>
+                    <% end %>
+                  </th>
                   <td class="col-7 text-center align-middle mb-2"><h6 class="card-header">在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
                 </tr>
                 <tr>

@@ -4,7 +4,15 @@
       <table class="table-borderless">
         <tr>
           <th class="col-3 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"><%= review.souvenir.souvenir_name %></h5></th>
-          <td class="col-2 text-center align-middle mb-2"><h5 class="font-weight-bolder"><%= review.user.nickname %>さん</h5></td>
+          <td class="col-2 text-center align-middle mb-2">
+            <h5 class="font-weight-bolder">
+              <% if review.user.is_deleted == false %>
+                <%= review.user.nickname %> さん
+              <% else review.user.is_deleted == true %>
+                退会済みユーザー
+              <% end %>
+            </h5>
+          </td>
           <td class="col-2 text-center align-middle mb-2"><h6>在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
         </tr>
         <tr>

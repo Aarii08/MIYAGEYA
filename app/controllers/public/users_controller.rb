@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :set_current_user
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:edit, :update]
 
   def show
     @prefectures = Prefecture.all
@@ -46,14 +46,14 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
-  def user_params
-    params.require(:user).permit(:name, :nickname, :email, :residence_prefecture, :is_deleted)
-  end
-
   def ensure_guest_user
     if @user.guest_user?
       redirect_to user_path, alert: "ゲストユーザーはプロフィール編集画面に遷移できません。"
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :nickname, :email, :residence_prefecture, :is_deleted)
   end
 
 end

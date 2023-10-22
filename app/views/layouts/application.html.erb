@@ -10,20 +10,17 @@
     <script src="https://kit.fontawesome.com/5c54eb09f0.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <!--Google font用記述（topページ-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=RocknRoll+One&display=swap" rel="stylesheet">
     <!--ここまで-->
-
-
   </head>
 
   <body>
-    <header>
+    <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <div class="container">
           <%= link_to root_path, class: "navbar-brand" do %>
@@ -34,38 +31,90 @@
           </button>
           <div class="d-flex flex-wrap">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <div class="d-flex align-items-center">
+                <% if admin_signed_in? %>
+                  <h6 class="text-center m-3 mr-5">管理者ログイン中</h6>
+                <% elsif user_signed_in? %>
+                  <h6 class="text-center m-3 mr-5">ようこそ、<%= current_user.nickname %> さん</h6>
+                <% else %>
+                <% end %>
+              </div>
               <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
-                <h5 class=" m-3">管理者ログイン中</h5>
-                <li><%=  link_to "ユーザー", admin_users_path ,class: "nav-link text-light btn btn-dark ml-2" %></li>
-                <li><%=  link_to "ミヤゲ", admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" %></li>
-                <li><%= link_to "県名", admin_prefectures_path, class: "nav-link text-light btn btn-dark ml-2" %></li>
-                <li><%= link_to "レビュー", reviews_admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" %></li>
-                <li><%= link_to "ほしい！", wants_admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" %></li>
-                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-dark ml-2" %></li>
+                <li><%= link_to admin_root_path , class: "nav-link text-light btn btn-dark ml-2" do %>
+                      <i class="fa-solid fa-house"></i>
+                    <% end %>
+                </li>
+                <li><%= link_to admin_users_path ,class: "nav-link text-light btn btn-dark ml-2" do %>
+                      <i class="fa-solid fa-user"> ユーザー</i>
+                    <% end %>
+                </li>
+                <li><%= link_to admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" do %>
+                      <i class="fa-solid fa-gift"> ミヤゲ</i>
+                    <% end %>
+                </li>
+                <li><%= link_to admin_prefectures_path, class: "nav-link text-light btn btn-dark ml-2" do %>
+                      <i class="fa-solid fa-location-dot"> 県</i>
+                    <% end %>
+                </li>
+                <li><%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-dark ml-2" do %>
+                      <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
+                    <% end %>
+                </li>
               <% elsif user_signed_in? %>
-                <h5 class="text-center m-3 mr-5">ようこそ、<%= current_user.nickname %></h5>
-                <li><%= link_to "アバウト", about_path, class: "nav-link text-dark btn btn-outline-success" %></li>
-                <li><%=  link_to "ミヤゲ一覧", souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
-                <li><%=  link_to "マイページ", user_path ,class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-dark btn btn-outline-success ml-2" %></li>
+                <li><%= link_to root_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                      <i class="fa-solid fa-house"></i>
+                    <% end %>
+                </li>
+                <li><%= link_to about_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                      <i class="fa-solid fa-circle-question"></i>
+                    <% end %>
+                </li>
+                <li><%=  link_to souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                      <i class="fa-solid fa-gift"> ミヤゲ</i>
+                    <% end %>
+                </li>
+                <li><%=  link_to user_path ,class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                      <i class="fa-solid fa-circle-user"> マイページ</i>
+                    <% end %>
+                </li>
+                <li><%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                      <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
+                    <% end %>
+                </li>
               <% else %>
-                <li><%= link_to "アバウト", about_path, class: "nav-link text-dark btn btn-outline-info" %></li>
-                <li><%= link_to "ミヤゲ一覧", souvenirs_path, class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
-                <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
-                <li><%= link_to "ログイン", new_user_session_path , class: "nav-link text-dark btn btn-outline-info ml-2" %></li>
+                <li><%= link_to root_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                      <i class="fa-solid fa-house"></i>
+                    <% end %>
+                </li>
+                <li><%= link_to about_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                      <i class="fa-solid fa-circle-question"></i>
+                    <% end %>
+                </li>
+                <li><%= link_to souvenirs_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                      <i class="fa-solid fa-gift"> ミヤゲ</i>
+                    <% end %>
+                </li>
+                <li><%= link_to new_user_registration_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                      <i class="fa-solid fa-user-plus"> 新規登録</i>
+                    <% end %>
+                </li>
+                <li><%= link_to new_user_session_path , class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                      <i class="fa-solid fa-right-to-bracket"> ログイン</i>
+                    <% end %>
+                </li>
               <% end %>
               </ul>
             </div>
             <!-----------------------検索窓--------------------------->
-            <div class="form-group mt-2 ml-auto">
+            <form class="d-flex mt-2 ml-auto">
               <%= search_form_for @q, url: search_souvenirs_path do |f| %>
-                <%= f.search_field :souvenir_name_cont, placeholder: "ミヤゲ名を検索", required: true %>
+                <%= f.search_field :souvenir_name_cont, placeholder: "ミヤゲ名を検索", class: "form-control mr-2", required: true %>
                 <button class="btn btn-outline-success" type="submit">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               <% end %>
-            </div>
+            </form>
             <!-----------------------検索窓--------------------------->
           </div>
         </div>
@@ -82,12 +131,12 @@
     <!--ここまで-->
     <%= yield %>
 
+<!--================= 上に行くJs ====================-->
 
     <a href="#top" class="scroll-top-btn">
-      <i class="fa-regular fa-circle-up fa-3x" data-toggle=tooltip data-placement="bottom" title="最上部へ移動"></i>
+      <i class="fa-regular fa-circle-up fa-2x" data-toggle=tooltip data-placement="bottom" title="最上部へ移動"></i>
 　  </a>
-
-
+<!--==================================================-->
     <footer class="text-center border-top border-dark m-5">
       Copyright ©ミヤゲ屋  All Rights Reserved.
       <%= link_to new_admin_session_path do %>

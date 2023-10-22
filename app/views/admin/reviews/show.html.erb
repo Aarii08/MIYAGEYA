@@ -13,7 +13,11 @@
         <tbody>
           <tr>
             <th class="text-center">表示名（ユーザー名）</th>
-            <td><%= @review.user.nickname %></td>
+            <td><%= @review.user.nickname %>&emsp;
+                  <% if @review.user.is_deleted == true %>
+                    <span>（退会済）</span>
+                  <% end %>
+            </td>
             <td></td>
           </tr>
           <tr>

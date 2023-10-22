@@ -5,7 +5,13 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
-      <h3 class="mb-3"><%= @review.user.nickname %>さんの</h3>
+      <h3 class="mb-3">
+        <% if @review.user.is_deleted == false %>
+          <%= @review.user.nickname %> さんの
+        <% else @review.user.is_deleted == true %>
+          <span>退会済みユーザー</span> の
+        <% end %>
+      </h3>
       <h2 class="text-center"><%= @souvenir.souvenir_name %> のレビュー詳細</h2>
       <div class="m-3 text-center">
         <% if @review.user == current_user %>
@@ -18,7 +24,14 @@
             <tbody>
               <tr>
                 <td class="text-center col-6">表示名（ユーザー名）</td>
-                <td class="col-6"><%= @review.user.nickname %></td>
+
+                <td class="col-6">
+                  <% if @review.user.is_deleted == false %>
+                    <%= @review.user.nickname %>
+                  <% else @review.user.is_deleted == true %>
+                    <span>退会済みユーザー</span>
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td class="text-center align-middle">在住県名</td>

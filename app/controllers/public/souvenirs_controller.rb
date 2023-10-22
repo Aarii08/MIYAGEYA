@@ -1,4 +1,5 @@
 class Public::SouvenirsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
 
   def index
     if params[:keyword]
@@ -40,6 +41,13 @@ class Public::SouvenirsController < ApplicationController
   end
 
   private
+
+  def log_in_user
+    unless user_signed_in?
+      flash[:alert] = "アクセスできません。"
+      redirect_to souvenirs_path
+    end
+  end
 
   def souvenir_params
     params.require(:souvenir).permit( :souvenir_name, :introduction, :category, :image, :prefecture_id, :rakuten_image_url, :rakuten_url)

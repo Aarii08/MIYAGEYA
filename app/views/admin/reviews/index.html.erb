@@ -22,7 +22,12 @@
           <tr>
             <td class="align-middle"><%= review.created_at.to_s(:datetime_jp) %></td>
             <td class="align-middle"><%= review.souvenir.souvenir_name %></td>
-            <td class="align-middle"><%= review.user.nickname %></td>
+            <td class="align-middle">
+              <%= review.user.nickname %>
+              <% if review.user.is_deleted == true %>
+                <span>（退会済）</span>
+              <% end %>
+            </td>
             <td class="align-middle"><%= review.review.truncate(10) %></td>
             <!------------------------".truncate(10)" は、文字列を10文字だけ表示する------------------>
             <td class="align-middle"><%= link_to "詳細", admin_souvenir_review_path(review.souvenir, review), class: "btn btn-outline-info" %></td>
