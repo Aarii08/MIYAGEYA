@@ -1,7 +1,7 @@
 <% souvenirs.each do |souvenir| %>
 
     <div class="card-deck col-4 mx-auto mb-3 text-center">
-      <%= link_to souvenir_path(souvenir) do %>
+      <%= link_to souvenir_path(souvenir), data: {"turbolinks" => false} do %>
         <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
           <% if souvenir.rakuten_image_url.present? %>
             <img src="<%= souvenir.rakuten_image_url %>">

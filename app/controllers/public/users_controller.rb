@@ -40,6 +40,11 @@ class Public::UsersController < ApplicationController
     @prefectures = Prefecture.all
   end
 
+  def users_reviews
+    @prefectures = Prefecture.all
+    @user = User.find(params[:id])
+  end
+
   private
 
   def set_current_user

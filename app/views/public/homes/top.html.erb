@@ -26,7 +26,7 @@
       <div class="row mt-3">
         <% @reviews.each do |review| %>
 		      <div class="card-deck col-4 mx-auto mb-3 text-center">
-          <%= link_to souvenir_review_path(review.souvenir, review) do %>
+          <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
             <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
               <% if review.souvenir.rakuten_image_url.present? %>
                 <img src="<%= review.souvenir.rakuten_image_url %>">
@@ -35,7 +35,7 @@
               <% end %>
               <div class="card-body">
                 <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
-                <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %></h6>
+                <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %>&ensp;のミヤゲ</h6>
                 <p class="card-subtitle m-2">
                   <% if review.user.is_deleted == false %>
                     <%= review.user.nickname %>
@@ -50,14 +50,14 @@
 		      </div>
 		    <% end %>
 
-		    <%= link_to "もっとレビューをみる", souvenirs_reviews_path, class: "btn btn-success ml-auto mb-3" %>
+		    <%= link_to "もっとレビューをみる", souvenirs_reviews_path, class: "btn btn-success ml-auto mb-3", data: {"turbolinks" => false} %>
 
       </div>
       <h3 class="m-2">ミヤゲを探す</h3>
       <h3 class="m-3">タグ</h3>
       <div class="row">
         <% Tag.all.each do |tag| %>
-          <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light" do %></span>
+          <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light", data: {"turbolinks" => false} do %></span>
             <%= tag.tag_name %>
           <% end %>
         <% end %>
@@ -66,20 +66,20 @@
       <h3 class="m-3">項目別</h3>
       <div class="row">
         <% @review_people.each do |review| %>
-          <%= link_to search_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light" do %>
+          <%= link_to search_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light", data: {"turbolinks" => false} do %>
             <%= review.people_i18n %>
           <% end %>
         <% end %>
         <% @review_usefulness.each do |review| %>
-          <%= link_to search_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light" do %>
+          <%= link_to search_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light", data: {"turbolinks" => false} do %>
             <%= review.usefulness_i18n %>
           <% end %>
         <% end %>
       </div>
       <h3 class="m-3">カテゴリー</h3>
         <div class="row">
-          <%= link_to "食品", search_category_path(name: "food"), class: "badge badge-pill badge-warning mr-2" %>
-          <%= link_to "グッズ", search_category_path(name: "goods"), class: "badge badge-pill badge-warning mr-2" %>
+          <%= link_to "食品", search_category_path(name: "food"), class: "badge badge-pill badge-warning mr-2", data: {"turbolinks" => false} %>
+          <%= link_to "グッズ", search_category_path(name: "goods"), class: "badge badge-pill badge-warning mr-2", data: {"turbolinks" => false} %>
         </div>
 
         =======================================================================
@@ -88,7 +88,7 @@
         <h3 class="m-3">タグ</h3>
         <div class="row">
           <% Tag.all.each do |tag| %>
-            <span><%= link_to search_review_tag_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light" do %></span>
+            <span><%= link_to search_review_tag_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light", data: {"turbolinks" => false} do %></span>
               <%= tag.tag_name %>
             <% end %>
           <% end %>
@@ -97,12 +97,12 @@
         <h3 class="m-3">項目別</h3>
         <div class="row">
           <% @review_people.each do |review| %>
-            <%= link_to search_review_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light" do %>
+            <%= link_to search_review_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light", data: {"turbolinks" => false} do %>
               <%= review.people_i18n %>
             <% end %>
           <% end %>
           <% @review_usefulness.each do |review| %>
-            <%= link_to search_review_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light" do %>
+            <%= link_to search_review_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light", data: {"turbolinks" => false} do %>
               <%= review.usefulness_i18n %>
             <% end %>
           <% end %>

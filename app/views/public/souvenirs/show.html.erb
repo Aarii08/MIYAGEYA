@@ -14,7 +14,7 @@
               <%= render "want", souvenir: @souvenir %></div>
             </div>
           <% end %>
-          <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary float-right" %>
+          <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary float-right", data: {"turbolinks" => false} %>
       </div>
       <div class="row mt-5">
         <div class="col-4">
@@ -94,47 +94,47 @@
         レビュー：全 <%= @souvenir.reviews.count %>件
       </div>
 
-      <div class="col-12 mx-auto">
-        <% @souvenir.reviews.each do |review| %>
-          <%= link_to souvenir_review_path(@souvenir, review) do %>
+      <% @souvenir.reviews.each do |review| %>
+        <% if @souvenir.present? %>
+          <%= link_to souvenir_review_path(@souvenir, review), data: {"turbolinks" => false} do %>
             <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
-              <table class="table">
+              <table class="table-borderless">
                 <tr>
-                  <th class="col-5 text-center align-middle mb-2">
-                    <% if review.user.is_deleted == false %>
-                      <h5 class="card-header"><%= review.user.nickname %> さん</h5>
-                    <% else review.user.is_deleted == true %>
-                      <h5 class="card-header">退会済みユーザー</h5>
-                    <% end %>
+                  <th class="col-3 text-center align-middle mb-2">
+                    <h5 class="py-2 bg-secondary text-white">
+                      <% if review.user.is_deleted == false %>
+                        <%= review.user.nickname %> さん
+                      <% else review.user.is_deleted == true %>
+                        退会済みユーザー
+                      <% end %>
+                    </h5>
                   </th>
-                  <td class="col-6 align-middle mb-2">
-                    <h6 class="card-header">在住県：&ensp;<%= review.user.residence_prefecture %>
-                                   &emsp;&emsp;<%= review.created_at.strftime('%Y年%m月%d日') %>
-                    </h6>
+                  <td class="col-2 text-center align-middle mb-2">
+                    <h5 class="font-weight-bolder">在住県：&ensp;<%= review.user.residence_prefecture %></h5>
                   </td>
+                  <td class="col-2 text-center align-middle mb-2"><h6><%= review.created_at.strftime('%Y年%m月%d日') %></h6></td>
                 </tr>
                 <tr>
-                  <td class="card-subtitle text-center">貰った？贈った？</td>
-                  <td class="align-middle"><%= review.receive_send %></td>
+                  <th class="card-subtitle text-center p-2">貰った？贈った？</th>
+                  <td colspan="2", class="align-middle"><%= review.receive_send %></td>
                 </tr>
                 <tr>
-                  <td class="card-subtitle text-center">誰に？</td>
-                  <td class="align-middle"> <%= review.people_i18n %></td>
+                  <th class="card-subtitle text-center p-2">誰に？</th>
+                  <td colspan="2",class="align-middle"> <%= review.people_i18n %></td>
                 </tr>
                 <tr>
-                  <td class="card-subtitle text-center">用途は？</td>
-                  <td class="align-middle"><%= review.usefulness_i18n %></td>
+                  <th class="card-subtitle text-center p-2">用途は？</th>
+                  <td colspan="2",class="align-middle"><%= review.usefulness_i18n %></td>
                 </tr>
                 <tr>
-                  <td class="card-subtitle text-center">レビュー</td>
-                  <td class="align-middle"><%= safe_join(review.review.split("\n"),tag(:br)) %></p></td>
+                  <th class="card-subtitle text-center p-2">レビュー</th>
+                  <td colspan="2",class="align-middle"><%= safe_join(review.review.split("\n"),tag(:br)) %></p></td>
                 </tr>
               </table>
             </div>
           <% end %>
         <% end %>
-      </div>
-
+      <% end %>
     </div>
   </div>
 </div>

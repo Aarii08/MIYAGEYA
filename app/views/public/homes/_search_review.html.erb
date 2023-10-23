@@ -1,6 +1,6 @@
 <% reviews.each do |review| %>
-  <% if review.souvenir. present? %>
-    <%= link_to souvenir_review_path(review.souvenir, review) do %>
+  <% if review.souvenir.present? %>
+    <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
       <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
         <table class="table-borderless">
           <tr>
@@ -17,23 +17,23 @@
             <td class="col-2 text-center align-middle mb-2"><h6>在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
           </tr>
           <tr>
-            <th class="card-subtitle text-center">投稿日</th>
+            <th class="card-subtitle text-center p-2">投稿日</th>
             <td colspan="2", class="align-middle"><%= review.created_at.strftime('%Y年%m月%d日') %></td>
           </tr>
           <tr>
-            <th class="card-subtitle text-center">貰った？贈った？</th>
+            <th class="card-subtitle text-center p-2">貰った？贈った？</th>
             <td colspan="2", class="align-middle"><%= review.receive_send %></td>
           </tr>
           <tr>
-            <th class="card-subtitle text-center">誰に？</th>
+            <th class="card-subtitle text-center p-2">誰に？</th>
             <td colspan="2",class="align-middle"> <%= review.people_i18n %></td>
           </tr>
           <tr>
-            <th class="card-subtitle text-center">用途は？</th>
+            <th class="card-subtitle text-center p-2">用途は？</th>
             <td colspan="2",class="align-middle"><%= review.usefulness_i18n %></td>
           </tr>
           <tr>
-            <th class="card-subtitle text-center">レビュー</th>
+            <th class="card-subtitle text-center p-2">レビュー</th>
             <td colspan="2",class="align-middle"><%= safe_join(review.review.split("\n"),tag(:br)) %></p></td>
           </tr>
         </table>
