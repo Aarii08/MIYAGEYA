@@ -18,15 +18,17 @@
           </tr>
         </thead>
         <% @souvenirs.each do |souvenir| %>
-        <tbody>
-          <tr>
-            <td class="align-middle"><%= souvenir.id %></td>
-            <td class="align-middle"><%= souvenir.souvenir_name %></td>
-            <td class="align-middle"><%= souvenir.prefecture.prefecture_name %></td>
-            <td></td>
-            <td class="text-center"><%= link_to "詳細", admin_souvenir_path(souvenir), class: "btn btn-outline-info" %></td>
-          </tr>
-        </tbody>
+          <% if souvenir.prefecture.present? %>
+            <tbody>
+              <tr>
+                <td class="align-middle"><%= souvenir.id %></td>
+                <td class="align-middle"><%= souvenir.souvenir_name %></td>
+                <td class="align-middle"><%= souvenir.prefecture.prefecture_name %></td>
+                <td></td>
+                <td class="text-center"><%= link_to "詳細", admin_souvenir_path(souvenir), class: "btn btn-outline-info" %></td>
+              </tr>
+            </tbody>
+          <% end %>
         <% end %>
       </table>
     </div>

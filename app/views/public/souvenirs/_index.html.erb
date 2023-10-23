@@ -1,22 +1,28 @@
 <% souvenirs.each do |souvenir| %>
-  <div class="card-deck col-4 mx-auto mb-3 text-center">
-    <%= link_to souvenir_path(souvenir) do %>
-      <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
-        <% if souvenir.rakuten_image_url.present? %>
-          <img src="<%= souvenir.rakuten_image_url %>">
-        <% else %>
-          <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50%'" %>
-        <% end %>
-        <div class="card-body">
-          <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
-          <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>
-          <p class="card-subtitle m-2">ほしい！：<%= souvenir.wants.count %> 件<br>
-		                                   レビュー：<%= souvenir.reviews.count %> 件</p>
-          <p class="card-subtitle m-2"><%= render "public/souvenirs/average_star", souvenir: souvenir %></p>
-          <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
-          <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
+
+    <div class="card-deck col-4 mx-auto mb-3 text-center">
+      <%= link_to souvenir_path(souvenir) do %>
+        <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
+          <% if souvenir.rakuten_image_url.present? %>
+            <img src="<%= souvenir.rakuten_image_url %>">
+          <% else %>
+            <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50%'" %>
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
+            <% if souvenir.prefecture.present? %>
+              <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>
+            <% else %>
+              <h6 class="card-subtitle m-2">登録されていない都道府県</h6>
+            <% end %>
+            <p class="card-subtitle m-2">ほしい！：<%= souvenir.wants.count %> 件<br>
+		                                     レビュー：<%= souvenir.reviews.count %> 件</p>
+            <p class="card-subtitle m-2"><%= render "public/souvenirs/average_star", souvenir: souvenir %></p>
+            <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
+              <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+
 <% end %>

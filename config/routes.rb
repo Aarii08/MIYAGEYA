@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     patch 'users/withdrawal' => 'users#withdrawal', as: 'user_withdrawal'
     get 'users/review' => 'users#review', as: 'user_review'
     get 'users/want' => 'users#want', as: 'user_want'
-
+    
+    get 'souvenirs/reviews' => 'souvenirs#reviews', as: 'souvenirs_reviews'
     resources :souvenirs do
       resource :wants, only: [:create, :destroy]
       resources :reviews, except: [:index]

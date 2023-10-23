@@ -29,7 +29,6 @@ class Public::ReviewsController < ApplicationController
     @prefectures = Prefecture.all
     # タグ用
     @review_tags = @review.tags
-
   end
 
   def edit

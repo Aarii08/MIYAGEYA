@@ -39,6 +39,11 @@ class Public::SouvenirsController < ApplicationController
     end
     @prefectures = Prefecture.all
   end
+  
+  def reviews
+    @prefectures = Prefecture.all
+    @reviews = Review.all
+  end
 
   private
 

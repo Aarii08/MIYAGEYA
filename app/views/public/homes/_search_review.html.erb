@@ -1,41 +1,43 @@
 <% reviews.each do |review| %>
-  <%= link_to souvenir_review_path(review.souvenir, review) do %>
-    <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
-      <table class="table-borderless">
-        <tr>
-          <th class="col-3 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"><%= review.souvenir.souvenir_name %></h5></th>
-          <td class="col-2 text-center align-middle mb-2">
-            <h5 class="font-weight-bolder">
-              <% if review.user.is_deleted == false %>
-                <%= review.user.nickname %> さん
-              <% else review.user.is_deleted == true %>
-                退会済みユーザー
-              <% end %>
-            </h5>
-          </td>
-          <td class="col-2 text-center align-middle mb-2"><h6>在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
-        </tr>
-        <tr>
-          <th class="card-subtitle text-center">投稿日</th>
-          <td colspan="2", class="align-middle"><%= review.created_at.strftime('%Y年%m月%d日') %></td>
-        </tr>
-        <tr>
-          <th class="card-subtitle text-center">貰った？贈った？</th>
-          <td colspan="2", class="align-middle"><%= review.receive_send %></td>
-        </tr>
-        <tr>
-          <th class="card-subtitle text-center">誰に？</th>
-          <td colspan="2",class="align-middle"> <%= review.people_i18n %></td>
-        </tr>
-        <tr>
-          <th class="card-subtitle text-center">用途は？</th>
-          <td colspan="2",class="align-middle"><%= review.usefulness_i18n %></td>
-        </tr>
-        <tr>
-          <th class="card-subtitle text-center">レビュー</th>
-          <td colspan="2",class="align-middle"><%= safe_join(review.review.split("\n"),tag(:br)) %></p></td>
-        </tr>
-      </table>
-    </div>
+  <% if review.souvenir. present? %>
+    <%= link_to souvenir_review_path(review.souvenir, review) do %>
+      <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
+        <table class="table-borderless">
+          <tr>
+            <th class="col-3 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"><%= review.souvenir.souvenir_name %></h5></th>
+            <td class="col-2 text-center align-middle mb-2">
+              <h5 class="font-weight-bolder">
+                <% if review.user.is_deleted == false %>
+                  <%= review.user.nickname %> さん
+                <% else review.user.is_deleted == true %>
+                  退会済みユーザー
+                <% end %>
+              </h5>
+            </td>
+            <td class="col-2 text-center align-middle mb-2"><h6>在住県：&ensp;<%= review.user.residence_prefecture %></h6></td>
+          </tr>
+          <tr>
+            <th class="card-subtitle text-center">投稿日</th>
+            <td colspan="2", class="align-middle"><%= review.created_at.strftime('%Y年%m月%d日') %></td>
+          </tr>
+          <tr>
+            <th class="card-subtitle text-center">貰った？贈った？</th>
+            <td colspan="2", class="align-middle"><%= review.receive_send %></td>
+          </tr>
+          <tr>
+            <th class="card-subtitle text-center">誰に？</th>
+            <td colspan="2",class="align-middle"> <%= review.people_i18n %></td>
+          </tr>
+          <tr>
+            <th class="card-subtitle text-center">用途は？</th>
+            <td colspan="2",class="align-middle"><%= review.usefulness_i18n %></td>
+          </tr>
+          <tr>
+            <th class="card-subtitle text-center">レビュー</th>
+            <td colspan="2",class="align-middle"><%= safe_join(review.review.split("\n"),tag(:br)) %></p></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
   <% end %>
 <% end %>

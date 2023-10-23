@@ -18,22 +18,24 @@
           </tr>
         </thead>
         <% @review.each do |review| %>
-        <tbody>
-          <tr>
-            <td class="align-middle"><%= review.created_at.to_s(:datetime_jp) %></td>
-            <td class="align-middle"><%= review.souvenir.souvenir_name %></td>
-            <td class="align-middle">
-              <%= review.user.nickname %>
-              <% if review.user.is_deleted == true %>
-                <span>（退会済）</span>
-              <% end %>
-            </td>
-            <td class="align-middle"><%= review.review.truncate(10) %></td>
-            <!------------------------".truncate(10)" は、文字列を10文字だけ表示する------------------>
-            <td class="align-middle"><%= link_to "詳細", admin_souvenir_review_path(review.souvenir, review), class: "btn btn-outline-info" %></td>
-            <td class="align-middle"><%= link_to "削除", admin_souvenir_review_path(review.souvenir, review), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger" %></td>
-          </tr>
-        </tbody>
+          <% if review.souvenir.present? %>
+            <tbody>
+              <tr>
+                <td class="align-middle"><%= review.created_at.to_s(:datetime_jp) %></td>
+                <td class="align-middle"><%= review.souvenir.souvenir_name %></td>
+                <td class="align-middle">
+                  <%= review.user.nickname %>
+                  <% if review.user.is_deleted == true %>
+                    <span>（退会済）</span>
+                  <% end %>
+                </td>
+                <td class="align-middle"><%= review.review.truncate(10) %></td>
+                    <!------------------------".truncate(10)" は、文字列を10文字だけ表示する------------------>
+                <td class="align-middle"><%= link_to "詳細", admin_souvenir_review_path(review.souvenir, review), class: "btn btn-outline-info" %></td>
+                <td class="align-middle"><%= link_to "削除", admin_souvenir_review_path(review.souvenir, review), "data-confirm" => "削除してもよろしいですか？", method: :delete, class: "btn btn-outline-danger" %></td>
+              </tr>
+            </tbody>
+          <% end %>
         <% end %>
       </table>
     </div>

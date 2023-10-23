@@ -14,7 +14,6 @@ Admin.create!(
   )
 
 # ============================ 初期Userの追加 =================================
-
 # 10.times do |n|
 #   User.create!(
 #     name: "令和#{n + 1}太郎",
@@ -25,7 +24,6 @@ Admin.create!(
 #     password: "password"
 #   )
 # end
-
 
 User.create!(
   [
@@ -111,15 +109,14 @@ User.create!(
     }
   ]
 )
-
 # =========================== 初期Prefectureの追加 ============================
 
-  ['東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県']
-  .each do |name|
-    Prefecture.create!(
-      { prefecture_name: name }
-    )
-  end
+['東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県']
+.each do |name|
+  Prefecture.create!(
+    { prefecture_name: name }
+  )
+end
 
 # ========================= 初期Souvenireの追加 ================================
 

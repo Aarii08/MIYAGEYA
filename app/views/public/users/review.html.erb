@@ -11,22 +11,24 @@
       </div>
       <div class="row">
         <% @user.reviews.each do |review| %>
-        <div class="card-deck col-4 mx-auto mb-3">
-          <%= link_to souvenir_review_path(review.souvenir_id, review) do %>
-          <div class="card h-100 border-secondary btn btn-outline-primary", style="width:15rem;">
-            <% if review.souvenir.rakuten_image_url.present? %>
-              <img src="<%= review.souvenir.rakuten_image_url %>">
-            <% else %>
-              <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
-            <% end %>
-            <div class="card-body">
-              <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
-              <p class="card-text"><%= review.review %></p>
-              <p td class="card-subtitle text-center"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+          <% if review.souvenir.present? %>
+            <div class="card-deck col-4 mx-auto mb-3">
+              <%= link_to souvenir_review_path(review.souvenir_id, review) do %>
+                <div class="card h-100 border-secondary btn btn-outline-primary", style="width:15rem;">
+                  <% if review.souvenir.rakuten_image_url.present? %>
+                    <img src="<%= review.souvenir.rakuten_image_url %>">
+                  <% else %>
+                    <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+                  <% end %>
+                  <div class="card-body">
+                    <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
+                    <p class="card-text"><%= review.review %></p>
+                    <p td class="card-subtitle text-center"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+                  </div>
+                </div>
+              <% end %>
             </div>
-          </div>
           <% end %>
-        </div>
         <% end %>
       </div>
     </div>

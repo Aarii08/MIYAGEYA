@@ -11,6 +11,7 @@ class Souvenir < ApplicationRecord
   validates :souvenir_name, presence: true
   validates :introduction, presence: true
   validates :category, presence: true
+  validates :prefecture_id, presence: true
 
   def get_image
     unless image.attached?
