@@ -6,28 +6,113 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# ＝＝＝＝＝＝＝＝＝＝＝Admin情報の追加＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+# =========================== Admin情報の追加 ===============================
 
 Admin.create!(
   email: 'admin@admin',
   password: 'password'
   )
 
-# ＝＝＝＝＝＝＝＝＝＝＝初期Userの追加＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+# ============================ 初期Userの追加 =================================
 
-10.times do |n|
-  User.create!(
-    name: "令和#{n + 1}太郎",
-    nickname: "#{n + 1}太郎",
-    email: "test#{n + 1}@test.com",
-    residence_prefecture: "東京都",
-    is_deleted: false,
-    password: "password"
-  )
-end
+# 10.times do |n|
+#   User.create!(
+#     name: "令和#{n + 1}太郎",
+#     nickname: "#{n + 1}太郎",
+#     email: "test#{n + 1}@test.com",
+#     residence_prefecture: "東京都",
+#     is_deleted: false,
+#     password: "password"
+#   )
+# end
 
 
-# ＝＝＝＝＝＝＝＝＝＝＝初期Prefectureの追加＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+User.create!(
+  [
+    {
+      name: "大泉洋",
+      nickname: "洋ちゃん",
+      email: "test1@test.com",
+      residence_prefecture: "北海道",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "サンドウィッチマン",
+      nickname: "サンド",
+      email: "test2@test.com",
+      residence_prefecture: "宮城県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "U字工事",
+      nickname: "ごめんね、ごめんね〜",
+      email: "test3@test.com",
+      residence_prefecture: "栃木県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "渡辺直美",
+      nickname: "なおみ",
+      email: "test4@test.com",
+      residence_prefecture: "茨城県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "中山秀征",
+      nickname: "ひでちゃん",
+      email: "test5@test.com",
+      residence_prefecture: "群馬県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "マツコ・デラックス",
+      nickname: "マツコ",
+      email: "test6@test.com",
+      residence_prefecture: "千葉県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "明石屋さんま",
+      nickname: "さんま",
+      email: "test7@test.com",
+      residence_prefecture: "奈良県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "イモトアヤコ",
+      nickname: "イモト",
+      email: "test8@test.com",
+      residence_prefecture: "鳥取県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "指原莉乃",
+      nickname: "さっしー",
+      email: "test9@test.com",
+      residence_prefecture: "大分県",
+      is_deleted: false,
+      password: "password"
+    },
+    {
+      name: "新垣結衣",
+      nickname: "ガッキー",
+      email: "test10@test.com",
+      residence_prefecture: "沖縄県",
+      is_deleted: false,
+      password: "password"
+    }
+  ]
+)
+
+# =========================== 初期Prefectureの追加 ============================
 
   ['東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県']
   .each do |name|
@@ -36,7 +121,7 @@ end
     )
   end
 
-# ＝＝＝＝＝＝＝＝＝＝＝初期Souvenireの追加＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+# ========================= 初期Souvenireの追加 ================================
 
 Souvenir.create!(
   [
@@ -78,8 +163,6 @@ Souvenir.create!(
       category: 0,
       rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/baum-nature/cabinet/img3/mellon-s-ry.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/baum-nature/meron01/"
-      # averege_star: "",
-      # image: File.open('./app/assets/images/test.jpg')
     },
     {
       prefecture_id: 6,
@@ -103,7 +186,7 @@ Souvenir.create!(
       souvenir_name: "東京タワー模型",
       introduction: "東京と言ったらこれでしょ！！",
       category: 1,
-      rakuten_image_url:  "https://thumbnail.image.rakuten.co.jp/@0_mall/jema/cabinet/06161720/imgrc0103800717.jpg?_ex=128x128",
+      rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/jema/cabinet/06161720/imgrc0103800717.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/jema/new-1999/"
     },
      {
@@ -182,7 +265,7 @@ Souvenir.create!(
   ]
 )
 
-# ＝＝＝＝＝＝＝＝＝＝＝初期Reviewの追加＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+# ========================== 初期Reviewの追加 =================================
 
 Review.create!(
   [
@@ -192,7 +275,7 @@ Review.create!(
       review: "観光でも出張でも、東京に来たら必ず買って帰ります。子供も大好き。バナナの味がたまらないです。",
       price: 1200,
       purchase_place: "東京駅",
-      receive_send: "貰う",
+      receive_send: "贈った",
       people: 1,
       usefulness: 1,
       star: 4.0,
@@ -204,7 +287,7 @@ Review.create!(
                 口の中でサクサクとした食感、優しい甘さとふんわりと感じるバターの風味がたまりません。",
       price: 1350,
       purchase_place: "豊島屋本店",
-      receive_send: "贈る",
+      receive_send: "贈った",
       people: 2,
       usefulness: 3,
       star: 3.5,
@@ -217,7 +300,7 @@ Review.create!(
                 賞味期限が当日までです。",
       price: 1000,
       purchase_place: "川越駅",
-      receive_send: "贈る",
+      receive_send: "贈った",
       people: 1,
       usefulness: 2,
       star: 3.0,
@@ -230,7 +313,7 @@ Review.create!(
                 最中の皮はパリパリとしており、中には甘さ控えめの餡がたっぷり。餡の中にも、ピーナッツが練り込まれています。",
       price: 1450,
       purchase_place: "成田空港",
-      receive_send: "贈る",
+      receive_send: "贈った",
       people: 3,
       usefulness: 0,
       star: 4.0,
@@ -241,7 +324,7 @@ Review.create!(
       review: "メロンバームは珍しく、メロン好きのお贈りした先方の方は大変喜んでいらしゃいました。我が家でも食べてみたいと思いました。",
       price: 2250,
       purchase_place: "茨城県鉾田市「深作農園」",
-      receive_send: "贈る",
+      receive_send: "贈った",
       people: 2,
       usefulness: 3,
       star: 3.0,
@@ -253,7 +336,7 @@ Review.create!(
               お土産にもよし、自分用にもよし！ 栃木県御用邸チーズケーキをぜひともオススメします！",
       price: 1580,
       purchase_place: "宇都宮駅",
-      receive_send: "贈る",
+      receive_send: "贈った",
       people: 5,
       usefulness: 3,
       star: 4.0,
@@ -264,10 +347,226 @@ Review.create!(
       review: "フランス語で「王様のおやつ」という意味の贅沢なラスクです。サックサクの食感と香ばしい香りで甘みも程よく絶対に喜ばれるお土産の定番だと思います。",
       price: 1200,
       purchase_place: "高崎駅",
-      receive_send: "贈る",
+      receive_send: "贈った",
       people: 0,
       usefulness: 0,
-      star: 4.5
+      star: 4.5,
+    },
+    {
+      user_id: 5,
+      souvenir_id: 11,
+      review: "しっとりした生地の中にツブツブ食感を残した栗の餡が入っています。栗の餡は甘すぎず、コーヒー、紅茶、緑茶、ウーロン茶など、和洋中どんなお茶にもマッチします。",
+      price: 1728,
+      purchase_place: "横浜駅",
+      receive_send: "贈った",
+      people: 7,
+      usefulness: 3,
+      star: 3.5,
+    },
+    {
+      user_id: 3,
+      souvenir_id: 9,
+      review: "ぐんまちゃんがかわいくて、つい購入。友人の子供にプレゼントします。",
+      price: 880,
+      purchase_place: "高崎駅",
+      receive_send: "贈った",
+      people: 3,
+      usefulness: 0,
+      star: 4.0,
+    },
+    {
+      user_id: 6,
+      souvenir_id: 15,
+      review: "甘くて爽やか、美味しくて口にすると一気に飲んでしまいます。ダイエットしてる人は危険です！（笑）",
+      price: 120,
+      purchase_place: "佐野SA",
+      receive_send: "贈った",
+      people: 0,
+      usefulness: 0,
+      star: 4.5,
+    },
+    {
+      user_id: 2,
+      souvenir_id: 1,
+      review: "ふわんふわんの柔らか生地。カットした断面を見たら、本物のバナナっぽい。中のクリームは、ぽってりねっとり。バナナの風味は強くないけれど、わざとらしくなくていい。
+                他にも色々な種類があるみたいだから、次は違う味を食べてみたい。",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 4,
+      usefulness: 1,
+      star: 4.0,
+    },
+    {
+      user_id: 7,
+      souvenir_id: 13,
+      review: "周りは薄皮、あんこはたっぷり。あんこは甘すぎず、お茶請けにぴったりでした。義母の手土産に買って行ったら、美味しいと好評でした。",
+      price: 1580,
+      purchase_place: "イオンレイクタウン",
+      receive_send: "贈った",
+      people: 2,
+      usefulness: 3,
+      star: 4.0,
+    },
+    {
+      user_id: 8,
+      souvenir_id: 2,
+      review: "鎌倉といえば鳩サブレーで、昔から馴染みのあるものなので貰うととても嬉しいです。口の中でサクサクとした食感、優しい甘さとふんわりと感じるバターの風味がたまりません。",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 1,
+      usefulness: 0,
+      star: 4.0,
+    },
+    {
+      user_id: 8,
+      souvenir_id: 7,
+      review: "いただきもので久しぶりにいただいたこちらのラスク！久々に食べると美味しい〜外側についているジャリジャリのお砂糖と食べると口の中でジュワッとなるバターのしみたラスクがとても美味しいです。",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 5,
+      usefulness: 3,
+      star: 4.0,
+    },
+    {
+      user_id: 9,
+      souvenir_id: 7,
+      review: "いただきもので久しぶりにいただいたこちらのラスク！久々に食べると美味しい〜外側についているジャリジャリのお砂糖と食べると口の中でジュワッとなるバターのしみたラスクがとても美味しいです。",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 5,
+      usefulness: 3,
+      star: 4.0,
+    },
+     {
+      user_id: 10,
+      souvenir_id: 7,
+      review: "このノーマルなラスクも大好き！冬になると発売されるチョコのかかったラスクも好き！次回はチョコのかかったラスクを購入する！！",
+      price: 760,
+      purchase_place: "イオンモール",
+      receive_send: "贈った",
+      people: 1,
+      usefulness: 4,
+      star: 4.5,
     }
   ]
 )
+
+# =============================== タグ =======================================
+
+["お菓子", "おいしい", "甘い", "サクサク", "いも", "あんこ", "落花生", "メロン", "チーズ",
+  "ぐんまちゃん",  "レモン", "バナナ",  "サブレ", "うまい", "ラスク", "ふわふわ"]
+.each do |tag|
+  Tag.create!(
+    {tag_name: tag }
+  )
+end
+
+TagMap.create!(
+  [
+    {
+      tag_id: 1,
+      review_id: 1
+    },
+    {
+      tag_id: 2,
+      review_id: 1
+    },
+    {
+      tag_id: 3,
+      review_id: 2
+    },
+    {
+      tag_id: 4,
+      review_id: 2
+    },
+    {
+      tag_id: 5,
+      review_id: 3
+    },
+    {
+      tag_id: 6,
+      review_id: 3
+    },
+    {
+      tag_id: 7,
+      review_id: 4
+    },
+    {
+      tag_id: 8,
+      review_id: 5
+    },
+    {
+      tag_id: 9,
+      review_id: 6
+    },
+    {
+      tag_id: 3,
+      review_id: 7
+    },
+    {
+      tag_id: 4,
+      review_id: 7
+    },
+    {
+      tag_id: 2,
+      review_id: 8
+    },
+    {
+      tag_id: 10,
+      review_id: 9
+    },
+    {
+      tag_id: 11,
+      review_id: 10
+    },
+    {
+      tag_id: 12,
+      review_id: 11
+    },
+    {
+      tag_id: 6,
+      review_id: 12
+    },
+    {
+      tag_id: 13,
+      review_id: 13
+    },
+    {
+      tag_id: 4,
+      review_id: 14
+    },
+    {
+      tag_id: 14,
+      review_id: 14
+    },
+    {
+      tag_id: 1,
+      review_id: 15
+    },
+    {
+      tag_id: 2,
+      review_id: 15
+    },
+    {
+      tag_id: 15,
+      review_id: 16
+    }
+  ]
+ )
+# ========================= ほしい！ ==========================================
+
+User.all.each do |user|
+  Souvenir.all.each do |souvenir|
+    if rand(0..1) == 1
+      Want.find_or_create_by!(
+        user_id: user.id,
+        souvenir_id: souvenir.id
+      )
+    end
+  end
+end
+# =============================================================================
