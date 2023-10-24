@@ -18,7 +18,8 @@ class Admin::ReviewsController < ApplicationController
       redirect_to reviews_admin_souvenirs_path
     else
       flash[:alert] = "レビュー情報を更新できませんでした。"
-      render :show
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
 
   end

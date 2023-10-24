@@ -19,7 +19,7 @@
                 <td class="text-center"><%= link_to "楽天で画像検索", rakuten_index_path, class: "btn btn-info btn-block" %></td>
               </tr>
               <tr>
-                <td class="col-3 text-center">ミヤゲ名</td>
+                <td class="col-3 text-center">ミヤゲ名&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.text_field :souvenir_name, autofocus: true, class: "form-control" %></td>
               </tr>
               <tr>
@@ -29,15 +29,15 @@
                 </td>
               </tr>
               <tr>
-                <td class="col-3 text-center">県名</td>
+                <td class="col-3 text-center">県名&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name, {prompt: "選択してください"}, class: "form-control", :id => "prefecture_id" %></td>
               </tr>
               <tr>
-                <td class="col-3 text-center">紹介文</td>
+                <td class="col-3 text-center">紹介文&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.text_area :introduction, class: "form-control", rows: "4" %></td>
               </tr>
               <tr>
-                <td class="col-3 text-center">カテゴリー</td>
+                <td class="col-3 text-center">カテゴリー&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.radio_button :category, Souvenir.categories.key(0) %>
                     <%= f.label :category_food, "食品" %></br>
                     <%= f.radio_button :category, Souvenir.categories.key(1) %>

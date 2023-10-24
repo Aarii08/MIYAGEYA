@@ -13,7 +13,7 @@
         <div class="col-12 mt-4">
           <div class="mb-5">
             <%= form_with model: @souvenir, url: rakuten_index_path, method: :get do |f| %>
-              <%= f.text_field :keyword, class: "form-control" %>
+              <%= f.text_field :keyword, class: "form-control", placeholder: "検索ワードを入力", required: true %>
               <%= f.submit "商品を検索", class: "form-control btn btn-success" %>
             <% end %>
           </div>
@@ -58,7 +58,7 @@
         <div class="col-12 mt-4">
           <div class="mb-5">
             <%= form_with model: @souvenir, url: rakuten_index_path, method: :get do |f| %>
-              <%= f.text_field :keyword, class: "form-control" %>
+              <%= f.text_field :keyword, class: "form-control", placeholder: "検索ワードを入力", required: true %>
               <%= f.submit "商品を検索", class: "form-control btn btn-success" %>
             <% end %>
           </div>

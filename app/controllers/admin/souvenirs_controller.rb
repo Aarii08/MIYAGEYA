@@ -19,7 +19,8 @@ class Admin::SouvenirsController < ApplicationController
       redirect_to admin_souvenir_path(souvenir)
     else
       flash[:alert] = "ミヤゲ登録できませんでした。"
-      render :new
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
   end
 
@@ -42,7 +43,8 @@ class Admin::SouvenirsController < ApplicationController
       redirect_to admin_souvenir_path
     else
       flash[:alert] = "ミヤゲ情報更新できませんでした。"
-      render :edit
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
   end
 

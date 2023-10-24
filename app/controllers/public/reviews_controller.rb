@@ -19,7 +19,8 @@ class Public::ReviewsController < ApplicationController
       redirect_to souvenir_path(souvenir)
     else
       flash[:alert] = "投稿に失敗しました。"
-      render :new
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
   end
 
@@ -48,13 +49,15 @@ class Public::ReviewsController < ApplicationController
       redirect_to souvenir_review_path(souvenir, review)
     else
       flash[:alert] = "レビュー更新できませんでした。"
-      render :edit
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy
+    flash[:alert] = "レビューを削除しました。"
     redirect_to souvenir_path(params[:souvenir_id])
   end
 

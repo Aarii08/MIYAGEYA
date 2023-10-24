@@ -5,81 +5,79 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
-      <% if @souvenir.present? %>
-        <h2 class="m-3 text-center"><%= @souvenir.souvenir_name %>のレビュー新規登録</h2>
-        <div class="text-right">
-          <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary", data: {"turbolinks" => false} %>
+      <h2 class="m-3 text-center"><%= @souvenir.souvenir_name %>のレビュー新規登録</h2>
+      <div class="text-right">
+        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary", data: {"turbolinks" => false} %>
+      </div>
+      <%= form_with model: @review, url: souvenir_reviews_path do |f| %>
+        <table class="table m-3">
+          <tbody>
+            <tr>
+              <th class="text-center align-middle">レビュー&emsp;<span class="badge badge-danger">必須</span></th>
+              <td><%= f.text_area :review, autofocus: true, class: "form-control", rows: "4" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">購入時価格</th>
+              <td><%= f.text_field :price, placeholder: "1500", class: "form-control" %></td>
+              <td class="align-middle">円</td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">購入場所</th>
+              <td><%= f.text_field :purchase_place, placeholder: "東京駅", class: "form-control" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">貰った？贈った？</th>
+              <td class="align-middle"><%= f.radio_button :receive_send, "貰った" %>
+                <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
+                <%= f.radio_button :receive_send, "贈った" %>
+                <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">タグ</th>
+              <td><%= f.label :tag_name, "半角スペースを入力することで複数のタグをつけることができます。" %>
+                  <%= f.text_field :tag_name, placeholder: "お菓子", class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">相手は？</th>
+              <td><%= f.select :people, Review.people.keys.map {|k| [I18n.t("enums.review.people.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">目的は？</th>
+              <td><%= f.select :usefulness, Review.usefulnesses.keys.map {|k| [I18n.t("enums.review.usefulness.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th class="text-center align-middle">星評価</th>
+              <td>
+                <div id="star">
+                  <%= f.hidden_field :star, id: :review_star %>
+                </div>
+                <script>
+                  $(document).on('turbolinks:load', function() {
+                    let elem = document.querySelector('#star');
+                    let opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      starHalf: "<%= asset_path('star-half.png') %>",
+                      half: true,
+                      scoreName: 'review[star]'
+                    };
+                    window.raty(elem, opt);
+                  });
+                </script>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="my-3 text-center">
+          <%= f.submit "投稿する", class: "btn btn-success", data: {"turbolinks" => false} %>
         </div>
-        <%= form_with model: @review, url: souvenir_reviews_path do |f| %>
-          <table class="table m-3">
-            <tbody>
-              <tr>
-                <th class="text-center align-middle">レビュー</th>
-                <td><%= f.text_area :review, autofocus: true, class: "form-control", rows: "4" %></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">購入時価格</th>
-                <td><%= f.text_field :price, placeholder: "1500", class: "form-control" %></td>
-                <td class="align-middle">円</td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">購入場所</th>
-                <td><%= f.text_field :purchase_place, placeholder: "東京駅", class: "form-control" %></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">貰った？贈った？</th>
-                <td class="align-middle"><%= f.radio_button :receive_send, "貰った" %>
-                  <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
-                  <%= f.radio_button :receive_send, "贈った" %>
-                  <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">タグ</th>
-                <td><%= f.label :tag_name, "半角スペースを入力することで複数のタグをつけることができます。" %>
-                    <%= f.text_field :tag_name, placeholder: "お菓子", class: "form-control" %></td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">相手は？</th>
-                <td><%= f.select :people, Review.people.keys.map {|k| [I18n.t("enums.review.people.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">目的は？</th>
-                <td><%= f.select :usefulness, Review.usefulnesses.keys.map {|k| [I18n.t("enums.review.usefulness.#{k}"), k]}, {prompt: "選択してください"}, class: "form-control" %></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th class="text-center align-middle">星評価</th>
-                <td>
-                  <div id="star">
-                    <%= f.hidden_field :star, id: :review_star %>
-                  </div>
-                  <script>
-                    $(document).on('turbolinks:load', function() {
-                      let elem = document.querySelector('#star');
-                      let opt = {
-                        starOn: "<%= asset_path('star-on.png') %>",
-                        starOff: "<%= asset_path('star-off.png') %>",
-                        starHalf: "<%= asset_path('star-half.png') %>",
-                        half: true,
-                        scoreName: 'review[star]'
-                      };
-                      window.raty(elem, opt);
-                    });
-                  </script>
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="my-3 text-center">
-            <%= f.submit "投稿する", class: "btn btn-success", data: {"turbolinks" => false} %>
-          </div>
-        <% end %>
       <% end %>
     </div>
 

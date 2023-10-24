@@ -19,18 +19,22 @@
           </tr>
         </thead>
         <% @souvenirs.each do |souvenir| %>
-          <% if souvenir.prefecture.present? %>
-            <tbody>
-              <tr>
-                <td class="align-middle"><%= souvenir.id %></td>
-                <td class="align-middle"><%= souvenir.souvenir_name %></td>
-                <td class="align-middle"><%= souvenir.prefecture.prefecture_name %></td>
-                <td></td>
-                <td class="text-center"><%= link_to "詳細", admin_souvenir_path(souvenir), class: "btn btn-outline-primary", data: {"turbolinks" => false}%></td>
-                <td class="text-center"><%= link_to "レビュー", admin_souvenir_reviews_path(souvenir), class: "btn btn-outline-info" %></td>
-              </tr>
-            </tbody>
-          <% end %>
+          <tbody>
+            <tr>
+              <td class="align-middle"><%= souvenir.id %></td>
+              <td class="align-middle"><%= souvenir.souvenir_name %></td>
+              <td class="align-middle">
+                <% if souvenir.prefecture.present? %>
+                  <%= souvenir.prefecture.prefecture_name %>
+                <% else %>
+                  削除した都道府県
+                <% end %>
+              </td>
+              <td></td>
+              <td class="text-center"><%= link_to "詳細", admin_souvenir_path(souvenir), class: "btn btn-outline-primary", data: {"turbolinks" => false} %></td>
+              <td class="text-center"><%= link_to "レビュー", admin_souvenir_reviews_path(souvenir), class: "btn btn-outline-info" %></td>
+            </tr>
+          </tbody>
         <% end %>
       </table>
     </div>

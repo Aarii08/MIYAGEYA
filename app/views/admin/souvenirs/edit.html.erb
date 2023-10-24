@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-10">
-      <h2 class="text-center m-3"><%= @souvenir.souvenir_name %>編集</h2>
+      <h2 class="text-center m-3"><%= @souvenir.souvenir_name %>の編集</h2>
       <div class="text-right">
         <%= link_to "戻る", admin_souvenir_path, class: "btn btn-outline-secondary" %>
       </div>
@@ -11,7 +11,7 @@
           <table class="table table-border">
             <tbody>
               <tr>
-                <td class="col-3 text-center">ミヤゲ名</td>
+                <td class="col-3 text-center">ミヤゲ名&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.text_field :souvenir_name, autofocus: true, class: "form-control" %></td>
               </tr>
               <tr>
@@ -29,15 +29,15 @@
                 <td><%= f.text_field :rakuten_url,  class: "form-control" %></td>
               </tr>
               <tr>
-                <td class="col-3 text-center">県名</td>
+                <td class="col-3 text-center">県名&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name, {prompt: "選択してください"}, class: "form-control", :id => "prefecture_id" %></td>
               </tr>
               <tr>
-                <td class="col-3 text-center">紹介文</td>
+                <td class="col-3 text-center">紹介文&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.text_area :introduction, class: "form-control", rows: "4" %></td>
               </tr>
               <tr>
-                <td class="col-3 text-center">カテゴリー</td>
+                <td class="col-3 text-center">カテゴリー&emsp;<span class="badge badge-danger">必須</span></td>
                 <td><%= f.radio_button :category, Souvenir.categories.key(0) %>
                     <%= f.label :category_food, "食品" %></br>
                     <%= f.radio_button :category, Souvenir.categories.key(1) %>
