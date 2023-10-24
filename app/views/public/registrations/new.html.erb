@@ -10,27 +10,23 @@
     <div class="col-5 offset-2 pt-3">
       <h2 class="mb-4 text-center font-weight-bold border-bottom">新規登録</h2>
       <%= form_with model: @user, url: user_registration_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
+        <%= render "public/shared/error_messages", resource: resource %>
         <div class="mb-2">
           <%= f.label :名前 %><br />
           <%= f.text_field :name, autofocus: true, placeholder: "群馬太郎", class: "form-control" %>
         </div>
-
         <div class="mb-2">
           <%= f.label :表示名（ユーザー名） %><br />
           <%= f.text_field :nickname, placeholder: "ぐんまちゃん", class: "form-control" %>
         </div>
-
         <div class="mb-2">
           <%= f.label :在住県名 %><br />
           <%= f.text_field :residence_prefecture, placeholder: "群馬県", class: "form-control" %>
         </div>
-
         <div class="mb-2">
           <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
         </div>
-
         <div class="mb-2">
           <%= f.label :パスワード %>
           <% if @minimum_password_length %>
@@ -38,12 +34,10 @@
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
-
         <div class="mb-2">
           <%= f.label :確認用パスワード %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
-
         <div class="text-center mt-3 mb-5">
           <%= f.submit "登録", class: "btn btn-success" %>
         </div>

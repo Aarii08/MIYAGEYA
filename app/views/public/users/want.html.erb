@@ -11,24 +11,25 @@
       </div>
       <div class="row">
         <% @user.wants.each do |want| %>
-        <div class="card-deck col-4 mx-auto mb-3">
-          <%= link_to souvenir_path(want.souvenir_id) do %>
-          <div class="card h-100 border-secondary btn btn-outline-warning", style="width:15rem;">
-            <% if want.souvenir.rakuten_image_url.present? %>
-              <img src="<%= want.souvenir.rakuten_image_url %>">
-            <% else %>
-              <%= image_tag want.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+          <div class="card-deck col-4 mx-auto mb-3">
+            <%= link_to souvenir_path(want.souvenir_id) do %>
+              <div class="card h-100 border-secondary btn btn-outline-warning", style="width:15rem;">
+                <% if want.souvenir.rakuten_image_url.present? %>
+                  <img src="<%= want.souvenir.rakuten_image_url %>">
+                <% else %>
+                  <%= image_tag want.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+                <% end %>
+                <div class="card-body">
+                  <h4 class="card-title"><%= want.souvenir.souvenir_name %></h4>
+                  <p class="card-text"><%= want.souvenir.introduction %></p>
+                  <p td class="card-subtitle text-center"><%= want.created_at.strftime('%Y年%m月%d日') %></p>
+                </div>
+              </div>
             <% end %>
-            <div class="card-body">
-              <h4 class="card-title"><%= want.souvenir.souvenir_name %></h4>
-              <p class="card-text"><%= want.souvenir.introduction %></p>
-              <p td class="card-subtitle text-center"><%= want.created_at.strftime('%Y年%m月%d日') %></p>
-            </div>
           </div>
-          <% end %>
-        </div>
         <% end %>
       </div>
     </div>
+
   </div>
 </div>

@@ -49,7 +49,12 @@ class Admin::SouvenirsController < ApplicationController
   def destroy
     @souvenir = Souvenir.find(params[:id])
     @souvenir.destroy
+    flash[:alert] = "ミヤゲを削除しました。"
     redirect_to admin_souvenirs_path
+  end
+
+  def reviews
+    @souvenir = Souvenir.find(params[:souvenir_id])
   end
 
 

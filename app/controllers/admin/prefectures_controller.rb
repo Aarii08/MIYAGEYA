@@ -1,4 +1,5 @@
 class Admin::PrefecturesController < ApplicationController
+
   def index
     @prefectures = Prefecture.all
     @prefecture = Prefecture.new
@@ -31,6 +32,7 @@ class Admin::PrefecturesController < ApplicationController
   def destroy
     prefecture = Prefecture.find(params[:id])
     prefecture.destroy
+    flash[:alert] = "県名を削除しました。"
     redirect_to admin_prefectures_path
   end
 

@@ -20,95 +20,108 @@
         </div>
       </div>
 
-      <div class="m-3">
-        <h3 class="m-3">新着レビュー</h3>
-      </div>
       <div class="row mt-3">
+        <h2 class="col-12 mt-5 mb-3 p-3 bg-dark text-white">新着レビュー</h2>
         <% @reviews.each do |review| %>
-		      <div class="card-deck col-4 mx-auto mb-3 text-center">
-          <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
-            <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
-              <% if review.souvenir.rakuten_image_url.present? %>
-                <img src="<%= review.souvenir.rakuten_image_url %>">
-              <% else %>
-                <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
-              <% end %>
-              <div class="card-body">
-                <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
-                <h6 class="card-subtitle m-2"><%= review.souvenir.prefecture.prefecture_name %>&ensp;のミヤゲ</h6>
-                <p class="card-subtitle m-2">
-                  <% if review.user.is_deleted == false %>
-                    <%= review.user.nickname %>
-                  <% else review.user.is_deleted == true %>
-                    <span>退会済みユーザー</span>
-                  <% end %>
-                </p>
-	              <p class="card-subtitle m-2"><%= review.review.truncate(20) %> </p>
+		      <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3 text-center">
+            <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
+              <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
+                <% if review.souvenir.rakuten_image_url.present? %>
+                  <img src="<%= review.souvenir.rakuten_image_url %>">
+                <% else %>
+                  <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
+                <% end %>
+                <div class="card-body">
+                  <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
+                  <h6 class="card-subtitle m-2">
+                    <% if review.souvenir.prefecture.present? %>
+                      <%= review.souvenir.prefecture.prefecture_name %>&ensp;のミヤゲ
+                    <% else %>
+                      登録されていない都道府県 のミヤゲ
+                    <% end %>
+                  </h6>
+                  <p class="card-subtitle m-2">
+                    <% if review.user.is_deleted == false %>
+                      <%= review.user.nickname %>
+                    <% else review.user.is_deleted == true %>
+                      <span>退会済みユーザー</span>
+                    <% end %>
+                  </p>
+                  <p class="card-subtitle m-2"><%= review.review.truncate(20) %> </p>
+                </div>
               </div>
-	          </div>
-          <% end %>
+            <% end %>
 		      </div>
 		    <% end %>
-
-		    <%= link_to "もっとレビューをみる", souvenirs_reviews_path, class: "btn btn-success ml-auto mb-3", data: {"turbolinks" => false} %>
-
+		    <%= link_to "レビューをもっとみる", souvenirs_reviews_path, class: "btn btn-success ml-auto mb-3", data: {"turbolinks" => false} %>
       </div>
-      <h3 class="m-2">ミヤゲを探す</h3>
-      <h3 class="m-3">タグ</h3>
-      <div class="row">
+
+      <h2 class="mt-5 mb-3  p-3 bg-dark text-white">ミヤゲを探す</h2>
+      <h4 class="m-3"><i class="fa-solid fa-tags"></i> タグ</h4>
+      <div class="row m-4">
         <% Tag.all.each do |tag| %>
-          <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light", data: {"turbolinks" => false} do %></span>
-            <%= tag.tag_name %>
-          <% end %>
-        <% end %>
-      </div>
-
-      <h3 class="m-3">項目別</h3>
-      <div class="row">
-        <% @review_people.each do |review| %>
-          <%= link_to search_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light", data: {"turbolinks" => false} do %>
-            <%= review.people_i18n %>
-          <% end %>
-        <% end %>
-        <% @review_usefulness.each do |review| %>
-          <%= link_to search_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light", data: {"turbolinks" => false} do %>
-            <%= review.usefulness_i18n %>
-          <% end %>
-        <% end %>
-      </div>
-      <h3 class="m-3">カテゴリー</h3>
-        <div class="row">
-          <%= link_to "食品", search_category_path(name: "food"), class: "badge badge-pill badge-warning mr-2", data: {"turbolinks" => false} %>
-          <%= link_to "グッズ", search_category_path(name: "goods"), class: "badge badge-pill badge-warning mr-2", data: {"turbolinks" => false} %>
-        </div>
-
-        =======================================================================
-
-        <h3 class="m-3">レビューから探す</h3>
-        <h3 class="m-3">タグ</h3>
-        <div class="row">
-          <% Tag.all.each do |tag| %>
-            <span><%= link_to search_review_tag_path(tag_name: tag.tag_name), class: "badge badge-pill badge-primary mr-2 text-light", data: {"turbolinks" => false} do %></span>
+          <% if tag.tag_maps.present? %>
+            <span><%= link_to search_tags_path(tag_name: tag.tag_name), class: "mb-2 badge badge-pill badge-primary mr-2 p-2 text-light", data: {"turbolinks" => false} do %></span>
               <%= tag.tag_name %>
             <% end %>
           <% end %>
-        </div>
+        <% end %>
+      </div>
 
-        <h3 class="m-3">項目別</h3>
-        <div class="row">
-          <% @review_people.each do |review| %>
-            <%= link_to search_review_column_path(people: review.people, usefulness: nil), class: "badge badge-pill badge-success mr-2 text-light", data: {"turbolinks" => false} do %>
+      <h4 class="m-3"><i class="fa-regular fa-paper-plane"></i></i> 目的別</h4>
+      <div class="row m-4">
+        <% @review_people.each do |review| %>
+          <% if review.people.present? %>
+            <%= link_to search_column_path(people: review.people, usefulness: nil), class: "mb-2 badge badge-pill badge-success mr-2 p-2 text-light", data: {"turbolinks" => false} do %>
               <%= review.people_i18n %>
             <% end %>
           <% end %>
-          <% @review_usefulness.each do |review| %>
-            <%= link_to search_review_column_path(people: nil, usefulness: review.usefulness), class: "badge badge-pill badge-info mr-2 text-light", data: {"turbolinks" => false} do %>
+        <% end %>
+        <% @review_usefulness.each do |review| %>
+          <% if review.usefulness.present? %>
+            <%= link_to search_column_path(people: nil, usefulness: review.usefulness), class: "mb-2 badge badge-pill badge-info mr-2 p-2 text-light", data: {"turbolinks" => false} do %>
               <%= review.usefulness_i18n %>
             <% end %>
           <% end %>
-        </div>
+        <% end %>
+      </div>
 
+      <h4 class="m-3"><i class="fa-solid fa-layer-group"></i>カテゴリー</h4>
+      <div class="row m-4">
+        <%= link_to "食品", search_category_path(name: "food"), class: "mb-2 badge badge-pill badge-warning mr-2 p-2", data: {"turbolinks" => false} %>
+        <%= link_to "グッズ", search_category_path(name: "goods"), class: "mb-2 badge badge-pill badge-warning mr-2 p-2", data: {"turbolinks" => false} %>
+      </div>
 
+      <h2 class="mt-5 mb-3  p-3 bg-dark text-white">レビューを探す</h2>
+      <h4 class="m-3"><i class="fa-solid fa-tags"></i> タグ</h4>
+      <div class="row m-4">
+        <% Tag.all.each do |tag| %>
+          <% if tag.tag_maps.present? %>
+            <span><%= link_to search_review_tag_path(tag_name: tag.tag_name), class: "mb-2 badge badge-pill badge-primary mr-2 p-2 text-light", data: {"turbolinks" => false} do %></span>
+              <%= tag.tag_name %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <h4 class="m-3"><i class="fa-regular fa-paper-plane"></i></i> 目的別</h4>
+      <div class="row m-4">
+        <% @review_people.each do |review| %>
+          <% if review.people.present? %>
+            <%= link_to search_review_column_path(people: review.people, usefulness: nil), class: "mb-2 badge badge-pill badge-success mr-2 p-2 text-light", data: {"turbolinks" => false} do %>
+              <%= review.people_i18n %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% @review_usefulness.each do |review| %>
+          <% if review.usefulness.present? %>
+            <%= link_to search_review_column_path(people: nil, usefulness: review.usefulness), class: "mb-2 badge badge-pill badge-info mr-2 p-2 text-light", data: {"turbolinks" => false} do %>
+              <%= review.usefulness_i18n %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+
   </div>
 </div>

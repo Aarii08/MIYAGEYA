@@ -18,7 +18,7 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲストユーザー"
       user.nickname = "ゲスト"
-      user.residence_prefecture = "茨城県"
+      user.residence_prefecture = "東京都"
     end
   end
 

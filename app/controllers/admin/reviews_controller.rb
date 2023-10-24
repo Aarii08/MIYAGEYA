@@ -1,4 +1,5 @@
 class Admin::ReviewsController < ApplicationController
+
   def index
     @review = Review.all
   end
@@ -7,6 +8,7 @@ class Admin::ReviewsController < ApplicationController
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
     @review_tags = @review.tags
+    @tag_list = @review.tags.pluck(:tag_name).split(nil)
   end
 
   def update
@@ -24,6 +26,7 @@ class Admin::ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     review.destroy
+    flash[:alert] = "レビューを削除しました。"
     redirect_to request.referer
   end
 

@@ -40,70 +40,70 @@
                 <% end %>
               </div>
               <ul class="navbar-nav ml-auto">
-              <% if admin_signed_in? %>
-                <li><%= link_to admin_root_path , class: "nav-link text-light btn btn-dark ml-2" do %>
-                      <i class="fa-solid fa-house"></i>
-                    <% end %>
-                </li>
-                <li><%= link_to admin_users_path ,class: "nav-link text-light btn btn-dark ml-2" do %>
-                      <i class="fa-solid fa-user"> ユーザー</i>
-                    <% end %>
-                </li>
-                <li><%= link_to admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" do %>
-                      <i class="fa-solid fa-gift"> ミヤゲ</i>
-                    <% end %>
-                </li>
-                <li><%= link_to admin_prefectures_path, class: "nav-link text-light btn btn-dark ml-2" do %>
-                      <i class="fa-solid fa-location-dot"> 県</i>
-                    <% end %>
-                </li>
-                <li><%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-dark ml-2" do %>
-                      <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
-                    <% end %>
-                </li>
-              <% elsif user_signed_in? %>
-                <li><%= link_to root_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
-                      <i class="fa-solid fa-house"></i>
-                    <% end %>
-                </li>
-                <li><%= link_to about_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
-                      <i class="fa-solid fa-circle-question"></i>
-                    <% end %>
-                </li>
-                <li><%=  link_to souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
-                      <i class="fa-solid fa-gift"> ミヤゲ</i>
-                    <% end %>
-                </li>
-                <li><%=  link_to user_path ,class: "nav-link text-dark btn btn-outline-success ml-2" do %>
-                      <i class="fa-solid fa-circle-user"> マイページ</i>
-                    <% end %>
-                </li>
-                <li><%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
-                      <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
-                    <% end %>
-                </li>
-              <% else %>
-                <li><%= link_to root_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
-                      <i class="fa-solid fa-house"></i>
-                    <% end %>
-                </li>
-                <li><%= link_to about_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
-                      <i class="fa-solid fa-circle-question"></i>
-                    <% end %>
-                </li>
-                <li><%= link_to souvenirs_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
-                      <i class="fa-solid fa-gift"> ミヤゲ</i>
-                    <% end %>
-                </li>
-                <li><%= link_to new_user_registration_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
-                      <i class="fa-solid fa-user-plus"> 新規登録</i>
-                    <% end %>
-                </li>
-                <li><%= link_to new_user_session_path , class: "nav-link text-dark btn btn-outline-info ml-2" do %>
-                      <i class="fa-solid fa-right-to-bracket"> ログイン</i>
-                    <% end %>
-                </li>
-              <% end %>
+                <% if admin_signed_in? %>
+                  <li><%= link_to admin_root_path , class: "nav-link text-light btn btn-dark ml-2" do %>
+                        <i class="fa-solid fa-house"></i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to admin_users_path ,class: "nav-link text-light btn btn-dark ml-2" do %>
+                        <i class="fa-solid fa-user"> ユーザー</i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to admin_souvenirs_path, class: "nav-link text-light btn btn-dark ml-2" do %>
+                        <i class="fa-solid fa-gift"> ミヤゲ</i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to admin_prefectures_path, class: "nav-link text-light btn btn-dark ml-2" do %>
+                        <i class="fa-solid fa-location-dot"> 県</i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-dark ml-2" do %>
+                        <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
+                      <% end %>
+                  </li>
+                <% elsif user_signed_in? %>
+                  <li><%= link_to root_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                        <i class="fa-solid fa-house"></i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to about_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                        <i class="fa-solid fa-circle-question"></i>
+                      <% end %>
+                  </li>
+                  <li><%=  link_to souvenirs_path, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                        <i class="fa-solid fa-gift"> ミヤゲ</i>
+                      <% end %>
+                  </li>
+                  <li><%=  link_to user_path ,class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                        <i class="fa-solid fa-circle-user"> マイページ</i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark btn btn-outline-success ml-2" do %>
+                        <i class="fa-solid fa-right-from-bracket"> ログアウト</i>
+                      <% end %>
+                  </li>
+                <% else %>
+                  <li><%= link_to root_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                        <i class="fa-solid fa-house"></i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to about_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                        <i class="fa-solid fa-circle-question"></i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to souvenirs_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                        <i class="fa-solid fa-gift"> ミヤゲ</i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to new_user_registration_path, class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                        <i class="fa-solid fa-user-plus"> 新規登録</i>
+                      <% end %>
+                  </li>
+                  <li><%= link_to new_user_session_path , class: "nav-link text-dark btn btn-outline-info ml-2" do %>
+                        <i class="fa-solid fa-right-to-bracket"> ログイン</i>
+                      <% end %>
+                  </li>
+                <% end %>
               </ul>
             </div>
             <!-----------------------検索窓--------------------------->
@@ -123,16 +123,15 @@
     <!--フラッシュメッセージ用-->
     <div class="text-center">
       <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
-        <%= value %>
-      </div>
+        <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+          <%= value %>
+        </div>
       <% end %>
     </div>
     <!--ここまで-->
     <%= yield %>
 
 <!--================= 上に行くJs ====================-->
-
     <a href="#top" class="scroll-top-btn">
       <i class="fa-regular fa-circle-up fa-2x" data-toggle=tooltip data-placement="bottom" title="最上部へ移動"></i>
 　  </a>

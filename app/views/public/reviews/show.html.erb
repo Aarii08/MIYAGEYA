@@ -23,94 +23,94 @@
         <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5", data: {"turbolinks" => false} %>
       </div>
 
-       <table class="table table-border">
-            <tbody>
-              <tr>
-                <td class="text-center col-6">投稿日</td>
-                <td td class="col-6"><%= @review.created_at.strftime('%Y年%m月%d日') %></td>
-              </tr>
-              <tr>
-                <td class="text-center col-6">表示名（ユーザー名）</td>
-                <td class="col-6">
-                  <%= link_to user_reviews_index_path(@review.user), data: {"turbolinks" => false} do %>
-                    <% if @review.user.is_deleted == false %>
-                      <%= @review.user.nickname %>
-                    <% else @review.user.is_deleted == true %>
-                      <span>退会済みユーザー</span>
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">在住県名</td>
-                <td><%= @review.user.residence_prefecture %></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">レビュー</td>
-                <td><%= safe_join(@review.review.split("\n"),tag(:br)) %></td>
+      <table class="table table-border">
+        <tbody>
+          <tr>
+            <td class="text-center col-6">投稿日</td>
+            <td td class="col-6"><%= @review.created_at.strftime('%Y年%m月%d日') %></td>
+          </tr>
+          <tr>
+            <td class="text-center col-6">表示名（ユーザー名）</td>
+            <td class="col-6">
+              <%= link_to user_reviews_index_path(@review.user), data: {"turbolinks" => false} do %>
+                <% if @review.user.is_deleted == false %>
+                  <%= @review.user.nickname %>
+                <% else @review.user.is_deleted == true %>
+                  <span>退会済みユーザー</span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center align-middle">在住県名</td>
+            <td><%= @review.user.residence_prefecture %></td>
+          </tr>
+          <tr>
+            <td class="text-center align-middle">レビュー</td>
+            <td><%= safe_join(@review.review.split("\n"),tag(:br)) %></td>
                 <!--↑ viewに表示する際に、改行を反映させる記述　-->
-              </tr>
-              <tr>
-                <td class="text-center align-middle">購入時価格</td>
-                <td><% if @review.price.present? %>
-                      <%= @review.price.to_s(:delimited) %>円
-                    <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">購入場所</td>
-                <td><%= @review.purchase_place %></td>
-              </tr>
-              <!--===================タグ機能=============================-->
-              <tr>
-                <td class="text-center align-middle">タグ</td>
-                <td class="d-flex flex-wrap">
-                  <% @review_tags.each do |tag| %>
-                    <%= link_to search_tags_path(tag_name: tag.tag_name) do %>
-                      <span class="badge badge-primary text-light mr-2">
-                        <%= tag.tag_name %>  <%= "(#{ tag.reviews.count })" %>
-                      </span>
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-              <!--======================================================-->
-              <tr>
-                <td class="text-center align-middle">貰った？贈った？</td>
-                <td><%= @review.receive_send %></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">誰に？</td>
-                <td><%= @review.people_i18n %></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">用途は？</td>
-                <td><%= @review.usefulness_i18n %></td>
-              </tr>
-              <tr>
-                <td class="text-center align-middle">星評価</td>
-                <td>
-                  <div id="show-star"></div>
-                    <script>
-                      $(document).on('turbolinks:load', function() {
-                        let showRateElement = document.querySelector('#show-star');
-                        let showOpt = {
-                          starOn: "<%= asset_path('star-on.png') %>",
-                          starOff: "<%= asset_path('star-off.png') %>",
-                          starHalf: "<%= asset_path('star-half.png') %>",
-                          half: true,
-                          scoreName: 'review[star]',
-                          score: "<%= @review.star %>",
-                          readOnly: true
-                        };
-                        window.raty(showRateElement, showOpt);
-                        });
-                    </script>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
+          </tr>
+          <tr>
+            <td class="text-center align-middle">購入時価格</td>
+            <td><% if @review.price.present? %>
+                  <%= @review.price.to_s(:delimited) %>円
+                <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center align-middle">購入場所</td>
+            <td><%= @review.purchase_place %></td>
+          </tr>
+          <!--===================タグ機能=============================-->
+          <tr>
+            <td class="text-center align-middle">タグ</td>
+            <td class="d-flex flex-wrap">
+              <% @review_tags.each do |tag| %>
+                <%= link_to search_tags_path(tag_name: tag.tag_name) do %>
+                  <span class="badge badge-primary text-light mr-2 p-2">
+                    <%= tag.tag_name %>
+                  </span>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <!--======================================================-->
+          <tr>
+            <td class="text-center align-middle">貰った？贈った？</td>
+            <td><%= @review.receive_send %></td>
+          </tr>
+          <tr>
+            <td class="text-center align-middle">誰に？</td>
+            <td><%= @review.people_i18n %></td>
+          </tr>
+          <tr>
+            <td class="text-center align-middle">用途は？</td>
+            <td><%= @review.usefulness_i18n %></td>
+          </tr>
+          <tr>
+            <td class="text-center align-middle">星評価</td>
+            <td>
+              <div id="show-star"></div>
+              <script>
+                $(document).on('turbolinks:load', function() {
+                  let showRateElement = document.querySelector('#show-star');
+                  let showOpt = {
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    half: true,
+                    scoreName: 'review[star]',
+                    score: "<%= @review.star %>",
+                    readOnly: true
+                  };
+                  window.raty(showRateElement, showOpt);
+                });
+              </script>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
   </div>
 </div>

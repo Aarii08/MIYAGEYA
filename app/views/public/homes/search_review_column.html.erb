@@ -18,12 +18,10 @@
         <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
       </div>
       <p class="text-right mt-5 mr-5">全 <%= @reviews.count %> 件</p>
-
-
       <div class="col-12 mx-auto">
         <%= render "search_review", reviews: @reviews %>
       </div>
-
     </div>
+
   </div>
 </div>

@@ -6,12 +6,13 @@ class Review < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
-
   enum people: { myself: 0, family: 1, relative: 2, friend: 3, company: 4, client: 5, acquaintance: 6,
                  neighborhood: 7, colleague: 8, boss: 9, lover: 10, other: 11
                 }
 
   enum usefulness: { travel: 0, business: 1, homecoming: 2, souvenir: 3, others: 4 }
+
+  validates :review, presence: true
 
   # =========================== タグ機能 ===================================
   def save_tag(sent_tags)
@@ -29,8 +30,5 @@ class Review < ApplicationRecord
     end
   end
   # ======================================================================
-
-  validates :review, presence: true
-
 
 end

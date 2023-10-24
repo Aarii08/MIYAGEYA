@@ -4,7 +4,7 @@
       <h2 class="text-center m-3"><%= @souvenir.souvenir_name %>の詳細</h2>
       <div class="row mt-3">
         <div class="col-4">
-           <% if @souvenir.rakuten_image_url.present? %>
+          <% if @souvenir.rakuten_image_url.present? %>
             <img src="<%= @souvenir.rakuten_image_url %>", class="card-img-top width='30%' height='50%'">
           <% else %>
             <%= image_tag @souvenir.get_image.variant( resize: "250x250")  %>
@@ -48,9 +48,9 @@
                   <% @souvenir.reviews.each do |review| %>
                     <% review.tags.each.uniq do |tag| %>
                       <%= link_to search_tags_path(tag_name: tag.tag_name) do %>
-                      <span class="badge badge-primary text-light mr-2 mb-2">
-                        <%= tag.tag_name %>  (<%= tag.reviews.count %>)
-                      </span>
+                        <span class="badge badge-primary text-light mr-2 mb-2 p-2">
+                          <%= tag.tag_name %>
+                        </span>
                       <% end %>
                     <% end %>
                   <% end %>

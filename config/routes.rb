@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       get 'reviews' => 'reviews#index'
       end
       resources :reviews, only: [:show, :update, :destroy]
+      get 'reviews' => 'souvenirs#reviews', as: 'reviews'
     end
   end
 

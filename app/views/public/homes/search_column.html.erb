@@ -18,10 +18,8 @@
         <div class ="m-2 text-right">
           <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
         </div>
-       <p class="text-right mt-5 mr-5">全 <%= @souvenirs.count %> 件</p>
+        <p class="text-right mt-5 mr-5">全 <%= @souvenirs.count %> 件</p>
       </div>
-
-
 
       <div class="row">
         <%= render "public/souvenirs/index", souvenirs: @souvenirs %>

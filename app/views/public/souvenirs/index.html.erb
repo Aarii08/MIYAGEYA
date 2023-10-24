@@ -21,7 +21,6 @@
         <p class="text-right mt-5 mr-5">全 <%= @souvenirs.count %> 件</p>
       </div>
 
-
       <div class="m-3">
         <%= form_with model: @souvenir, url: souvenirs_path, method: :get, local: true do |f| %>
           <%= f.select :keyword, [ ['ほしい！多い順', 'wants'],
@@ -43,7 +42,7 @@
           <% end %>
         </div>
       <% end %>
-
     </div>
+
   </div>
 </div>

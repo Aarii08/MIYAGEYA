@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   # =======検索窓用(ransack)記述========
   before_action :set_search
 
