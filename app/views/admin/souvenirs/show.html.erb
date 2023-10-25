@@ -27,7 +27,13 @@
               </tr>
               <tr>
                 <td class="col-3 text-center">県名</td>
-                <td><%= @souvenir.prefecture.prefecture_name %></td>
+                <td>
+                  <% if @souvenir.prefecture.present? %>
+                      <%= @souvenir.prefecture.prefecture_name %>
+                  <% else %>
+                      削除した都道府県
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td class="col-3 text-center">紹介文</td>
