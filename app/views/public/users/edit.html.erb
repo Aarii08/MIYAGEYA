@@ -13,19 +13,19 @@
       <table class="table m-3">
         <tbody>
           <tr>
-            <th class="text-center align-middle">名前</th>
+            <th class="text-center align-middle">名前&emsp;<span class="badge badge-danger">必須</span></th>
             <td><%= f.text_field :name, autofocus: true, class: "form-control" %></td>
           </tr>
           <tr>
-            <th class="text-center align-middle">表示名（ユーザー名）</th>
+            <th class="text-center align-middle">表示名（ユーザー名）&emsp;<span class="badge badge-danger">必須</span></th>
             <td><%= f.text_field :nickname, class: "form-control" %></td>
           </tr>
           <tr>
-            <th class="text-center align-middle">在住県名</th>
+            <th class="text-center align-middle">在住県名&emsp;<span class="badge badge-danger">必須</span></th>
             <td><%= f.text_field :residence_prefecture, class: "form-control" %></td>
           </tr>
           <tr>
-            <th class="text-center align-middle">メールアドレス</th>
+            <th class="text-center align-middle">メールアドレス&emsp;<span class="badge badge-danger">必須</span></th>
             <td><%= f.email_field :email, class: "form-control" %></td>
           </tr>
           <tr>

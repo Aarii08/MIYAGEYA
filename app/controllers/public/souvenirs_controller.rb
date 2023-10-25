@@ -35,11 +35,12 @@ class Public::SouvenirsController < ApplicationController
       redirect_to souvenir_path(souvenir)
     else
       flash[:alert] = "新規登録できませんでした。"
-      render :new
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
     @prefectures = Prefecture.all
   end
-  
+
   def reviews
     @prefectures = Prefecture.all
     @reviews = Review.all

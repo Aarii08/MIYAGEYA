@@ -16,7 +16,8 @@ class Public::UsersController < ApplicationController
       redirect_to user_path
     else
       flash[:alert] = "ユーザー情報の更新に失敗しました。"
-      render :edit
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
   end
 

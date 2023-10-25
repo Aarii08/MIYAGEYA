@@ -14,23 +14,23 @@
               <td><%= @user.id %></td>
             </tr>
             <tr>
-              <th class="align-middle">名前</th>
+              <th class="align-middle">名前&emsp;<span class="badge badge-danger">必須</span></th>
               <td><%= f.text_field :name, autofocus: true, class: "form-control" %></td>
             </tr>
             <tr>
-              <th class="align-middle">表示名（ユーザー名）</th>
+              <th class="align-middle">表示名（ユーザー名）&emsp;<span class="badge badge-danger">必須</span></th>
               <td><%= f.text_field :nickname, class: "form-control" %></td>
             </tr>
             <tr>
-              <th class="align-middle">在住県名</th>
+              <th class="align-middle">在住県名&emsp;<span class="badge badge-danger">必須</span></th>
               <td><%= f.text_field :residence_prefecture, class: "form-control" %></td>
             </tr>
             <tr>
-              <th class="align-middle">メールアドレス</th>
+              <th class="align-middle">メールアドレス&emsp;<span class="badge badge-danger">必須</span></th>
               <td><%= f.email_field :email, class: "form-control" %></td>
             </tr>
             <tr>
-              <th class="align-middle">ステータス</th>
+              <th class="align-middle">ステータス&emsp;<span class="badge badge-danger">必須</span></th>
               <td><%= f.radio_button :is_deleted, "false" %>
                   <%= f.label :is_deleted_false, "有効", class:"mr-5"%>
                   <%= f.radio_button :is_deleted, "true" %>
