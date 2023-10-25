@@ -5,8 +5,8 @@
       <div class="text-right">
         <%= link_to "戻る", admin_root_path, class: "btn btn-outline-secondary" %>
       </div>
-      <table class="table table-borderless text-center m-3">
-        <%= form_with model: @prefecture,  url: admin_prefectures_path do |f| %>
+      <%= form_with model: @prefecture, url: admin_prefectures_path, local: true do |f| %>
+        <table class="table table-borderless text-center m-3">
           <tbody>
             <tr>
               <td class="align-middle">追加する都道府県名</td>
@@ -14,8 +14,8 @@
               <td class="text-center"> <%= f.submit "追加", class: "btn btn-outline-warning ml-5" %></td>
             </tr>
           </tbody>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
       <table class="table table-border text-center m-3">
         <thead>
           <tr>

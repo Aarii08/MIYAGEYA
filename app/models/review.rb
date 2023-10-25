@@ -13,7 +13,6 @@ class Review < ApplicationRecord
   enum usefulness: { travel: 0, business: 1, homecoming: 2, souvenir: 3, others: 4 }
 
   validates :review, presence: true
-  # validates :name, presence: { message: "名前を入力してください" }
 
   # =========================== タグ機能 ===================================
   def save_tag(sent_tags)

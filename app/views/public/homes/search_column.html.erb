@@ -6,11 +6,11 @@
 
     <div class="col-8 offset-1 pt-5">
     	<div class="mb-3">
-        <% if @review_people.present? %>
+        <% if params[:people].present? %>
           <% @review_people.first(1).each do |review| %>
             <h2 class="text-center"><%= review.people_i18n %>　のレビューがついたミヤゲ一覧</h2>
           <% end %>
-        <% else @review_usefulness.present? %>
+        <% else params[:usefulness].present? %>
           <% @review_usefulness.first(1).each do |review| %>
             <h2 class="text-center"><%= review.usefulness_i18n %>　のレビューがついたミヤゲ一覧</h2>
           <% end %>

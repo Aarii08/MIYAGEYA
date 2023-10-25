@@ -5,13 +5,15 @@
     </div>
 
     <div class="col-8 offset-1 mb-3">
-      <h2 class="text-center m-5">
+
         <% if @user.is_deleted == false %>
-           <%= @user.nickname %> さんのレビュー一覧
+          <h2 class="mt-5"><%= @user.nickname %> さんが</h2>
+          <h2 class="text-center">投稿したレビュー一覧</h2>
         <% else @user.is_deleted == true %>
-            退会済みユーザー のレビュー一覧
+          <h2 class="mt-5">退会済みユーザー が</h2>
+          <h2 class="text-center">投稿したレビュー一覧</h2>
         <% end %>
-      </h2>
+
       <h5 class="text-center my-3 ml-5">在住県 :&emsp; <%= @user.residence_prefecture %></h5>
       <div class ="m-2 text-right">
         <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>

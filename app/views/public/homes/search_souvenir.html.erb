@@ -7,7 +7,7 @@
     <div class="col-8 offset-1 pt-5">
       <% if @souvenirs.present? %>
     	  <div class="mb-3">
-          <h2 class="text-center"><%= @q.souvenir_name_cont %> の検索結果</h2>
+          <h2 class="text-center">" <%= @q.souvenir_name_cont %> " の検索結果</h2>
           <div class ="m-3 text-right">
             <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
           </div>

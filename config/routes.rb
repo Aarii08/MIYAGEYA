@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get 'users/:id/reviews' => 'users#users_reviews', as: 'user_reviews_index'
 
     get 'souvenirs/reviews' => 'souvenirs#reviews', as: 'souvenirs_reviews'
-    resources :souvenirs do
+    resources :souvenirs, only: [:index, :show, :new, :create] do
       resource :wants, only: [:create, :destroy]
       resources :reviews, except: [:index]
     end

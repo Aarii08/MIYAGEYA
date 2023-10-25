@@ -6,11 +6,14 @@ class Admin::PrefecturesController < ApplicationController
   end
 
   def create
-    prefecture = Prefecture.new(prefecture_params)
-    if prefecture.save
-      redirect_to admin_prefectures_path, notice: "県名を追加しました。"
+    @prefecture = Prefecture.new(prefecture_params)
+    if @prefecture.save
+      flash[:notice] = "県名を追加しました。"
+      redirect_to admin_prefectures_path
     else
-      redirect_to admin_prefectures_path, alert:  "県名を追加できませんでした。"
+      flash[:alert] = "県名を追加できませんでした。"
+      redirect_back fallback_location: root_path
+      # 前の画面に戻る
     end
   end
 

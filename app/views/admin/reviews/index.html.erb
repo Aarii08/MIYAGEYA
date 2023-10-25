@@ -22,9 +22,9 @@
             <tbody>
               <tr>
                 <td class="align-middle"><%= review.created_at.to_s(:datetime_jp) %></td>
-                <td class="align-middle"><%= review.souvenir.souvenir_name %></td>
+                <td class="align-middle"><%= review.souvenir.souvenir_name.truncate(15) %></td>
                 <td class="align-middle">
-                  <%= review.user.nickname %>
+                  <%= review.user.nickname.truncate(10) %>
                   <% if review.user.is_deleted == true %>
                     <span>（退会済）</span>
                   <% end %>

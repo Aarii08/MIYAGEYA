@@ -5,7 +5,8 @@
     </div>
 
     <div class="col-8 offset-1 pt-5">
-      <h2 class="mb-5"><%= current_user.nickname %>さんのレビュー一覧</h2>
+      <h2 class="mb-2"><%= current_user.nickname %> さんが</h2>
+      <h2 class="text-center mb-5">投稿したレビュー一覧</h2>
       <div class ="m-3 text-right">
         <%= link_to "戻る", user_path, class: "btn btn-outline-secondary" %>
       </div>
