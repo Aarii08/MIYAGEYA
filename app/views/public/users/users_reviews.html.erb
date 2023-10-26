@@ -7,14 +7,14 @@
     <div class="col-8 offset-1 mb-3">
 
         <% if @user.is_deleted == false %>
-          <h2 class="mt-5"><%= @user.nickname %> さんが</h2>
+          <h2 class="mt-5"><i class="fa-solid fa-user fa-xl"></i> <%= @user.nickname %> さんが</h2>
           <h2 class="text-center">投稿したレビュー一覧</h2>
         <% else @user.is_deleted == true %>
           <h2 class="mt-5">退会済みユーザー が</h2>
           <h2 class="text-center">投稿したレビュー一覧</h2>
         <% end %>
 
-      <h5 class="text-center my-3 ml-5">在住県 :&emsp; <%= @user.residence_prefecture %></h5>
+      <h5 class="text-center my-3 ml-5">在住県 <i class="fa-solid fa-location-dot fa-xl"></i> <%= @user.residence_prefecture %></h5>
       <div class ="m-2 text-right">
         <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
       </div>

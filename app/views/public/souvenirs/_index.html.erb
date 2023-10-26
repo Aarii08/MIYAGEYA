@@ -14,8 +14,8 @@
           <% else %>
             <h6 class="card-subtitle m-2">登録されていない都道府県</h6>
           <% end %>
-          <p class="card-subtitle m-2">ほしい！：<%= souvenir.wants.count %> 件<br>
-		                                   レビュー：<%= souvenir.reviews.count %> 件</p>
+          <p class="card-subtitle m-2"><i class="fa-solid fa-bookmark fa-lg"></i> ほしい！：<%= souvenir.wants.count %> 件<br>
+		                                   <i class="fa-solid fa-pen fa-lg"></i> レビュー：<%= souvenir.reviews.count %> 件</p>
           <p class="card-subtitle m-2"><%= render "public/souvenirs/average_star", souvenir: souvenir %></p>
           <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
               <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>

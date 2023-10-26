@@ -7,11 +7,11 @@
     <div class="col-8 offset-1 pt-5">
     	<div class="mb-3">
         <% if params[:keyword] == 'average_star' %>
-          <h2 class="text-center">星評価高い順</h2>
+          <h2 class="text-center"><i class="fa-solid fa-star fa-xl"></i> 星評価高い順</h2>
         <% elsif params[:keyword] == 'wants' %>
-          <h2 class="text-center">ほしい！多い順</h2>
+          <h2 class="text-center"><i class="fa-solid fa-bookmark fa-xl"></i> ほしい！多い順</h2>
         <% elsif params[:keyword] == 'reviews' %>
-          <h2 class="text-center">レビュー多い順</h2>
+          <h2 class="text-center"><i class="fa-solid fa-pen fa-xl"></i> レビュー多い順</h2>
         <% else %>
           <h2 class="text-center">ミヤゲ一覧</h2>
         <% end %>

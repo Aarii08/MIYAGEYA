@@ -21,7 +21,7 @@
       </div>
 
       <div class="row mt-3">
-        <h2 class="col-12 mt-5 mb-3 p-3 bg-dark text-white">新着レビュー</h2>
+        <h2 class="col-12 mt-5 mb-3 p-3 bg-dark text-white"><i class="fa-solid fa-pen fa-xl"></i> 新着レビュー</h2>
         <% @reviews.each do |review| %>
 		      <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3 text-center">
             <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
@@ -35,16 +35,16 @@
                   <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
                   <h6 class="card-subtitle m-2">
                     <% if review.souvenir.prefecture.present? %>
-                      <%= review.souvenir.prefecture.prefecture_name %>&ensp;のミヤゲ
+                      <i class="fa-solid fa-gift fa-lg"></i> <%= review.souvenir.prefecture.prefecture_name %>&nbsp;のミヤゲ
                     <% else %>
-                      登録されていない都道府県 のミヤゲ
+                      <i class="fa-solid fa-gift fa-lg"></i> 登録されていない都道府県 のミヤゲ
                     <% end %>
                   </h6>
                   <p class="card-subtitle m-2">
                     <% if review.user.is_deleted == false %>
-                      <%= review.user.nickname %>
+                      <i class="fa-solid fa-user fa-lg"></i> <%= review.user.nickname %>
                     <% else review.user.is_deleted == true %>
-                      <span>退会済みユーザー</span>
+                      <i class="fa-solid fa-user fa-lg"></i> <span>退会済みユーザー</span>
                     <% end %>
                   </p>
                   <p class="card-subtitle m-2"><%= review.review.truncate(20) %> </p>
@@ -56,7 +56,7 @@
 		    <%= link_to "レビューをもっとみる", souvenirs_reviews_path, class: "btn btn-success ml-auto mb-3", data: {"turbolinks" => false} %>
       </div>
 
-      <h2 class="mt-5 mb-3  p-3 bg-dark text-white">ミヤゲを探す</h2>
+      <h2 class="mt-5 mb-3  p-3 bg-dark text-white"><i class="fa-solid fa-magnifying-glass fa-xl"></i> ミヤゲを探す</h2>
       <h4 class="m-3"><i class="fa-solid fa-tags"></i> タグ</h4>
       <div class="row m-4">
         <% Tag.all.each do |tag| %>
@@ -92,7 +92,7 @@
         <%= link_to "グッズ", search_category_path(name: "goods"), class: "mb-2 badge badge-pill badge-warning mr-2 p-2", data: {"turbolinks" => false} %>
       </div>
 
-      <h2 class="mt-5 mb-3  p-3 bg-dark text-white">レビューを探す</h2>
+      <h2 class="mt-5 mb-3  p-3 bg-dark text-white"><i class="fa-solid fa-magnifying-glass fa-xl"></i> レビューを探す</h2>
       <h4 class="m-3"><i class="fa-solid fa-tags"></i> タグ</h4>
       <div class="row m-4">
         <% Tag.all.each do |tag| %>

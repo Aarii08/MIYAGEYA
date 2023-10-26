@@ -1,5 +1,9 @@
 <% if souvenir.wanted_by?(current_user) %>
-  <%= link_to "ほしい！をやめる", souvenir_wants_path(souvenir), method: :delete, remote: true, class: "btn btn-outline-info mr-5" %>
+  <%= link_to souvenir_wants_path(souvenir), method: :delete, remote: true, class: "btn btn-outline-info mr-5 p-3" do %>
+    <i class="fa-solid fa-bookmark fa-2xl"></i> ほしい！をやめる
+  <% end %>
 <% else %>
-  <%= link_to "ほしい！", souvenir_wants_path(souvenir), method: :post, remote: true, class: "btn btn-outline-warning mr-5" %>
+  <%= link_to souvenir_wants_path(souvenir), method: :post, remote: true, class: "btn btn-outline-warning mr-5 p-3" do %>
+    <i class="fa-regular fa-bookmark fa-2xl"></i> ほしい！
+  <% end %>
 <% end %>

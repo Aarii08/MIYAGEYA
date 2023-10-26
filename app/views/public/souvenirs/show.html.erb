@@ -9,7 +9,9 @@
       <div class="m-3">
         <div class="d-flex justify-content-center ">
           <% if user_signed_in? %>
-            <%= link_to "レビューする",  new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5" %>
+            <%= link_to new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5 p-3" do %>
+              <i class="fa-solid fa-pen fa-2xl"></i> レビューする
+            <% end %>
             <div id="want_btn_<%= @souvenir.id %>">
               <%= render "want", souvenir: @souvenir %></div>
             </div>
@@ -32,11 +34,11 @@
             <table class="table table-border">
               <tbody>
                 <tr>
-                  <td class="col-3 text-center align-middle">ミヤゲ名</td>
+                  <td class="col-4 text-center align-middle">ミヤゲ名</td>
                   <td><%= @souvenir.souvenir_name %></td>
                 </tr>
                 <tr>
-                  <td class="col-3 text-center align-middle">県名</td>
+                  <td class="col-4 text-center align-middle">県名</td>
                   <td>
                     <% if @souvenir.prefecture.present? %>
                       <%= @souvenir.prefecture.prefecture_name %>
@@ -101,14 +103,14 @@
                   <th class="col-3 text-center align-middle mb-2">
                     <h5 class="py-2 bg-secondary text-white">
                       <% if review.user.is_deleted == false %>
-                        <%= review.user.nickname %> さん
+                        <i class="fa-solid fa-user fa-lg"></i> <%= review.user.nickname %> さん
                       <% else review.user.is_deleted == true %>
-                        退会済みユーザー
+                        <i class="fa-solid fa-user fa-lg"></i> 退会済みユーザー
                       <% end %>
                     </h5>
                   </th>
                   <td class="col-2 text-center align-middle mb-2">
-                    <h5 class="font-weight-bolder">在住県：&ensp;<%= review.user.residence_prefecture %></h5>
+                    <h5 class="font-weight-bolder">在住県 <i class="fa-solid fa-location-dot fa-lg"></i> <%= review.user.residence_prefecture %></h5>
                   </td>
                   <td class="col-2 text-center align-middle mb-2"><h6><%= review.created_at.strftime('%Y年%m月%d日') %></h6></td>
                 </tr>
