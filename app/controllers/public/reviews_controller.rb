@@ -28,8 +28,8 @@ class Public::ReviewsController < ApplicationController
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
     @prefectures = Prefecture.all
-    # タグ用
     @review_tags = @review.tags
+    # タグ用
   end
 
   def edit

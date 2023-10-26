@@ -13,7 +13,7 @@
       <div class="row">
         <% @user.reviews.each do |review| %>
           <% if review.souvenir.present? %>
-            <div class="card-deck col-4 mx-auto mb-3">
+            <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3">
               <%= link_to souvenir_review_path(review.souvenir_id, review) do %>
                 <div class="card h-100 border-secondary btn btn-outline-primary", style="width:15rem;">
                   <% if review.souvenir.rakuten_image_url.present? %>
