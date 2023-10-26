@@ -111,7 +111,7 @@ User.create!(
 )
 # =========================== 初期Prefectureの追加 ============================
 
-['東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県']
+['東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県', '関東以外']
 .each do |name|
   Prefecture.create!(
     { prefecture_name: name }
@@ -164,8 +164,7 @@ Souvenir.create!(
     {
       prefecture_id: 6,
       souvenir_name: "御用邸チーズケーキ",
-      introduction: "変わらないおいしさ・安心・安全を追求して作られた『御用邸チーズケーキ』は、目では見えないほど細かな手直しを経て
-                    那須連山の麓にある美しい自然に囲まれた自社工場からお客さまの元へお届けしています。",
+      introduction: "変わらないおいしさ・安心・安全を追求して作られた『御用邸チーズケーキ』は、目では見えないほど細かな手直しを経て那須連山の麓にある美しい自然に囲まれた自社工場からお客さまの元へお届けしています。",
       category: 0,
       rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/cheesegarden/cabinet/product/02238_thumb_r01.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/baum-nature/meron01/"
@@ -197,8 +196,7 @@ Souvenir.create!(
     {
       prefecture_id: 1,
       souvenir_name: "東京たまご ごまたまご",
-      introduction: "濃厚な黒ごまペーストと黒ごま餡をカステラ生地で包み込み、ホワイトチョコでコーティングした「ごまたまご」は、
-                    4つの層が口の中で絶妙なハーモニーを奏でたあとに黒ごまの香りが余韻となって香る、あとを引くおいしさが魅力のお菓子です。",
+      introduction: "濃厚な黒ごまペーストと黒ごま餡をカステラ生地で包み込み、ホワイトチョコでコーティングした「ごまたまご」は、4つの層が口の中で絶妙なハーモニーを奏でたあとに黒ごまの香りが余韻となって香る、あとを引くおいしさが魅力のお菓子です。",
       category: 0,
       rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/kioskgift/cabinet/gomatama/gomatamago_1_1.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/kioskgift/10000135/"
@@ -252,13 +250,37 @@ Souvenir.create!(
     {
       prefecture_id: 7,
       souvenir_name: "七福神あられ",
-      introduction: "七福さんにちなんだ七つの風味のひと口サイズのあられ。香ばしいえび味は恵比寿天、まろやかなチーズ味は布袋尊、
-                    コクのあるバター味は弁財天など、味ごとに異なる七福神のイラストのパッケージになっています。発売されて以来、
-                    おめでたいパッケージに、食べやすい一口サイズで一度に色々な味が楽しめると群馬県内を中心に徐々に評判が広まり人気のおみやげ。",
+      introduction: "七福さんにちなんだ七つの風味のひと口サイズのあられ。
+                    　香ばしいえび味は恵比寿天、まろやかなチーズ味は布袋尊、コクのあるバター味は弁財天など、味ごとに異なる七福神のイラストのパッケージになっています。
+                    　発売されて以来、おめでたいパッケージに、食べやすい一口サイズで一度に色々な味が楽しめると群馬県内を中心に徐々に評判が広まり人気のおみやげ。",
       category: 0,
       rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/saiwai/cabinet/03845377/imgrc0066967566.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/saiwai/af-1/"
     },
+    {
+      prefecture_id: 8,
+      souvenir_name: "白い恋人",
+      introduction: "香ばしく焼き上げたサクサクのラング・ド・シャクッキーに、「白い恋人」のためにブレンドされたオリジナルチョコレートをサンドしました。",
+      category: 0,
+      rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/hokkaido-omiyage/cabinet/koibito/isiya013-pack.jpg?_ex=128x128",
+      rakuten_url: "https://item.rakuten.co.jp/hokkaido-omiyage/isiya013/"
+    },
+    {
+      prefecture_id: 8,
+      souvenir_name: "紅いもタルト",
+      introduction: "沖縄県産紅いも100%で作られたペーストと、独自の配合で焼き上げたタルト生地の絶妙な組み合わせです。",
+      category: 0,
+      rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/okinawasenka8682/cabinet/07181694/imgrc0095105369.jpg?_ex=128x128",
+      rakuten_url: "https://item.rakuten.co.jp/okinawasenka8682/4992866070289-1/"
+    },
+    {
+      prefecture_id: 8,
+      souvenir_name: "桔梗信玄餅",
+      introduction: "多くの人に愛される、山梨の代表的な銘菓です。“ふるさとの味”をコンセプトに、手作りの味わいにこだわっています。小さな容器にきな粉をまぶした3切れのお餅が入っています。",
+      category: 0,
+      rakuten_image_url:  "https://thumbnail.image.rakuten.co.jp/@0_mall/yamnashi-made/cabinet/08894984/imgrc0081874076.jpg?_ex=128x128",
+      rakuten_url: "https://item.rakuten.co.jp/yamnashi-made/smoti10/"
+    }
   ]
 )
 
@@ -470,14 +492,63 @@ Review.create!(
       people: 8,
       usefulness: 1,
       star: 3.5,
-    }
+    },
+    {
+      user_id: 5,
+      souvenir_id: 17,
+      review: "白い恋人です。北海道土産の大定番です。うまいんです。何度食べても飽きが来ないうまさです。ほっとします。食べると嬉しくなります。
+              白い恋人、恋人のようなお菓子なんです。ラングドシャがうまいんです。うますぎます。ホワイトチョコがうまいんだなぁ。",
+      price: 1430,
+      purchase_place: "新千歳空港",
+      receive_send: "贈った",
+      people: 1,
+      usefulness: 0,
+      star: 5.0,
+    },
+    {
+      user_id: 6,
+      souvenir_id: 18,
+      review: "鮮やかな濃い紫色のクリームが綺麗に絞られていて美しい見た目です。タルト部分はクッキー系ではなくお饅頭の部類です。
+                紅芋ペーストは紅芋の美味しさがハッキリとよく分かり、余計な味はせずに素材本来の味が生かされています。お芋のほっこり感と奥深い甘さが特徴的でとても上品です。",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 1,
+      usefulness: 2,
+      star: 4.0,
+    },
+    {
+      user_id: 8,
+      souvenir_id: 19,
+      review: "柔らかいお餅とたっぷりのきな粉と黒蜜がたまらないです。逆にきな粉と黒蜜たっぷりすぎて勿体無いなといつも思います（笑）
+                食べる時にきな粉が飛び散るので注意が必要です！",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 5,
+      usefulness: 1,
+      star: 4.0,
+    },
+    {
+      user_id: 9,
+      souvenir_id: 17,
+      review: "頂き物です。有名なお土産なので一度は聞いたり食べたりした事があるのではないでしょうか。
+              もちろんお味は安定の美味しさ。ラングドシャといえばというくらいの定番お土産。
+              サクッとした甘いクッキーの間にホワイトチョコレート。北海道らしいという意味でも素敵なお菓子です。",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
+      people: 7,
+      usefulness: 3,
+      star: 4.5,
+    },
   ]
 )
 
 # =============================== タグ =======================================
 
 ["お菓子", "おいしい", "甘い", "サクサク", "いも", "あんこ", "落花生", "メロン", "チーズ",
-  "ぐんまちゃん",  "レモン", "バナナ",  "サブレ", "うまい", "ラスク", "ごま", "ホワイトチョコ", "スッキリ"]
+  "ぐんまちゃん",  "レモン", "バナナ",  "サブレ", "うまい", "ラスク", "ごま", "ホワイトチョコ", "スッキリ", "餅"]
 .each do |tag|
   Tag.create!(
     {tag_name: tag }
@@ -585,7 +656,35 @@ TagMap.create!(
     {
       tag_id: 18,
       review_id: 18
-    }
+    },
+    {
+      tag_id: 2,
+      review_id: 19
+    },
+    {
+      tag_id: 17,
+      review_id: 19
+    },
+    {
+      tag_id: 2,
+      review_id: 20
+    },
+    {
+      tag_id: 5,
+      review_id: 20
+    },
+    {
+      tag_id: 19,
+      review_id: 21
+    },
+    {
+      tag_id: 4,
+      review_id: 22
+    },
+    {
+      tag_id: 17,
+      review_id: 22
+    },
   ]
  )
 # ========================= ほしい！ ==========================================
