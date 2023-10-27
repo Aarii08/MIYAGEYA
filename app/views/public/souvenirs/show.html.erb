@@ -73,7 +73,7 @@
                         <% unless uniq_tags.include?(tag) %>
                           <% uniq_tags.push(tag) %>
                           <%= link_to search_tags_path(tag_name: tag.tag_name) do %>
-                            <span class="badge badge-primary text-light mr-2 mb-2 p-2">
+                            <span class="badge badge-pill badge-primary text-light mr-2 mb-2 p-2">
                               <%= tag.tag_name %>
                             </span>
                           <% end %>

@@ -10,7 +10,7 @@
 
 Admin.create!(
   email: 'admin@admin',
-  password: 'password'
+  password: ENV['ADMIN_PASSWORD']
   )
 
 # ============================ 初期Userの追加 =================================

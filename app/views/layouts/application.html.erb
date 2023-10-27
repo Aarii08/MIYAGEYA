@@ -37,6 +37,7 @@
                 <% elsif user_signed_in? %>
                   <h6 class="text-center m-3 mr-5">ようこそ、<%= current_user.nickname %> さん</h6>
                 <% else %>
+                  <%= link_to "ゲストログイン", user_guest_sign_in_path, class: "btn btn-outline-dark sign_in", method: :post %>
                 <% end %>
               </div>
               <ul class="navbar-nav ml-auto">
