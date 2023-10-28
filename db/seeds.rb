@@ -28,80 +28,80 @@ Admin.create!(
 User.create!(
   [
     {
-      name: "大泉洋",
-      nickname: "洋ちゃん",
+      name: "佐藤一郎",
+      nickname: "イチロー",
       email: "test1@test.com",
       residence_prefecture: "北海道",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "サンドウィッチマン",
-      nickname: "サンド",
+      name: "鈴木春子",
+      nickname: "はるちゃん",
       email: "test2@test.com",
       residence_prefecture: "宮城県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "U字工事",
-      nickname: "ごめんね、ごめんね〜",
+      name: "高橋二郎",
+      nickname: "二郎系",
       email: "test3@test.com",
       residence_prefecture: "栃木県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "渡辺直美",
-      nickname: "なおみ",
+      name: "田中夏子",
+      nickname: "なっちゃん",
       email: "test4@test.com",
       residence_prefecture: "茨城県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "中山秀征",
-      nickname: "ひでちゃん",
+      name: "伊藤三郎",
+      nickname: "さぶちゃん",
       email: "test5@test.com",
       residence_prefecture: "群馬県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "マツコ・デラックス",
-      nickname: "マツコ",
+      name: "渡辺秋子",
+      nickname: "あきちゃん",
       email: "test6@test.com",
       residence_prefecture: "千葉県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "明石屋さんま",
-      nickname: "さんま",
+      name: "山本四郎",
+      nickname: "やま",
       email: "test7@test.com",
       residence_prefecture: "奈良県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "イモトアヤコ",
-      nickname: "イモト",
+      name: "中村冬子",
+      nickname: "ふゆこ",
       email: "test8@test.com",
       residence_prefecture: "鳥取県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "指原莉乃",
-      nickname: "さっしー",
+      name: "小林太郎",
+      nickname: "こば",
       email: "test9@test.com",
       residence_prefecture: "大分県",
       is_deleted: false,
       password: "password"
     },
     {
-      name: "新垣結衣",
-      nickname: "ガッキー",
+      name: "加藤花子",
+      nickname: "はなちゃん",
       email: "test10@test.com",
       residence_prefecture: "沖縄県",
       is_deleted: false,
@@ -164,7 +164,7 @@ Souvenir.create!(
     {
       prefecture_id: 6,
       souvenir_name: "御用邸チーズケーキ",
-      introduction: "変わらないおいしさ・安心・安全を追求して作られた『御用邸チーズケーキ』は、目では見えないほど細かな手直しを経て那須連山の麓にある美しい自然に囲まれた自社工場からお客さまの元へお届けしています。",
+      introduction: "変わらないおいしさ・安心・安全を追求して作られた『御用邸チーズケーキ』は、目では見えないほど細かな手直しを経て那須連山の麓にある美しい自然に囲まれた工場からお客さまの元へお届けしています。",
       category: 0,
       rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/cheesegarden/cabinet/product/02238_thumb_r01.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/baum-nature/meron01/"
@@ -206,7 +206,7 @@ Souvenir.create!(
       souvenir_name: "横濱ハーバー ダブルマロン",
       introduction: "神奈川県の横浜で生まれた約60年の歴史あるお菓子。マロンケーキの外側はソフトなカステラ生地♪ふわっと軽い食感でおやつにぴったり！
                       そんなカステラ生地の中には、角切りの栗がゴロゴロと入っています。また、甘さ控えめの栗餡もたっぷり。控えめな甘さとカステラ生地がよく合う、
-                      神奈川の絶品スイーツお土産です",
+                      神奈川の絶品スイーツお土産です。",
       category: 0,
       rakuten_image_url: "https://thumbnail.image.rakuten.co.jp/@0_mall/hakurankan/cabinet/sweets/ariake/imgrc0143199077.jpg?_ex=128x128",
       rakuten_url: "https://item.rakuten.co.jp/hakurankan/4580234441788/"
@@ -304,9 +304,9 @@ Review.create!(
       souvenir_id: 2,
       review: "鎌倉といえば鳩サブレーで、昔から馴染みのあるものなので貰うととても嬉しいです。
                 口の中でサクサクとした食感、優しい甘さとふんわりと感じるバターの風味がたまりません。",
-      price: 1350,
-      purchase_place: "豊島屋本店",
-      receive_send: "贈った",
+      price: nil,
+      purchase_place: nil,
+      receive_send: "貰った",
       people: 2,
       usefulness: 3,
       star: 3.5,
@@ -314,8 +314,7 @@ Review.create!(
      {
       user_id: 2,
       souvenir_id: 4,
-      review: "こちらに遊びに来た際に、お土産でいただきました。 さつまいもとつぶした餡を、
-                山芋ともち粉の生地でやさしく包んだものです。 食べた感想は、昔懐かしい風味で、ほっこりするお味でした。
+      review: "さつまいもとつぶした餡を、山芋ともち粉の生地でやさしく包んだものです。 食べた感想は、昔懐かしい風味で、ほっこりするお味でした。
                 賞味期限が当日までです。",
       price: 1000,
       purchase_place: "川越駅",
@@ -327,9 +326,9 @@ Review.create!(
     {
       user_id: 3,
       souvenir_id: 3,
-      review: "ぴーなっつ最中は、その名の通りピーナッツの形をしています。 表面のデコボコもうまく再現されており、
-                見た目にも可愛らしいお菓子です。 最中の入っている箱もピーナッツの形をしており、送ったときに、「かわいい！」という声をよくもらえます。
-                最中の皮はパリパリとしており、中には甘さ控えめの餡がたっぷり。餡の中にも、ピーナッツが練り込まれています。",
+      review: "ぴーなっつ最中は、その名の通りピーナッツの形をしています。 表面のデコボコもうまく再現されており、見た目にも可愛らしいお菓子です。
+              最中の入っている箱もピーナッツの形をしており、送ったときに、「かわいい！」という声をよくもらえます。
+              最中の皮はパリパリとしており、中には甘さ控えめの餡がたっぷり。餡の中にも、ピーナッツが練り込まれています。",
       price: 1450,
       purchase_place: "成田空港",
       receive_send: "贈った",
@@ -340,11 +339,11 @@ Review.create!(
     {
       user_id: 3,
       souvenir_id: 5,
-      review: "メロンバームは珍しく、メロン好きのお贈りした先方の方は大変喜んでいらしゃいました。我が家でも食べてみたいと思いました。",
+      review: "メロンバウムは珍しく、メロン好きのお贈りした先方の方は大変喜んでいらしゃいました。我が家でも食べてみたいと思いました。",
       price: 2250,
       purchase_place: "茨城県鉾田市「深作農園」",
       receive_send: "贈った",
-      people: 2,
+      people: 5,
       usefulness: 3,
       star: 3.0,
     },
@@ -496,7 +495,7 @@ Review.create!(
     {
       user_id: 5,
       souvenir_id: 17,
-      review: "白い恋人です。北海道土産の大定番です。うまいんです。何度食べても飽きが来ないうまさです。ほっとします。食べると嬉しくなります。
+      review: "北海道土産の大定番です。うまいんです。何度食べても飽きが来ないうまさです。ほっとします。食べると嬉しくなります。
               白い恋人、恋人のようなお菓子なんです。ラングドシャがうまいんです。うますぎます。ホワイトチョコがうまいんだなぁ。",
       price: 1430,
       purchase_place: "新千歳空港",
