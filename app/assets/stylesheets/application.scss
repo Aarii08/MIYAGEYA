@@ -20,6 +20,8 @@
   box-sizing: border-box;
 }
 
+// ==================== 一番上に戻る =====================
+
 .scroll-top-btn {
   display: none; /* ボタンを初めは非表示に */
   position: fixed; /* ボタンを画面に固定 */
@@ -42,79 +44,79 @@
 // =============== 県名 サイドバー ===================================
 
 #sidebarMenu {
-    height: 70%;
-    position: fixed;
-    top: 250px;
-    left: 300;
-    width: 200px;
-    margin-top: 10px;
-    text-align: center;
-    transform: translateX(-3000px);
-    transition: transform 250ms ease-in-out;
-    background: #e0efff;
-    z-index: 99;
-    overflow-y: scroll;
+  height: 70%;
+  position: fixed;
+  top: 250px;
+  left: 300;
+  width: 200px;
+  margin-top: 10px;
+  text-align: center;
+  transform: translateX(-3000px);
+  transition: transform 250ms ease-in-out;
+  background: #e0efff;
+  z-index: 99;
+  overflow-y: scroll;
 }
 .sidebarMenuInner{
-    margin:0;
-    padding:0;
+  margin:0;
+  padding:0;
 }
 .sidebarMenuInner li{
-    list-style: none;
-    color: #000;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 20px;
-    cursor: pointer;
+  list-style: none;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
 }
 .sidebarMenuInner li a{
-    color: #000;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
 }
 input[type="checkbox"]:checked ~ #sidebarMenu {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 input[type=checkbox] {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    display: none;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  display: none;
 }
 .sidebarIconToggle {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    cursor: pointer;
-    position: absolute;
-    z-index: 99;
-    height: 100%;
-    width: 100%;
-    top: 15px;
-    left: 15px;
-    height: 20px;
-    width: 20px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 15px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
 }
 .close {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    margin-top: 3px;
-    position: fixed;
-    top: 200px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  margin-top: 3px;
+  position: fixed;
+  top: 200px;
 }
 .open {
-    display: none;
+  display: none;
 }
 input[type=checkbox]:checked ~ .sidebarIconToggle > .close {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    opacity: 0;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  opacity: 0;
 }
 input[type=checkbox]:checked ~ .sidebarIconToggle > .open {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    margin-top: 3px;
-    display: block;
-    position: fixed;
-    top: 200px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  margin-top: 3px;
+  display: block;
+  position: fixed;
+  top: 200px;
 }
