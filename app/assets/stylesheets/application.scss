@@ -44,7 +44,7 @@
 #sidebarMenu {
     height: 70%;
     position: fixed;
-    top: 200px;
+    top: 250px;
     left: 300;
     width: 200px;
     margin-top: 10px;
@@ -100,7 +100,7 @@ input[type=checkbox] {
     box-sizing: border-box;
     margin-top: 3px;
     position: fixed;
-    top: 150px;
+    top: 200px;
 }
 .open {
     display: none;
@@ -116,5 +116,5 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .open {
     margin-top: 3px;
     display: block;
     position: fixed;
-    top: 150px;
+    top: 200px;
 }
