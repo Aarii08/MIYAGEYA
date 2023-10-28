@@ -8,7 +8,7 @@
     	<div class="mb-3">
         <h2 class="text-center"><i class="fa-solid fa-tag"></i><%= @tag_name %>　のタグがついたミヤゲ一覧</h2>
         <div class ="m-2 text-right">
-          <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
+          <%= link_to "戻る", root_path, data: {"turbolinks" => false}, class: "btn btn-outline-secondary" %>
         </div>
         <p class="text-right mt-5 mr-5">全 <%= @souvenirs.count %> 件</p>
       </div>

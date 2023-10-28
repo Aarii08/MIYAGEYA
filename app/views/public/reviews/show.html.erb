@@ -103,6 +103,7 @@
               <div id="show-star"></div>
               <script>
                 $(document).on('turbolinks:load', function() {
+                  $('#show-star').empty();
                   let showRateElement = document.querySelector('#show-star');
                   let showOpt = {
                     starOn: "<%= asset_path('star-on.png') %>",
