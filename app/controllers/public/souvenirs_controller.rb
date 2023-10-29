@@ -43,7 +43,7 @@ class Public::SouvenirsController < ApplicationController
 
   def reviews
     @prefectures = Prefecture.all
-    @reviews = Review.all
+    @reviews = Review.all.order(created_at: :desc)
   end
 
   private
