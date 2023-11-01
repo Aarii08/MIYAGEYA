@@ -3,7 +3,7 @@
     <div class="col-10">
       <h2 class="text-center m-3">ミヤゲ新規登録</h2>
       <div class="text-right">
-        <%= link_to "戻る", admin_souvenirs_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
 
       <%= form_with model: @souvenir, url: admin_souvenirs_path do |f| %>

@@ -16,7 +16,7 @@
 
       <h5 class="text-center my-3 ml-5">在住県 <i class="fa-solid fa-location-dot fa-xl"></i> <%= @user.residence_prefecture %></h5>
       <div class ="m-2 text-right">
-        <%= link_to "戻る", root_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
 
       <p class="text-right mt-5 mr-5">全 <%= @user.reviews.count %> 件</p>

@@ -7,7 +7,7 @@
     <div class="col-8 offset-1 pt-5">
       <h2 class="m-3">ユーザー情報編集</h2>
       <div class="text-right">
-        <%= link_to "戻る", user_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
       <%= form_with model: @user, url: user_update_path do |f| %>
       <table class="table m-3">

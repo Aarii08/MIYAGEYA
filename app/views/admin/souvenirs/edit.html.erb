@@ -3,7 +3,7 @@
     <div class="col-12">
       <h2 class="text-center m-3">" <%= @souvenir.souvenir_name %> " の編集</h2>
       <div class="text-right">
-        <%= link_to "戻る", admin_souvenir_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
 
       <%= form_with model: @souvenir, url: admin_souvenir_path do |f| %>

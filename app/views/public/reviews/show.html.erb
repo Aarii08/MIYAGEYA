@@ -20,7 +20,7 @@
         <% if @review.user == current_user %>
           <%= link_to "編集する",  edit_souvenir_review_path, class: "btn btn-outline-success mr-5", data: {"turbolinks" => false} %>
         <% end %>
-        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary ml-5", data: {"turbolinks" => false} %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary ml-5", data: {"turbolinks" => false} %>
       </div>
 
       <table class="table table-border">

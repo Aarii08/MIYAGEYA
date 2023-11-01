@@ -7,7 +7,7 @@
     <div class="col-8 offset-1 pt-5">
       <h2 class="mb-5 text-center"><%= current_user.nickname %>  さんのほしい！一覧</h2>
       <div class ="m-3 text-right">
-        <%= link_to "戻る", user_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
       <div class="row">
         <% @user.wants.each do |want| %>

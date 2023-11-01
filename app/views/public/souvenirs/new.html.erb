@@ -7,7 +7,7 @@
     <div class="col-8 offset-1 pt-5">
       <h2 class="text-center">ミヤゲ新規登録</h2>
       <div class="text-right m-3">
-        <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
 
       <%= form_with model: @souvenir, url: souvenirs_path do |f| %>

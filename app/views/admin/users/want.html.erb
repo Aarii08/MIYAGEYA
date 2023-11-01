@@ -3,7 +3,7 @@
     <div class="col-10 mx-auto">
       <h2 class="text-center m-3">" <%= @user.nickname %> " さんのほしい！一覧</h2>
       <div class="text-right">
-         <%= link_to "戻る",  admin_user_path, class: "btn btn-outline-secondary" %>
+         <%= link_to "戻る",  'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
 
       <table class="table table-border text-center m-3">

@@ -16,7 +16,7 @@
               <%= render "want", souvenir: @souvenir %></div>
             </div>
           <% end %>
-          <%= link_to "戻る", souvenirs_path, class: "btn btn-outline-secondary float-right my-2", data: {"turbolinks" => false} %>
+          <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary float-right my-2", data: {"turbolinks" => false} %>
         </div>
         <div class="row mt-5">
           <div class="col-lg-4 col-sm-10 mt-3">

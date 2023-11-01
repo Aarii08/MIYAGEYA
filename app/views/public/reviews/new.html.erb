@@ -7,7 +7,7 @@
     <div class="col-8 offset-1 pt-5">
       <h2 class="m-3 text-center"><%= @souvenir.souvenir_name %>　のレビュー新規登録</h2>
       <div class="text-right">
-        <%= link_to "戻る", souvenir_path(@souvenir), class: "btn btn-outline-secondary", data: {"turbolinks" => false} %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary", data: {"turbolinks" => false} %>
       </div>
       <%= form_with model: @review, url: souvenir_reviews_path do |f| %>
         <table class="table m-3">

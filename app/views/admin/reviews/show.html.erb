@@ -4,7 +4,7 @@
       <h2 class="mb-3">" <%= @review.user.nickname %> " さんの</h2>
       <h2 class="text-center">" <%= @souvenir.souvenir_name %> "&ensp;のレビュー詳細</h2>
       <div class="m-3 text-center">
-        <%= link_to "戻る", reviews_admin_souvenirs_path, class: "btn btn-outline-secondary ml-5" %>
+        <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary ml-5" %>
       </div>
 
       <%= form_with model: @review, url: admin_souvenir_review_path, method: :patch do |f| %>
