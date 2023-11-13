@@ -1,4 +1,5 @@
 class Admin::SouvenirsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @souvenirs = Souvenir.all

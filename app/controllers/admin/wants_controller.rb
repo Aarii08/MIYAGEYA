@@ -1,4 +1,5 @@
 class Admin::WantsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @want = Want.all
