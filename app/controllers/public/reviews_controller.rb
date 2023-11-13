@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  before_action :edit_user, only: [:edit, :update]
 
   def new
     @souvenir = Souvenir.find(params[:souvenir_id])
@@ -65,6 +66,15 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit( :review, :price, :purchase_place, :receive_send, :people, :usefulness, :star)
+  end
+
+  def edit_user
+    @review = Review.find(params[:id])
+    @user = @review.user
+    unless @user.id == current_user.id
+      flash[:alert] = "レビューを投稿したユーザーのみ編集が可能です。"
+      redirect_to souvenir_review_path(@review)
+    end
   end
 
 end
