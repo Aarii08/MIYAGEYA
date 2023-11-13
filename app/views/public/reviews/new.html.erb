@@ -29,9 +29,10 @@
             </tr>
             <tr>
               <th class="text-center align-middle">貰った？贈った？</th>
-              <td class="align-middle"><%= f.radio_button :receive_send, "貰った" %>
-                <%= f.label :receive_send_recive, "貰った", class: "mr-3" %>
-                <%= f.radio_button :receive_send, "贈った" %>
+              <td class="align-middle">
+                <%= f.radio_button :receive_send, :receive %>
+                <%= f.label :receive_send_receive, "貰った", class: "mr-3" %>
+                <%= f.radio_button :receive_send, :send %>
                 <%= f.label :receive_send_send, "贈った" , class: "mr-3" %>
               </td>
               <td></td>

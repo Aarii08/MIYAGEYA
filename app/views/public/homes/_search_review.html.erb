@@ -22,7 +22,13 @@
           </tr>
           <tr>
             <th class="card-subtitle text-center col-3 p-2">貰った？贈った？</th>
-            <td colspan="2", class="align-middle col-4"><%= review.receive_send %></td>
+            <td colspan="2", class="align-middle col-4">
+             <% if review.receive_send == "receive" %>
+                貰った
+              <% else %>
+                贈った
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th class="card-subtitle text-center col-3 p-2">誰に？</th>

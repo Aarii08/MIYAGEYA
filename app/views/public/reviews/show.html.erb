@@ -87,7 +87,13 @@
           <!--======================================================-->
           <tr>
             <td class="text-center align-middle">貰った？贈った？</td>
-            <td><%= @review.receive_send %></td>
+            <td>
+              <% if @review.receive_send == "receive" %>
+                貰った
+              <% else %>
+                贈った
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td class="text-center align-middle">誰に？</td>
