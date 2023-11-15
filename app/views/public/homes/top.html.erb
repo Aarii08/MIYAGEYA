@@ -6,9 +6,9 @@
 
     <div class="col-8 offset-1 pt-5">
       <div class="row card">
-        <%= image_tag "top.jpg", class: "card-img" %>
+        <%= image_tag "top.jpg", :size => "600x400", class: "card-img" %>
         <div class="card-img-overlay d-flex align-center", style="color: white;">
-          <div class="text-center mx-auto my-auto p-5", style="background-color: rgba(0,0,0,0.7); font-family: 'RocknRoll One', sans-serif;">
+          <div class="text-center mx-auto my-auto p-lg-5 p-sm-2", style="background-color: rgba(0,0,0,0.7); font-family: 'RocknRoll One', sans-serif;">
             <h1>ミヤゲ屋へようこそ！</h1>
             <p>おみやげのレビューをチェックしておみやげを買いに行こう！<br>
                おみやげを買ったら、レビューしてね！</p>
@@ -19,7 +19,7 @@
       <div class="row mt-3">
         <h2 class="col-12 mt-5 mb-3 p-3 bg-dark text-white"><i class="fa-solid fa-pen fa-xl"></i> 新着レビュー</h2>
         <% @reviews.each do |review| %>
-		      <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3 text-center">
+		      <div class="card-deck col-lg-4 col-md-4 mx-auto mb-3 text-center">
             <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
               <div class="card h-100 border-secondary btn btn-outline-secondary", style="width:15rem;">
                 <% if review.souvenir.rakuten_image_url.present? %>
