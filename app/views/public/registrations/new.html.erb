@@ -1,45 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <%= image_tag "logo.png", :style => "width: 100%", class: "my-5" %>
-      <div class="text-center mt-5">
+    <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
+      <div class="mb-5">
         <%= link_to "TOPに戻る", root_path, class: "btn btn-outline-dark" %>
       </div>
-    </div>
-
-    <div class="col-5 offset-2 pt-3">
-      <h2 class="mb-4 text-center font-weight-bold border-bottom">新規登録</h2>
+      <h2 class="mb-5 text-center font-weight-bold border-bottom">新規登録</h2>
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
-        <div class="mb-2">
-          <%= f.label :名前 %>&emsp;<span class="badge badge-danger">必須</span><br />
+        <div class="mb-3">
+          <span class="badge badge-danger">必須</span>&ensp; <%= f.label :名前 %>
           <%= f.text_field :name, autofocus: true, placeholder: "群馬太郎", class: "form-control" %>
         </div>
-        <div class="mb-2">
-          <%= f.label :表示名（ユーザー名） %>&emsp;<span class="badge badge-danger">必須</span><br />
+        <div class="mb-3">
+          <span class="badge badge-danger">必須</span>&ensp; <%= f.label :表示名（ユーザー名） %>
           <%= f.text_field :nickname, placeholder: "ぐんまちゃん", class: "form-control" %>
         </div>
-        <div class="mb-2">
-          <%= f.label :在住県名 %>&emsp;<span class="badge badge-danger">必須</span><br />
+        <div class="mb-3">
+          <span class="badge badge-danger">必須</span>&ensp; <%= f.label :在住県名 %>
           <%= f.text_field :residence_prefecture, placeholder: "群馬県", class: "form-control" %>
         </div>
-        <div class="mb-2">
-          <%= f.label :メールアドレス %>&emsp;<span class="badge badge-danger">必須</span><br />
+        <div class="mb-3">
+          <span class="badge badge-danger">必須</span>&ensp; <%= f.label :メールアドレス %>
           <%= f.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
         </div>
-        <div class="mb-2">
-          <%= f.label :パスワード %>&emsp;<span class="badge badge-danger">必須</span>
+        <div class="mb-3">
+          <span class="badge badge-danger">必須</span>&ensp; <%= f.label :パスワード %>
           <% if @minimum_password_length %>
             (<%= @minimum_password_length %>文字以上 )
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
-        <div class="mb-2">
-          <%= f.label :確認用パスワード %>&emsp;<span class="badge badge-danger">必須</span><br />
+        <div class="mb-3">
+          <span class="badge badge-danger">必須</span>&ensp; <%= f.label :確認用パスワード %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
-        <div class="text-center mt-3 mb-5">
-          <%= f.submit "登録", class: "btn btn-success" %>
+        <div class="text-center mt-4 mb-5">
+          <%= f.submit "登録", class: "btn btn-success px-5" %>
         </div>
       <% end %>
 
