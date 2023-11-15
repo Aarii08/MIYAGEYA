@@ -9,7 +9,7 @@
       <div class="text-right">
         <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary", data: {"turbolinks" => false} %>
       </div>
-      <%= form_with model: @review, url: souvenir_reviews_path do |f| %>
+      <%= form_with model: [@souvenir, @review], url: souvenir_reviews_path do |f| %>
         <table class="table m-3">
           <tbody>
             <tr>
