@@ -4,9 +4,9 @@
       <%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-8 offset-1 pt-5">
+    <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
       <%= link_to user_reviews_index_path(@review.user), data: {"turbolinks" => false} do %>
-        <h3 class="mb-3">
+        <h3 class="mb-3 ml-5">
           <% if @review.user.is_deleted == false %>
             <i class="fa-solid fa-user fa-lg"></i> <%= @review.user.nickname %> さんの
           <% else @review.user.is_deleted == true %>

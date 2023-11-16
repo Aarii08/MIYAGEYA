@@ -4,8 +4,8 @@
       <%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-5 offset-1 pt-5">
-      <h2 class="mb-5">マイページ</h2>
+    <div class="col-lg-5 offset-lg-1 col-10 pt-5 mx-auto">
+      <h2 class="mb-5 text-center">マイページ</h2>
       <table class="table">
         <tbody>
           <tr>
@@ -28,9 +28,9 @@
       </table>
     </div>
 
-    <div class="col-3 mb-5 pt-5">
+    <div class="col-lg-3 col-8 mt-lg-5 mb-5 pt-5 mx-auto">
       <% unless @user.guest_user? %>
-        <%= link_to "編集する", user_edit_path, class: "btn btn-outline-success mt-5 mb-5" %>
+        <%= link_to "編集する", user_edit_path, class: "btn btn-outline-success mb-5" %>
       <% end %>
       <%= link_to "自分のレビュー一覧", user_review_path, class: "btn btn-outline-primary mb-5" %>
       <%= link_to "自分のほしい！一覧", user_want_path, class: "btn btn-outline-warning mb-5" %>

@@ -4,8 +4,8 @@
       <%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-8 offset-1 pt-5">
-      <h2 class="mb-2"><i class="fa-solid fa-user fa-xl"></i> <%= current_user.nickname %> さんが</h2>
+    <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
+      <h2 class="mt-5 mb-2"><i class="fa-solid fa-user fa-xl"></i> <%= current_user.nickname %> さんが</h2>
       <h2 class="text-center mb-5">投稿したレビュー一覧</h2>
       <div class ="m-3 text-right">
         <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
@@ -15,7 +15,7 @@
           <% if review.souvenir.present? %>
             <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3">
               <%= link_to souvenir_review_path(review.souvenir_id, review) do %>
-                <div class="card h-100 border-secondary btn btn-outline-primary", style="width:15rem;">
+                <div class="card h-100 mx-auto border-secondary btn btn-outline-primary", style="width:15rem;">
                   <% if review.souvenir.rakuten_image_url.present? %>
                     <img src="<%= review.souvenir.rakuten_image_url %>">
                   <% else %>

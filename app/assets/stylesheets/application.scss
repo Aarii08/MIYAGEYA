@@ -46,14 +46,14 @@
 #sidebarMenu {
   height: 70%;
   position: fixed;
-  top: 250px;
+  top: 220px;
   left: 300;
   width: 200px;
   margin-top: 10px;
   text-align: center;
   transform: translateX(-3000px);
   transition: transform 250ms ease-in-out;
-  background: #e0efff;
+  background: #f0f8ff;
   z-index: 99;
   overflow-y: scroll;
 }
@@ -119,4 +119,17 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .open {
   display: block;
   position: fixed;
   top: 200px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .close {
+    font-size: 18px;
+    position: fixed;
+    top: 160px;
+  }
+  input[type=checkbox]:checked ~ .sidebarIconToggle > .open {
+    position: fixed;
+    top: 160px;
+  }
 }

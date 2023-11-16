@@ -4,8 +4,8 @@
 			<%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-8 offset-1 pt-5">
-    	<div class="mb-3">
+    <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
+    	<div class="mt-5 mb-3">
         <h2 class="text-center"><i class="fa-solid fa-tag"></i><%= @tag_name %>　のタグがついたミヤゲ一覧</h2>
         <div class ="m-2 text-right">
           <%= link_to "戻る", 'javascript:history.back()', data: {"turbolinks" => false}, class: "btn btn-outline-secondary" %>

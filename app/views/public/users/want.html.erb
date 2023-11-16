@@ -4,8 +4,8 @@
       <%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-8 offset-1 pt-5">
-      <h2 class="mb-5 text-center"><%= current_user.nickname %>  さんのほしい！一覧</h2>
+    <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
+      <h2 class="mt-5 mb-5 text-center"><%= current_user.nickname %>  さんの<br>ほしい！一覧</h2>
       <div class ="m-3 text-right">
         <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>
       </div>
@@ -13,7 +13,7 @@
         <% @user.wants.each do |want| %>
           <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3">
             <%= link_to souvenir_path(want.souvenir_id) do %>
-              <div class="card h-100 border-secondary btn btn-outline-warning", style="width:15rem;">
+              <div class="card h-100 mx-auto border-secondary btn btn-outline-warning", style="width:15rem;">
                 <% if want.souvenir.rakuten_image_url.present? %>
                   <img src="<%= want.souvenir.rakuten_image_url %>">
                 <% else %>
