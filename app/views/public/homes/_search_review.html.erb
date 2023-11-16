@@ -4,8 +4,21 @@
       <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
         <table class="table-borderless">
           <tr>
-            <th class="col-3 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"><i class="fa-solid fa-gift"></i> <%= review.souvenir.souvenir_name %></h5></th>
-            <td class="col-2 text-center align-middle mb-2">
+
+            <th class="col-4 col-sm-4 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"> <%= review.souvenir.souvenir_name %></h5></th>
+            <td class="col-3 col-sm-3 text-center align-middle mb-2">
+              <div class="text-right">
+                <% if review.souvenir.rakuten_image_url.present? %>
+                  <img src="<%= review.souvenir.rakuten_image_url %>", class="width='5%' height='5%'">
+                <% else %>
+                  <%= image_tag review.souvenir.get_image.variant( resize: "150x150")  %>
+                <% end %>
+              </div>
+            </td>
+
+          </tr>
+          <tr>
+            <th class="col-3 text-center align-middle mb-2">
               <h5 class="font-weight-bolder">
                 <% if review.user.is_deleted == false %>
                   <i class="fa-solid fa-user fa-lg"></i> <%= review.user.nickname %> さん
@@ -13,8 +26,9 @@
                   <i class="fa-solid fa-user fa-lg"></i> 退会済みユーザー
                 <% end %>
               </h5>
-            </td>
-            <td class="col-2 text-center align-middle mb-2"><h6>在住県 <i class="fa-solid fa-location-dot fa-lg"></i> <%= review.user.residence_prefecture %></h6></td>
+            </th>
+            <td class="col-4 align-middle mb-2"><h6><i class="fa-solid fa-location-dot fa-lg"></i> <%= review.user.residence_prefecture %></h6></td>
+          </tr>
           </tr>
           <tr>
             <th class="card-subtitle text-center col-3 p-2">投稿日</th>

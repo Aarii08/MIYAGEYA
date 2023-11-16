@@ -4,7 +4,7 @@
       <%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-9 pt-5">
+    <div class="col-12 col-lg-8 offset-lg-1 pt-5 mx-auto">
       <h2 class="text-center">楽天市場の商品を検索</h2>
       <% if admin_signed_in? %>
         <div class="col-12 m-3 text-right">
@@ -19,13 +19,14 @@
           </div>
           <div class="col-12">
             <% if @items.present? %>
-              <table class="table", style="table-layout:fixed;">
+              <div class="table-responsive">
+              <table class="table">
                 <thead>
                   <tr>
                     <th class="text-center col-2"></th>
-                    <th class="text-center col-3">商品名</th>
-                    <th class="text-center col-2">価格</th>
-                    <th class="text-center col-2">画像</th>
+                    <th class="text-center col-4">商品名</th>
+                    
+                    <th class="text-center col-3">画像</th>
                     <th class="text-center col-3">URL</th>
                   </tr>
                 </thead>
@@ -36,7 +37,7 @@
                                                 data: {confirm: "画像を取得しました。新規投稿ページに遷移します。"}, class: "btn btn-outline-success" %>
                     </td>
                     <td class="align-middle"><%= item.params["itemName"] %></td>
-                    <td class="align-middle text-center"><%= item.params["itemPrice"] %>円</td>
+                   
                     <td class="align-middle"><% if item.params["mediumImageUrls"].present? %>
                                                 <%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
                                             <% end %>
@@ -46,6 +47,7 @@
                 </tbody>
                 <% end %>
               </table>
+              </div>
             <% else %>
               <h4 class="text-center">商品が見つかりません。</h4>
             <% end %>
@@ -64,13 +66,14 @@
           </div>
           <div class="col-12">
             <% if @items.present? %>
+            <div class="table-responsive">
               <table class="table", style="table-layout:fixed;">
                 <thead>
                   <tr>
                     <th class="text-center col-2"></th>
-                    <th class="text-center col-3">商品名</th>
-                    <th class="text-center col-2">価格</th>
-                    <th class="text-center col-2">画像</th>
+                    <th class="text-center col-4">商品名</th>
+                   
+                    <th class="text-center col-3">画像</th>
                     <th class="text-center col-3">URL</th>
                   </tr>
                 </thead>
@@ -81,7 +84,7 @@
                                               data: {confirm: "画像を取得しました。新規投稿ページに遷移します。"}, class: "btn btn-outline-success" %>
                     </td>
                     <td class="align-middle"><%= item.params["itemName"] %></td>
-                    <td class="align-middle text-center"><%= item.params["itemPrice"] %>円</td>
+                    
                     <td class="align-middle"><% if item.params["mediumImageUrls"].present? %>
                                               　<%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
                                           　<% end %>
@@ -91,6 +94,7 @@
                 </tbody>
                 <% end %>
               </table>
+              </div>
             <% else %>
               <h4 class="text-center">商品が見つかりません。</h4>
             <% end %>

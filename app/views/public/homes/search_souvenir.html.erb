@@ -4,9 +4,9 @@
 			<%= render "layouts/prefecture", prefectures: @prefectures %>
     </div>
 
-    <div class="col-8 offset-1 pt-5">
+    <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
       <% if @souvenirs.present? %>
-    	  <div class="mb-3">
+    	  <div class="mt-5 mb-3">
           <h2 class="text-center">" <%= @q.souvenir_name_cont %> " の検索結果</h2>
           <div class ="m-3 text-right">
             <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary" %>

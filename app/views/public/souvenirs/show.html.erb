@@ -7,7 +7,7 @@
     <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
       <h2 class="text-center"><%= @souvenir.souvenir_name %>　の詳細</h2>
       <div class="m-3">
-        <div class="d-flex justify-content-center ">
+        <div class="d-flex justify-content-center">
           <% if user_signed_in? %>
             <%= link_to new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5 p-3" do %>
               <i class="fa-solid fa-pen fa-2xl"></i> レビューする
@@ -19,7 +19,7 @@
           <%= link_to "戻る", 'javascript:history.back()', class: "btn btn-outline-secondary float-right my-2", data: {"turbolinks" => false} %>
         </div>
         <div class="row mt-5">
-          <div class="col-lg-4 col-sm-10 mt-3">
+          <div class="col-lg-4 col-md-12 mt-3">
             <% if @souvenir.rakuten_image_url.present? %>
               <img src="<%= @souvenir.rakuten_image_url %>", class="card-img-top width='30%' height='50%'">
             <% else %>
@@ -30,7 +30,7 @@
               <a href="<%= @souvenir.rakuten_url %>">楽天の商品ページへ</a>
             <% end %>
           </div>
-          <div class="col-lg-8 col-sm-10 mt-3">
+          <div class="col-lg-8 col-md-12 mt-3">
             <table class="table table-border">
               <tbody>
                 <tr>
