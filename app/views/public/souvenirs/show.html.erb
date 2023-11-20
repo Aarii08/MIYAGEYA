@@ -6,7 +6,7 @@
 
     <div class="col-11 col-lg-8 offset-lg-1 pt-5 mx-auto">
       <h2 class="text-center"><%= @souvenir.souvenir_name %>　の詳細</h2>
-      <div class="m-3">
+      <div class="m-3 mt-5">
         <div class="d-flex justify-content-center">
           <% if user_signed_in? %>
             <%= link_to new_souvenir_review_path(@souvenir), class: "btn btn-outline-success mr-5 p-3" do %>
@@ -96,12 +96,12 @@
         </div>
 
         <% @souvenir.reviews.each do |review| %>
-          <%= link_to souvenir_review_path(@souvenir, review), data: {"turbolinks" => false} do %>
+          <%= link_to souvenir_review_path(@souvenir, review), style: "text-decoration:none;", data: {"turbolinks" => false} do %>
             <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
               <table class="table-borderless">
                 <tr>
                   <th class="col-3 text-center align-middle mb-2">
-                    <h5 class="py-2 bg-secondary text-white">
+                    <h5 class="py-2 bg-dark text-white border">
                       <% if review.user.is_deleted == false %>
                         <i class="fa-solid fa-user fa-lg"></i> <%= review.user.nickname %> さん
                       <% else review.user.is_deleted == true %>

@@ -28,7 +28,7 @@
                   <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
                 <% end %>
                 <div class="card-body">
-                  <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
+                  <h4 class="card-title bg-dark text-white border"><%= review.souvenir.souvenir_name %></h4>
                   <h6 class="card-subtitle m-2">
                     <% if review.souvenir.prefecture.present? %>
                       <i class="fa-solid fa-gift fa-lg"></i> <%= review.souvenir.prefecture.prefecture_name %>&nbsp;のミヤゲ

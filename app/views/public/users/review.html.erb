@@ -14,7 +14,7 @@
         <% @user.reviews.each do |review| %>
           <% if review.souvenir.present? %>
             <div class="card-deck col-lg-4 col-sm-4 mx-auto mb-3">
-              <%= link_to souvenir_review_path(review.souvenir_id, review) do %>
+              <%= link_to souvenir_review_path(review.souvenir_id, review), style: "text-decoration:none;" do %>
                 <div class="card h-100 mx-auto border-secondary btn btn-outline-primary", style="width:15rem;">
                   <% if review.souvenir.rakuten_image_url.present? %>
                     <img src="<%= review.souvenir.rakuten_image_url %>">
@@ -22,8 +22,8 @@
                     <%= image_tag review.souvenir.get_image, class: "card-img-top width='30%' height='50'" %>
                   <% end %>
                   <div class="card-body">
-                    <h4 class="card-title"><%= review.souvenir.souvenir_name %></h4>
-                    <p class="card-text"><%= review.review %></p>
+                    <h4 class="card-title bg-primary text-white border"><%= review.souvenir.souvenir_name %></h4>
+                    <p class="card-text"><%= review.review.truncate(35) %></p>
                     <p td class="card-subtitle text-center"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
                   </div>
                 </div>
