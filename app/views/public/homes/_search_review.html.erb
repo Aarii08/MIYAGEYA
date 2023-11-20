@@ -1,11 +1,11 @@
 <% reviews.each do |review| %>
   <% if review.souvenir.present? %>
-    <%= link_to souvenir_review_path(review.souvenir, review), data: {"turbolinks" => false} do %>
+    <%= link_to souvenir_review_path(review.souvenir, review), style: "text-decoration:none;", data: {"turbolinks" => false} do %>
       <div class="card border-secondary btn btn-outline-secondary text-left mb-3">
         <table class="table-borderless">
           <tr>
 
-            <th class="col-4 col-sm-4 text-center align-middle mb-2"><h5 class="py-2 bg-secondary text-white"> <%= review.souvenir.souvenir_name %></h5></th>
+            <th class="col-4 col-sm-4 text-center align-middle mb-2"><h5 class="py-2 bg-dark text-white border"> <%= review.souvenir.souvenir_name %></h5></th>
             <td class="col-3 col-sm-3 text-center align-middle mb-2">
               <div class="text-right">
                 <% if review.souvenir.rakuten_image_url.present? %>

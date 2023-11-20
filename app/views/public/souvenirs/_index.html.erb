@@ -1,6 +1,6 @@
 <% souvenirs.each do |souvenir| %>
   <div class="card-deck col-lg-4 col-md-4 col-sm-11  mx-auto mb-3 text-center">
-    <%= link_to souvenir_path(souvenir), data: {"turbolinks" => false} do %>
+    <%= link_to souvenir_path(souvenir), style: "text-decoration:none;", data: {"turbolinks" => false} do %>
       <div class="card h-100 mx-auto btn btn-outline-primary", style="width:15rem;">
         <% if souvenir.rakuten_image_url.present? %>
           <img src="<%= souvenir.rakuten_image_url %>">
@@ -8,7 +8,7 @@
           <%= image_tag souvenir.get_image, class: "card-img-top width='30%' height='50%'" %>
         <% end %>
         <div class="card-body">
-          <h4 class="card-title"><%= souvenir.souvenir_name %></h4>
+          <h4 class="card-title bg-primary text-white border"><%= souvenir.souvenir_name %></h4>
           <% if souvenir.prefecture.present? %>
             <h6 class="card-subtitle m-2"><%= souvenir.prefecture.prefecture_name %></h6>
           <% else %>
