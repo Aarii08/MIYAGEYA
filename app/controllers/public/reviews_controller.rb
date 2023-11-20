@@ -1,11 +1,12 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :edit_user, only: [:edit, :update]
+  before_action :prefecture_show, only: [:new, :show, :edit]
+
 
   def new
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.new
-    @prefectures = Prefecture.all
   end
 
   def create
@@ -28,7 +29,6 @@ class Public::ReviewsController < ApplicationController
   def show
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
-    @prefectures = Prefecture.all
     @review_tags = @review.tags
     # タグ用
   end
@@ -36,7 +36,6 @@ class Public::ReviewsController < ApplicationController
   def edit
     @souvenir = Souvenir.find(params[:souvenir_id])
     @review = Review.find(params[:id])
-    @prefectures = Prefecture.all
     @tag_list = @review.tags.pluck(:tag_name).split(nil)
   end
 
@@ -75,6 +74,10 @@ class Public::ReviewsController < ApplicationController
       flash[:alert] = "レビューを投稿したユーザーのみ編集が可能です。"
       redirect_to souvenir_review_path(@review)
     end
+  end
+
+  def prefecture_show
+    @prefectures = Prefecture.all
   end
 
 end

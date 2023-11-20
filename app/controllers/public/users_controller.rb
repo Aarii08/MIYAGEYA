@@ -1,13 +1,12 @@
 class Public::UsersController < ApplicationController
   before_action :set_current_user
   before_action :ensure_guest_user, only: [:edit, :update]
+  before_action :prefecture_show, except: [:update, :confirm, :withdrawal]
 
   def show
-    @prefectures = Prefecture.all
   end
 
   def edit
-    @prefectures = Prefecture.all
   end
 
   def update
@@ -33,16 +32,13 @@ class Public::UsersController < ApplicationController
 
   def review
     @review = Review.all
-    @prefectures = Prefecture.all
   end
 
   def want
     @want = Want.all
-    @prefectures = Prefecture.all
   end
 
   def users_reviews
-    @prefectures = Prefecture.all
     @user = User.find(params[:id])
   end
 
@@ -60,6 +56,10 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :nickname, :email, :residence_prefecture, :is_deleted)
+  end
+  
+  def prefecture_show
+    @prefectures = Prefecture.all
   end
 
 end
