@@ -1,5 +1,6 @@
 class Public::SouvenirsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :prefecture_show
 
   def index
     if params[:keyword]
@@ -10,18 +11,15 @@ class Public::SouvenirsController < ApplicationController
     else
       @souvenirs = Souvenir.all
     end
-    @prefectures = Prefecture.all
     @review = Review.all
   end
 
   def show
     @souvenir = Souvenir.find(params[:id])
-    @prefectures = Prefecture.all
   end
 
   def new
     @souvenir = Souvenir.new
-    @prefectures = Prefecture.all
     @rakuten_image_url = params[:rakuten_image_url] #====== 楽天画像取得
     @rakuten_url = params[:rakuten_url]   #================ 楽天URL取得
   end
@@ -38,11 +36,9 @@ class Public::SouvenirsController < ApplicationController
       redirect_back fallback_location: root_path
       # 前の画面に戻る
     end
-    @prefectures = Prefecture.all
   end
 
   def reviews
-    @prefectures = Prefecture.all
     @reviews = Review.all.order(created_at: :desc)
   end
 
@@ -57,6 +53,10 @@ class Public::SouvenirsController < ApplicationController
 
   def souvenir_params
     params.require(:souvenir).permit( :souvenir_name, :introduction, :category, :image, :prefecture_id, :rakuten_image_url, :rakuten_url)
+  end
+
+  def prefecture_show
+    @prefectures = Prefecture.all
   end
 
 
