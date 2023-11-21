@@ -25,7 +25,7 @@
                   <tr>
                     <th class="text-center col-2"></th>
                     <th class="text-center col-4">商品名</th>
-                    
+
                     <th class="text-center col-3">画像</th>
                     <th class="text-center col-3">URL</th>
                   </tr>
@@ -37,7 +37,7 @@
                                                 data: {confirm: "画像を取得しました。新規投稿ページに遷移します。"}, class: "btn btn-outline-success" %>
                     </td>
                     <td class="align-middle"><%= item.params["itemName"] %></td>
-                   
+
                     <td class="align-middle"><% if item.params["mediumImageUrls"].present? %>
                                                 <%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
                                             <% end %>
@@ -72,7 +72,7 @@
                   <tr>
                     <th class="text-center col-2"></th>
                     <th class="text-center col-4">商品名</th>
-                   
+
                     <th class="text-center col-3">画像</th>
                     <th class="text-center col-3">URL</th>
                   </tr>
@@ -84,7 +84,7 @@
                                               data: {confirm: "画像を取得しました。新規投稿ページに遷移します。"}, class: "btn btn-outline-success" %>
                     </td>
                     <td class="align-middle"><%= item.params["itemName"] %></td>
-                    
+
                     <td class="align-middle"><% if item.params["mediumImageUrls"].present? %>
                                               　<%= image_tag item.params["mediumImageUrls"][0], size: "100x100" %>
                                           　<% end %>

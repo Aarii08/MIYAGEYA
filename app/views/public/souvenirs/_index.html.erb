@@ -18,7 +18,7 @@
 		                                   <i class="fa-solid fa-pen fa-lg"></i> レビュー：<%= souvenir.reviews.count %> 件</p>
           <p class="card-subtitle m-2"><%= render "public/souvenirs/average_star", souvenir: souvenir %></p>
           <p class="card-text mt-3"><%= souvenir.introduction.truncate(30) %></p>
-              <!------------------------".truncate(10)" は、文字列を30文字だけ表示する------------------>
+              <!------------------------".truncate(30)" は、文字列を30文字だけ表示する------------------>
         </div>
       </div>
     <% end %>
